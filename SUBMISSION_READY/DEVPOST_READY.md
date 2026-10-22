@@ -44,4 +44,3 @@ accounts or native Alexa+ Preview integration. MCP agents supply typed actions; 
 its own natural-language model. Product feedback and friction log accompany this submission.
 
 Repository: https://github.com/aigon-x/aigon-proof
-The final public video URL and commit must match the external release receipt.
