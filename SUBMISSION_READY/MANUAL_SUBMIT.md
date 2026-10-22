@@ -6,4 +6,4 @@ Use submit.json for the exact fields: title AIGON PROOF, Alexa+ track, no unveri
 
 Deadline: 23 October 2026, 19:00 UTC / 21:00 Warsaw.
 
-Public demonstration (ElevenLabs Cornelius — Wise Sage): https://www.youtube.com/watch?v=JGI6EiLZ76g
+Public demonstration (ElevenLabs Cornelius — Wise Sage): https://www.youtube.com/watch?v=w_td--lBsLE

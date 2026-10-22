@@ -9,4 +9,10 @@
 
 These are observed feature checks, not proof of universal production security or user satisfaction. WOW reaction remains a user judgement. The service is a single-host local document executor; see SECURITY.md.
 
-Public demonstration (ElevenLabs Cornelius — Wise Sage): https://www.youtube.com/watch?v=JGI6EiLZ76g
+Public demonstration (ElevenLabs Cornelius — Wise Sage): https://www.youtube.com/watch?v=w_td--lBsLE
+
+## Readability correction after user review
+
+The original film was rejected by the user for small/blurred text, framing and a white field. The corrected film is native3840×2160,142.3s, with150% framing, a single-column presentation view and dark native controls. Source frames are lossless PNG. Reviewed encoded review/receipt frames; actual current binary includes the exact HTML and passes all11 browser checks. Zero JavaScript exceptions. Scene cuts remove idle waiting; no playback acceleration. Narration remains ElevenLabs Cornelius — Wise Sage.
+
+SZAMANI AI: https://szamani.ai/ · kontakt@szamani.ai

@@ -1,0 +1,126 @@
+{
+  "programs": [],
+  "streams": [
+    {
+      "codec_name": "h264",
+      "codec_type": "video",
+      "width": 3840,
+      "height": 2160
+    },
+    {
+      "codec_name": "aac",
+      "codec_type": "audio"
+    }
+  ],
+  "format": {
+    "duration": "142.300000",
+    "size": "6480182"
+  },
+  "file_sha256": "d8b6783f3359183e67cef1e966127964488f3bad205861e19e003fbcf926d74c",
+  "presentation_zoom": 1.5,
+  "capture": "3840x2160 native lossless PNG browser frames, device scale3, 1280x720 logical viewport; 150% framing relative to1920x1080; no VP8 source",
+  "narration_provider": "ElevenLabs",
+  "narration_voice": "Cornelius - Wise Sage",
+  "source": "Actual browser captures and real Rust backend; edited at scene boundaries to remove idle waiting, no playback acceleration",
+  "source_scene_timing": [
+    {
+      "scene": 0,
+      "start": 3.623779066998395
+    },
+    {
+      "scene": 1,
+      "start": 21.77037494799879
+    },
+    {
+      "scene": 2,
+      "start": 39.520445791000384
+    },
+    {
+      "scene": 3,
+      "start": 59.33608081100101
+    },
+    {
+      "scene": 4,
+      "start": 78.38346489600008
+    },
+    {
+      "scene": 5,
+      "start": 94.58896047600138
+    },
+    {
+      "scene": 6,
+      "start": 108.59504275200015
+    },
+    {
+      "scene": 7,
+      "start": 127.50503695899897
+    },
+    {
+      "scene": 8,
+      "start": 147.08019563500056
+    },
+    {
+      "scene": 9,
+      "start": 162.06960609100133
+    },
+    {
+      "scene": 10,
+      "start": 178.8206202500005
+    },
+    {
+      "scene": 11,
+      "start": 202.66664794299868
+    }
+  ],
+  "playback_speed": 1.0,
+  "scene_timing": [
+    {
+      "scene": 0,
+      "start": 0.0
+    },
+    {
+      "scene": 1,
+      "start": 14.257551
+    },
+    {
+      "scene": 2,
+      "start": 28.933061
+    },
+    {
+      "scene": 3,
+      "start": 43.190612
+    },
+    {
+      "scene": 4,
+      "start": 52.850612
+    },
+    {
+      "scene": 5,
+      "start": 65.56693899999999
+    },
+    {
+      "scene": 6,
+      "start": 73.86857199999999
+    },
+    {
+      "scene": 7,
+      "start": 88.49183699999999
+    },
+    {
+      "scene": 8,
+      "start": 96.97632699999998
+    },
+    {
+      "scene": 9,
+      "start": 107.05428599999999
+    },
+    {
+      "scene": 10,
+      "start": 114.52
+    },
+    {
+      "scene": 11,
+      "start": 127.758776
+    }
+  ]
+}

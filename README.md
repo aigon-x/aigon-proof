@@ -141,4 +141,10 @@ FRICTION-LOG.md and video/proof-v2/. A local film is not a Devpost submission re
 
 MIT for original code; LICENSE-NOTICE.md covers bundled notices.
 
-Public demonstration (ElevenLabs Cornelius — Wise Sage): https://www.youtube.com/watch?v=JGI6EiLZ76g
+Public demonstration (ElevenLabs Cornelius — Wise Sage): https://www.youtube.com/watch?v=w_td--lBsLE
+
+### Readable presentation and recording
+
+Open `/proof?view=presentation` for the wide, single-column presentation layout. The readable4K film uses a1280×720 logical viewport at device scale3, making control text150% of its size in the original1080p film. Source frames are lossless PNG; cuts remove idle waits without accelerating playback. Narration uses ElevenLabs Cornelius — Wise Sage.
+
+SZAMANI AI: https://szamani.ai/ · kontakt@szamani.ai

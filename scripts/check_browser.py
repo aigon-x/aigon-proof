@@ -5,6 +5,7 @@ from pathlib import Path
 from playwright.sync_api import sync_playwright
 
 ROOT=Path(__file__).resolve().parents[1]
+PREVIEW_HTML=(ROOT/'src/static/proof.html').read_text()
 parser=argparse.ArgumentParser();parser.add_argument('--record',action='store_true');parser.add_argument('--preview-ui',action='store_true');args=parser.parse_args()
 OUT=ROOT/('.agent-artifacts/ui-preview' if args.preview_ui else '.agent-artifacts/browser-recording' if args.record else '.agent-artifacts/browser-check')
 OUT=Path(os.environ.get('PROOF_CHECK_OUTPUT',str(OUT)))
@@ -18,6 +19,8 @@ env.update(AIGON_STANDALONE='1',AIGON_EMBEDDINGS='0',AIGON_ALLOW_RUN='0',AIGON_P
 process=None
 SCENES=[]
 START=0.0
+FRAMES=[]
+FRAME_START=0.0
 AUDIO=json.loads((ROOT/"video/proof-v2/audio-durations.json").read_text()) if args.record else {}
 
 def start():
@@ -33,37 +36,55 @@ def stop():
   process.terminate()
   try:process.wait(timeout=5)
   except subprocess.TimeoutExpired:process.kill();process.wait()
+def frame():
+ if not args.record:return
+ now=time.monotonic()-FRAME_START
+ path=OUT/'frames'/f'{len(FRAMES):05d}.png';path.parent.mkdir(exist_ok=True)
+ page.screenshot(path=str(path),animations='disabled')
+ FRAMES.append({'path':str(path),'time':now})
 def pause(sec=4):
  if args.record:
-  index=len(SCENES);SCENES.append({'scene':index,'start':time.monotonic()-START})
-  page.wait_for_timeout(max(sec,AUDIO.get(str(index),0)+.7)*1000)
-def shot(name):page.screenshot(path=str(OUT/(name+'.png')),full_page=True)
+  index=len(SCENES)
+  targets=[None,'verdict','verdict',None,'passport-summary','message','receipt-paper','message','history-list','verdict','lab-results',None]
+  target=targets[index]
+  if target:page.locator('#'+target).evaluate("e=>(e.closest('section')||e).scrollIntoView({block:'start',behavior:'instant'})")
+  else:page.evaluate('scrollTo(0,0)')
+  frame();SCENES.append({'scene':index,'start':time.monotonic()-START})
+  until=time.monotonic()+max(sec,AUDIO.get(str(index),0)+.7)
+  while time.monotonic()<until:
+   page.wait_for_timeout(400);frame()
+def shot(name):page.screenshot(path=str(OUT/(name+'.png')),full_page=not args.record)
 def click(id):
- page.locator('#'+id).click();page.wait_for_function('!document.querySelector("#review").disabled');
+ frame();page.locator('#'+id).click();page.wait_for_function('!document.querySelector("#review").disabled');
 def select(doc,recipient='external-partner',operation='deliver'):
  page.locator('#operation').select_option(operation);page.locator('#document').select_option(doc);page.locator('#recipient').select_option(recipient)
 def unlock():
- page.locator('#open-operator').click();page.locator('#operator-token').fill((STATE/'operator.token').read_text());click('unlock');assert page.locator('#operator-state').inner_text()=='Authenticated operator'
+ page.locator('#open-operator').click();page.wait_for_timeout(220);shot('operator-dialog');frame()
+ if args.record and len(SCENES)==3:pause(4)
+ page.locator('#operator-token').fill((STATE/'operator.token').read_text());click('unlock');assert page.locator('#operator-state').inner_text()=='Authenticated operator'
 
 results={'checks':{},'js_errors':[],'console_errors':[]}
 try:
  start()
  with sync_playwright() as pw:
   browser=pw.chromium.launch(headless=True,executable_path=os.environ.get('PROOF_CHROMIUM') or shutil.which('chromium'),args=['--no-sandbox','--disable-dev-shm-usage'])
-  options={'viewport':{'width':1440,'height':1000},'device_scale_factor':1}
-  if args.record:options.update(record_video_dir=str(OUT/'recording'),record_video_size={'width':1440,'height':1000})
-  context=browser.new_context(**options);page=context.new_page();START=time.monotonic()
-  if args.preview_ui:page.route('**/proof',lambda route:route.fulfill(status=200,content_type='text/html',body=(ROOT/'src/static/proof.html').read_text()))
+  options={'viewport':{'width':1280 if args.record else 1920,'height':720 if args.record else 1080},'device_scale_factor':3 if args.record else 1}
+  # Lossless native screenshots retain small glyph edges; no intermediate VP8 compression.
+  context=browser.new_context(**options);page=context.new_page();START=time.monotonic();FRAME_START=START
+  if args.preview_ui:page.route('**/proof*',lambda route:route.fulfill(status=200,content_type='text/html',body=PREVIEW_HTML))
   page.on('pageerror',lambda e:results['js_errors'].append(str(e)))
   page.on('console',lambda m:results['console_errors'].append(m.text) if m.type=='error' else None)
-  page.goto(URL+'/proof');page.wait_for_function('document.querySelector("#document").options.length===3')
+  page.goto(URL+('/proof?view=presentation' if args.record else '/proof'));page.wait_for_function('document.querySelector("#document").options.length===3')
+  if args.record:START=time.monotonic();FRAME_START=START
+  if args.record:
+   assert page.evaluate('innerWidth===1280 && devicePixelRatio===3'), '150% framing at native4K required'
   shot('01-ready');pause(6)
   assert page.locator('#approve').is_disabled()
   click('review');assert page.locator('#review-state').inner_text()=='BLOCK';assert page.locator('#approve').is_disabled()
   shot('02-blocked');pause(7)
   select('redacted-summary');click('review');assert page.locator('#review-state').inner_text()=='REVIEW';assert page.locator('#approve').is_disabled()
   page.locator('summary').first.click();shot('03-review');pause(7)
-  unlock();pause(4);click('approve');assert page.locator('#passport-state').inner_text().startswith('Signed')
+  unlock();click('approve');assert page.locator('#passport-state').inner_text().startswith('Signed')
   shot('04-approved');pause(7)
   click('tamper');assert 'SWAP REJECTED' in page.locator('#message').inner_text();shot('05-tamper');pause(5)
   click('verify');assert 'VALID:' in page.locator('#message').inner_text()
@@ -124,15 +145,17 @@ try:
   assert tool_receipt['status']=='delivered_local' and (STATE/tool_receipt['path']).is_file()
   results['checks']['mcp_tool_execution']=True
 
-  page.goto(URL+'/');assert 'AIGON' in page.title();shot('10-explorer');pause(5)
+  page.goto(URL+'/');assert 'AIGON' in page.title()
+  if args.record:page.evaluate("document.documentElement.style.background='#000'")
+  shot('10-explorer');pause(5)
   if args.record:
-   video=page.video;context.close();video.save_as(str(OUT/'live-workflow.webm'))
+   frame();(OUT/'lossless-frames.json').write_text(json.dumps(FRAMES,indent=2)+'\n');context.close()
    (OUT/'scene-timing.json').write_text(json.dumps(SCENES,indent=2)+'\n')
    context=browser.new_context(viewport={'width':1440,'height':1000});page=context.new_page()
 
   # Responsive, keyboard and reduced-motion checks on actual rendered DOM.
   for width,height in [(390,844),(768,1024),(1920,1080)]:
-   page.set_viewport_size({'width':width,'height':height});page.goto(URL+'/proof');page.wait_for_function('document.querySelector("#document").options.length===3')
+   page.set_viewport_size({'width':width,'height':height});page.goto(URL+('/proof?view=presentation' if args.record else '/proof'));page.wait_for_function('document.querySelector("#document").options.length===3')
    assert page.evaluate('document.documentElement.scrollWidth <= innerWidth'),f'horizontal overflow at {width}'
    shot('viewport-'+str(width))
   page.emulate_media(reduced_motion='reduce');assert page.evaluate('matchMedia("(prefers-reduced-motion: reduce)").matches')

@@ -21,8 +21,8 @@
     "sha2",
     "OpenTelemetry"
   ],
-  "video_file": "video/proof-v2/AIGON_PROOF_LIVE_DEMO.mp4",
-  "video_url": "https://www.youtube.com/watch?v=JGI6EiLZ76g",
+  "video_file": "video/proof-v2/AIGON_PROOF_READABLE_4K.mp4",
+  "video_url": "https://www.youtube.com/watch?v=w_td--lBsLE",
   "submission_status": "blocked_platform_verification",
   "blocker": "Existing Devpost session repeatedly stops at Cloudflare managed verification; no entry ID obtained.",
   "manual_submit_url": "https://devpost.com/submit-to/30992"
