@@ -87,14 +87,14 @@ OUT_DIR="${AIGON_MESH_DUTY_TEXTFILE_DIR:-/var/lib/node_exporter/textfile_collect
 OUT="${OUT_DIR}/aigon-mesh-duty.prom"
 # SPAN OTLP (LAW-MESH-1 „prawo ma zostawić ślad"). NAPRAWA 2026-09-28 —
 # ZMIERZONE: default był `http://127.0.0.1:44318`, a kolektor otel słucha
-# WYŁĄCZNIE na `100.98.144.70:44318` i tylko po TLS-ie (kanon 2026-09-27,
+# WYŁĄCZNIE na `192.0.2.18:44318` i tylko po TLS-ie (kanon 2026-09-27,
 # świadomie NIE 0.0.0.0; cert z SAN tego IP). Skutek: loopback → HTTP 000,
 # czyli span werdyktu NIGDY nie docierał do Tempo — prawo bez świadka
 # (dokładnie klasa LAW-011/LAW-OBS-1 opisana w komentarzu wyżej).
 # Wartość poniżej to 1:1 default z docker-compose.yml (10 usług ustawia
 # AIGON_OTLP_ENDPOINT na ten sam adres) — bierzemy SSOT, nie wymyślamy.
-# DOWÓD toru: POST https://100.98.144.70:44318/v1/traces → HTTP 200.
-OTLP="${AIGON_OTLP_ENDPOINT:-https://local.aigon.consul:44318}"
+# DOWÓD toru: POST https://192.0.2.18:44318/v1/traces → HTTP 200.
+OTLP="${AIGON_OTLP_ENDPOINT:-https://local.mesh.internal:44318}"
 # CA kanoniczne dla TLS (curl musi zweryfikować cert; NIE używamy -k).
 OTLP_CA="${AIGON_OTLP_CA:-${ROOT}/core/tls/ca-bundle.crt}"
 # Fallback do rozkładu z logu mastera — DOMYŚLNIE WYŁĄCZONY. Powód: bramka
@@ -142,7 +142,7 @@ fi
 # W1_WINDOW_S ([F]): okno świeżości W1 z SSOT — nie hardkod. Override przez
 # AIGON_MESH_DUTY_W1_WINDOW_S (tylko do testów granicy okna).
 read -r W1_MIN W2_MIN W3_MIN W1_WINDOW_S MASTER_API <<EOF
-$(python3 - "$SSOT" <<'PY' 2>/dev/null || echo "2 2 4 3600 https://100.99.59.100:7000"
+$(python3 - "$SSOT" <<'PY' 2>/dev/null || echo "2 2 4 3600 https://192.0.2.19:7000"
 import sys, yaml
 d = yaml.safe_load(open(sys.argv[1]))["enforcement"]
 c = d.get("conditions") or {}
@@ -150,13 +150,13 @@ print(c.get("w1_decomposition_min_subtasks", 2),
       c.get("w2_min_nodes_with_subtasks", 2),
       c.get("w3_min_nodes_with_kernel_ticks", 4),
       c.get("w1_fresh_window_s", 3600),
-      (d.get("master") or {}).get("api") or "https://100.99.59.100:7000")
+      (d.get("master") or {}).get("api") or "https://192.0.2.19:7000")
 PY
 )
 EOF
 W1_MIN="${W1_MIN:-2}"; W2_MIN="${W2_MIN:-2}"; W3_MIN="${W3_MIN:-4}"
 W1_WINDOW_S="${AIGON_MESH_DUTY_W1_WINDOW_S:-${W1_WINDOW_S:-3600}}"
-MASTER_URL="${AIGON_MESH_DUTY_MASTER_URL:-${MASTER_API:-https://100.99.59.100:7000}}"
+MASTER_URL="${AIGON_MESH_DUTY_MASTER_URL:-${MASTER_API:-https://192.0.2.19:7000}}"
 
 # ── Poświadczenie runtime (nigdy nie drukowane) ────────────────────────────
 SECRET=""
@@ -493,11 +493,11 @@ print(f"LEADER\t{leader}\t{best}")
   if [ "${W4_TAG:-BRAK}" = "BRAK" ]; then
     fail "W4: brak serii aigon_kpi_scheduler_ticks_total — nie wiadomo, czy master dowodzi"
   elif python3 -c "import sys; sys.exit(0 if float('${W4_VAL:-0}') > 0 else 1)"; then
-    if [ "${W4_NODE}" = "100.99.59.100" ]; then
+    if [ "${W4_NODE}" = "192.0.2.19" ]; then
       pass "W4 master dowodzi: scheduler tyka na masterze (${W4_NODE}, ${W4_VAL} ticków)"
       C_W4=1
     else
-      warn "W4: scheduler tyka najwyżej na ${W4_NODE}, a master to 100.99.59.100 — sprawdź przywództwo"
+      warn "W4: scheduler tyka najwyżej na ${W4_NODE}, a master to 192.0.2.19 — sprawdź przywództwo"
       C_W4=0
     fi
   else

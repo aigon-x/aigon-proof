@@ -610,7 +610,7 @@ nieograniczone wywołanie zewnętrzne). Zanim „naprawisz" kod pod czerwony —
 
 **Objaw:** coś JEST zarejestrowane (skill w `skill-graph.yaml`/`exec-graph.yaml`, capability,
 kernel w manifescie), więc wygląda na „podpięte" — ale przy pushu/commicie **nic tego nie
-mierzy**. Zmierzone: skill `perfect-magic-awesome-quality-gate` był w OBU grafach, ale bez
+mierzy**. Zmierzone: skill `perfect-magic-awesome-quality-gate` (spoza tego bundla) był w OBU grafach, ale bez
 triggera w `hooks.yaml` i bez bramki — czyli sama rejestracja, zero egzekucji („skille do kanonu,
 jeśli nie to musi się dziać automatycznie" — cyt. Suwerena).
 

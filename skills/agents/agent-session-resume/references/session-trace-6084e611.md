@@ -32,7 +32,7 @@ tui__gateway(cmd="qwen", args=["--resume", "<uuid>", "--model", "..."], cwd="/op
 → Error: Cannot find module '.../cli-entry.js' (MODULE_NOT_FOUND)
 ```
 Root cause: gateway PTY doesn't inherit nvm PATH. The `qwen` launcher resolves to
-`/home/sniegul/.local/bin/qwen` but the node_modules aren't on its PATH.
+`/home/operator/.local/bin/qwen` but the node_modules aren't on its PATH.
 
 ## Resume attempt — terminal(pty=true) SUCCEEDED
 ```

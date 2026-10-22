@@ -201,42 +201,42 @@ selftest() {
   tmp="$(mktemp -d)"
   cat > "$tmp/cfg.yaml" <<'YAML'
 version: 1
-monitor: {node: optiq, ip: 100.79.105.36, port: 31433, container: sigil-ha-pg-monitor}
+monitor: {node: optiq, ip: 192.0.2.17, port: 31433, container: sigil-ha-pg-monitor}
 nodes:
-  - {name: sigil-contabo, ip: 100.77.55.117, container: sigil-ha-pg}
-  - {name: sigil-prod, ip: 100.99.59.100, container: sigil-ha-pg}
+  - {name: sigil-contabo, ip: 192.0.2.16, container: sigil-ha-pg}
+  - {name: sigil-prod, ip: 192.0.2.19, container: sigil-ha-pg}
 YAML
   cat > "$tmp/good.txt" <<'P'
 MONITOR_STATE_BEGIN
-sigil-contabo | 50 | 100.77.55.117:31432 | 1: 0/3 | read-write | primary | primary
-sigil-prod | 51 | 100.99.59.100:31432 | 1: 0/3 | read-only | secondary | secondary
+sigil-contabo | 50 | 192.0.2.16:31432 | 1: 0/3 | read-write | primary | primary
+sigil-prod | 51 | 192.0.2.19:31432 | 1: 0/3 | read-only | secondary | secondary
 MONITOR_STATE_END
 MONITOR_ESTATE:running
-NODE:100.77.55.117|status=running|restarts=0|monitor_env=postgres://autoctl_node@100.79.105.36:31433/pg_auto_failover?sslmode=require
-NODE:100.99.59.100|status=running|restarts=0|monitor_env=postgres://autoctl_node@100.79.105.36:31433/pg_auto_failover?sslmode=require
+NODE:192.0.2.16|status=running|restarts=0|monitor_env=postgres://autoctl_node@192.0.2.17:31433/pg_auto_failover?sslmode=require
+NODE:192.0.2.19|status=running|restarts=0|monitor_env=postgres://autoctl_node@192.0.2.17:31433/pg_auto_failover?sslmode=require
 P
   cat > "$tmp/bad_restart.txt" <<'P'
 MONITOR_STATE_BEGIN
-sigil-contabo | 50 | 100.77.55.117:31432 | 1: 0/3 | read-write | primary | primary
-sigil-prod | 51 | 100.99.59.100:31432 | 1: 0/3 | read-only | secondary | secondary
+sigil-contabo | 50 | 192.0.2.16:31432 | 1: 0/3 | read-write | primary | primary
+sigil-prod | 51 | 192.0.2.19:31432 | 1: 0/3 | read-only | secondary | secondary
 MONITOR_STATE_END
 MONITOR_ESTATE:running
-NODE:100.77.55.117|status=running|restarts=0|monitor_env=postgres://autoctl_node@100.79.105.36:31433/pg_auto_failover?sslmode=require
-NODE:100.99.59.100|status=restarting|restarts=8|monitor_env=postgres://autoctl_node@100.98.144.70:31433/pg_auto_failover?sslmode=require
+NODE:192.0.2.16|status=running|restarts=0|monitor_env=postgres://autoctl_node@192.0.2.17:31433/pg_auto_failover?sslmode=require
+NODE:192.0.2.19|status=restarting|restarts=8|monitor_env=postgres://autoctl_node@192.0.2.18:31433/pg_auto_failover?sslmode=require
 P
   cat > "$tmp/bad_monitor.txt" <<'P'
 MONITOR_STATE_BEGIN
 MONITOR_STATE_END
 MONITOR_ESTATE:exited
-NODE:100.77.55.117|status=running|restarts=0|monitor_env=postgres://autoctl_node@100.79.105.36:31433/pg_auto_failover?sslmode=require
-NODE:100.99.59.100|status=running|restarts=0|monitor_env=postgres://autoctl_node@100.79.105.36:31433/pg_auto_failover?sslmode=require
+NODE:192.0.2.16|status=running|restarts=0|monitor_env=postgres://autoctl_node@192.0.2.17:31433/pg_auto_failover?sslmode=require
+NODE:192.0.2.19|status=running|restarts=0|monitor_env=postgres://autoctl_node@192.0.2.17:31433/pg_auto_failover?sslmode=require
 P
   cat > "$tmp/monitor_on_dbnode.yaml" <<'YAML'
 version: 1
-monitor: {node: contabo, ip: 100.77.55.117, port: 31433, container: sigil-ha-pg-monitor}
+monitor: {node: contabo, ip: 192.0.2.16, port: 31433, container: sigil-ha-pg-monitor}
 nodes:
-  - {name: sigil-contabo, ip: 100.77.55.117, container: sigil-ha-pg}
-  - {name: sigil-prod, ip: 100.99.59.100, container: sigil-ha-pg}
+  - {name: sigil-contabo, ip: 192.0.2.16, container: sigil-ha-pg}
+  - {name: sigil-prod, ip: 192.0.2.19, container: sigil-ha-pg}
 YAML
 
   run() { AIGON_SIGIL_HA_CONFIG="$1" AIGON_SIGIL_PROBE_FILE="$2" bash "$0" 2>&1; }

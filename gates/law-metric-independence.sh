@@ -16,7 +16,7 @@
 #  Override: LAW_MI_REGISTRY, LAW_MI_ROOT. exit 0 = PASS, 1 = FAIL.
 # ═══════════════════════════════════════════════════════════════════════
 set -uo pipefail
-ROOT="${LAW_MI_ROOT:-/opt/PROD}"
+ROOT="${LAW_MI_ROOT:-/srv/aigon}"
 REG="${LAW_MI_REGISTRY:-$ROOT/config/canonical/constitution.generated.yaml}"
 fail=0
 if grep -qE 'METRIC-INDEPENDENCE' "$REG" 2>/dev/null; then

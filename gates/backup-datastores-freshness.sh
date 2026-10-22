@@ -32,7 +32,7 @@ say() { printf '       %s\n' "$*"; }
 # ── 1. NAS zamontowany? (brak pomiaru != PASS) ─────────────────────────
 if ! mountpoint -q "$(dirname "$BACKUP_ROOT")" 2>/dev/null && [ ! -d "$BACKUP_ROOT" ]; then
   say "FAIL: katalog backupów nieosiągalny ($BACKUP_ROOT) — NAS niezamontowany?"
-  say "      Naprawa: sudo /opt/PROD/scripts/nas-mesh-heal.sh (kanon NAS)"
+  say "      Naprawa: sudo /srv/aigon/scripts/nas-mesh-heal.sh (kanon NAS)"
   echo "backup-datastores-freshness: FAIL (brak dostępu do artefaktów)"
   exit 1
 fi

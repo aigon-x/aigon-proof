@@ -122,7 +122,7 @@ Dwie pułapki przy weryfikacji, obie zmierzone:
 ```bash
 md5sum skills/shared/<skill>/SKILL.md
 for a in .hermes .qwen .claude .grok .aigon .codex .dsh; do
-  find /home/sniegul/$a/skills -maxdepth 3 -name SKILL.md -path "*<skill>*" \
+  find /home/operator/$a/skills -maxdepth 3 -name SKILL.md -path "*<skill>*" \
     -exec md5sum {} \;
 done   # ten sam md5 w SSOT i u KAŻDEGO agenta = dostarczone
 ```

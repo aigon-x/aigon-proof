@@ -32,7 +32,7 @@
 # ═══════════════════════════════════════════════════════════════════════════
 set -uo pipefail
 
-ROOT="${AIGON_PROJECT_ROOT:-/opt/PROD}"
+ROOT="${AIGON_PROJECT_ROOT:-/srv/aigon}"
 SSOT="${AIGON_HA_SSOT:-$ROOT/config/canonical/ha-topology.yaml}"
 MIN_REPLICAS="${AIGON_HA_MIN_REPLICAS:-2}"
 # Węzeł, na którym WOLNO zatrzymać backend w teście failoveru (DEV).
@@ -194,7 +194,7 @@ import json, sys
 d = json.loads(sys.argv[1])
 s = (d["services"].get("mcp_gate") or {})
 be = s.get("backends") or []
-local = [b for b in be if b.get("url") and "100.98.144.70" in b["url"]]
+local = [b for b in be if b.get("url") and "192.0.2.18" in b["url"]]
 if local:
     print(s.get("adres",""), local[0]["url"], local[0]["node"])
 else:

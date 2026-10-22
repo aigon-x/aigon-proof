@@ -38,11 +38,11 @@ cd "$ROOT" || exit 1
 
 # ── FIX 2026-10-16 — yamllint osiągalny dla KAŻDEGO wywołującego ───────────
 # Reaktor bramkarza chodzi jako root (HOME=/root, PATH minimalny), a linter
-# żyje w user-site OPERATORA (/home/sniegul/.local, python3.12). Root ma inny
+# żyje w user-site OPERATORA (/home/operator/.local, python3.12). Root ma inny
 # user-site → modułu nie ma. Ta sama klasa co project-visual-verification /
 # law-action-budget (HOME-zależność). ZERO zmian semantyki — dokładamy
 # WYŁĄCZNIE zdolność ZNALEZIENIA lintera, niezależnie od tego KTO woła bramkę.
-HOME_OPER="${AIGON_OPER_HOME:-/home/sniegul}"
+HOME_OPER="${AIGON_OPER_HOME:-/home/operator}"
 if ! command -v yamllint >/dev/null 2>&1; then
   export PATH="$HOME_OPER/.local/bin:$PATH"
 fi

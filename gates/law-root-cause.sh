@@ -4,7 +4,7 @@
 # przyczyny źródłowej (nagłówek albo pole: root cause / przyczyna).
 # Read-only. Wejścia: INCIDENTS_DIR.
 set -uo pipefail
-ROOT="${AIGON_ROOT:-/opt/PROD}"
+ROOT="${AIGON_ROOT:-/srv/aigon}"
 INCIDENTS_DIR="${INCIDENTS_DIR:-$ROOT/docs/incidents}"
 n=0; bad=0
 for f in "$INCIDENTS_DIR"/*.md; do

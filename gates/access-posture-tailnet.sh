@@ -6,7 +6,7 @@
 #  (brak poświadczenia API — jawna odmowa, NIGDY cicha zieleń).
 # ══════════════════════════════════════════════════════════════════════════
 set -uo pipefail
-SKRYPT="/opt/PROD/scripts/access-posture-tailnet.py"
+SKRYPT="/srv/aigon/scripts/access-posture-tailnet.py"
 [ -x "$SKRYPT" ] || { echo "access-posture-tailnet: BRAK SKRYPTU $SKRYPT"; exit 3; }
 WYJ=$(mktemp)
 python3 "$SKRYPT" --csv >"$WYJ" 2>&1

@@ -11,7 +11,7 @@
 #  Override: LAW_EC_DIR, LAW_EC_TTL_DAYS. exit 0 = PASS, 1 = FAIL.
 # ═══════════════════════════════════════════════════════════════════════
 set -uo pipefail
-DIR="${LAW_EC_DIR:-/opt/PROD/artifacts/evidence/gates}"
+DIR="${LAW_EC_DIR:-/srv/aigon/artifacts/evidence/gates}"
 TTL="${LAW_EC_TTL_DAYS:-7}"
 python3 - "$DIR" "$TTL" <<'PY'
 import sys, glob, os, datetime as dt

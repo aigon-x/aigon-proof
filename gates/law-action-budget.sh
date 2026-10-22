@@ -15,7 +15,7 @@
 #  exit 0 = PASS, 1 = FAIL.
 # ═══════════════════════════════════════════════════════════════════════
 set -uo pipefail
-ROOT="${LAW_AB_ROOT:-/opt/PROD}"
+ROOT="${LAW_AB_ROOT:-/srv/aigon}"
 QWEN="${LAW_AB_QWEN:-$HOME/.qwen/settings.json}"
 HERMES="${LAW_AB_HERMES:-$HOME/.hermes/config.yaml}"
 SUB="${LAW_AB_SUBAGENT:-$ROOT/products/aigon-code/cli/src/tools/SubagentTool/index.ts}"

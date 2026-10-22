@@ -14,7 +14,7 @@ try:
     ids={m.get('id') for m in json.load(urllib.request.urlopen(req,timeout=8)).get('data',[])}
 except Exception as e:
     print('  WARN: macierz GET :38080 niedostepna:', str(e)[:50])
-prov=yaml.safe_load(open('/opt/PROD/config/canonical/providers.yaml')) or {}
+prov=yaml.safe_load(open('/srv/aigon/config/canonical/providers.yaml')) or {}
 declared=[p['id'] for p in (prov.get('providers') or []) if isinstance(p,dict) and p.get('id')]
 heads={i.split('/')[0].lstrip('.') for i in ids}
 missing=[p for p in declared if p not in heads and ('.'+p) not in ids]

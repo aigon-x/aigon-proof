@@ -28,10 +28,10 @@ export LC_ALL=C
 
 PRODUCT="phoneguard"
 RELEASE=""
-EVID_ROOT="/opt/PROD/evidence/ui-delivery"
+EVID_ROOT="/srv/aigon/evidence/ui-delivery"
 SELFTEST=0
 NGINX_CONF="/opt/projects/inorg/phoneguard/deploy/production/nginx.conf"
-NGINX_HOST="${UI_GATE_HOST:-prod.aigon.consul}"
+NGINX_HOST="${UI_GATE_HOST:-prod.mesh.internal}"
 
 while [ $# -gt 0 ]; do
   case "$1" in

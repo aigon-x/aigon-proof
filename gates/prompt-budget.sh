@@ -6,7 +6,7 @@
 #   indeks pamięci (MEMORY.md):         200 linii
 # Użycie: prompt-budget.sh [--selftest|--json]
 set -uo pipefail
-ROOT="${PROMPT_BUDGET_ROOT:-/opt/PROD}"
+ROOT="${PROMPT_BUDGET_ROOT:-/srv/aigon}"
 CORE_LIMIT=4096
 SKILL_LIMIT=8192
 MEM_LIMIT=200

@@ -242,7 +242,7 @@ if [ "$CTR_DEFECT" -eq 0 ] && [ "$HOST_DEFECT" -eq 0 ]; then
   exit 0
 fi
 
-# ── Auto-naprawa (jedno zrodlo prawdy: SSOT /opt/PROD/.env + recreate) ──
+# ── Auto-naprawa (jedno zrodlo prawdy: SSOT /srv/aigon/.env + recreate) ──
 if [ "$GATE_NO_REPAIR" = "1" ]; then
   echo "FAIL: wykryto drift (host=$HOST_DEFECT ctr=$CTR_DEFECT); auto-naprawa wylaczona (GATE_NO_REPAIR=1)"
   exit 1

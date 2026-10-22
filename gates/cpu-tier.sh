@@ -32,7 +32,7 @@
 #  Exit 0 = PASS, 1 = FAIL.
 # ═══════════════════════════════════════════════════════════════════════
 set -uo pipefail
-PROD="${PROD_ROOT:-/opt/PROD}"
+PROD="${PROD_ROOT:-/srv/aigon}"
 FAIL=0
 say() { printf '%s\n' "$*"; }
 

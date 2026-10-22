@@ -14,7 +14,7 @@
 #  Budzet: AIO_PRODUCT_GATE_TIMEOUT (domyslnie 280 s — suite ~120 s + reszta).
 # ═══════════════════════════════════════════════════════════════════════════
 set -uo pipefail
-KANON="${AIGON_PROJECT_ROOT:-/opt/PROD}"
+KANON="${AIGON_PROJECT_ROOT:-/srv/aigon}"
 PRODUKT="${AIO_PRODUKT_DIR:-$KANON/products/aio-okolic}"
 . "$(dirname "${BASH_SOURCE[0]}")/../../../../scripts/lib/gate-params.sh"
 TIMEOUT="$(gp GATE-234 aio_product_gate_timeout_s 280)"

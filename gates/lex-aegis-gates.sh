@@ -8,9 +8,9 @@ set -uo pipefail
 # wynik zależał od TEGO, KTO ją uruchomił: jako sniegul PASS, jako root (hook/
 # reaktor) FAIL na wszystkich 8 blokadach i G00-G10 — fałszywy czerwony, który
 # blokował constitution-fitness (LAW-LEX-AEGIS). SSOT skilli w tym repo to
-# /opt/PROD/skills/shared (kanon dystrybucji), więc autorytetem jest TA kopia;
+# /srv/aigon/skills/shared (kanon dystrybucji), więc autorytetem jest TA kopia;
 # instalacja per-user jest tylko fallbackiem.
-SKILL="${LEX_AEGIS_SKILL:-/opt/PROD/skills/shared/lex-aegis-global}"
+SKILL="${LEX_AEGIS_SKILL:-/srv/aigon/skills/shared/lex-aegis-global}"
 if [ ! -f "$SKILL/SKILL.md" ] && [ -f "$HOME/.hermes/skills/lex-aegis-global/SKILL.md" ]; then
   SKILL="$HOME/.hermes/skills/lex-aegis-global"
 fi
@@ -29,7 +29,7 @@ for a in send_external_message sign accept settle waive admit_debt make_payment 
     || { echo "FAIL: brak blokady fail-closed '$a'"; FAIL=1; }
 done
 
-grep -q "legal.contract_lifecycle.v1" /opt/PROD/config/canonical/capabilities.yaml 2>/dev/null \
+grep -q "legal.contract_lifecycle.v1" /srv/aigon/config/canonical/capabilities.yaml 2>/dev/null \
   || { echo "FAIL: brak capability legal.contract_lifecycle.v1 w rejestrze"; FAIL=1; }
 
 if [ "$FAIL" -ne 0 ]; then

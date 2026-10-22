@@ -122,7 +122,7 @@ if [ -f "$OTEL_LIB" ]; then
 import sys
 sys.path.insert(0, '$ROOT/scripts/lib')
 import os
-os.environ.setdefault('AIGON_OTLP_ENDPOINT', 'https://100.98.144.70:44318')
+os.environ.setdefault('AIGON_OTLP_ENDPOINT', 'https://192.0.2.18:44318')
 try:
     from otel_span import emit_span
     emit_span('llama-runner-churn', 'llama.churn.audit',

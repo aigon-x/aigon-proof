@@ -3,9 +3,9 @@
 #  tools/gates/artifact-retention-truth.sh — BRAMKA RETENCJI ARTEFAKTÓW
 #
 #  PO CO (zmierzone 2026-10-19, DiskGuardCritical: / 95%, 53 GB wolne):
-#  1. /opt/PROD/artifacts: build-knowledge-capsule.sh zostawiał ROZPAKOWANY
+#  1. /srv/aigon/artifacts: build-knowledge-capsule.sh zostawiał ROZPAKOWANY
 #     katalog OBOK archiwum .tar.zst — 31 dni x ~1,4 GB = 13,3 GB duplikatu.
-#  2. /opt/PROD/datastores/surrealdb/data: backup-datastores.sh stage'ował
+#  2. /srv/aigon/datastores/surrealdb/data: backup-datastores.sh stage'ował
 #     export na sshfs NAS; `mv` 5,8 GB nie kończył się → `set -e` przerywał
 #     funkcję, a surowe .surql zostawało w ŻYWYM katalogu danych (3,2 GB +
 #     5,8 GB = 8,9 GB).
@@ -17,8 +17,8 @@
 # ══════════════════════════════════════════════════════════════════════════
 set -uo pipefail
 
-ART="${AIGON_ARTIFACTS_DIR:-/opt/PROD/artifacts}"
-SURREAL_DATA="${AIGON_SURREAL_DATA_DIR:-/opt/PROD/datastores/surrealdb/data}"
+ART="${AIGON_ARTIFACTS_DIR:-/srv/aigon/artifacts}"
+SURREAL_DATA="${AIGON_SURREAL_DATA_DIR:-/srv/aigon/datastores/surrealdb/data}"
 MOUNT="${AIGON_DISK_GUARD_MOUNT:-/}"
 MAX_EXPANDED=0          # rozpakowanych kapsuł może być 0 (archiwum jest artefaktem)
 WARN_PCT="${AIGON_ARTIFACT_RETENTION_WARN_PCT:-85}"

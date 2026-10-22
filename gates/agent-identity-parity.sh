@@ -54,11 +54,11 @@ SYNC="$ROOT/scripts/sync-agent-models.py"
 # ── Home, w którym leżą pliki tożsamości ─────────────────────
 # Kanon to pliki w home operatora. Sync odpalany jest także z crona jako root,
 # więc `~` procesu NIE jest tym samym `~` co `~` celu. Bramka wskazuje home
-# jawnie: AIGON_AGENT_HOME → /home/sniegul (jeśli czytelny) → $HOME.
+# jawnie: AIGON_AGENT_HOME → /home/operator (jeśli czytelny) → $HOME.
 CANON_HOME="${AIGON_AGENT_HOME:-}"
 if [ -z "$CANON_HOME" ]; then
-  if [ -r /home/sniegul/.qwen ]; then
-    CANON_HOME=/home/sniegul
+  if [ -r /home/operator/.qwen ]; then
+    CANON_HOME=/home/operator
   else
     CANON_HOME="$HOME"
   fi

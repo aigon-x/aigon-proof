@@ -4,7 +4,7 @@
 # Sprawdza: static_configs.targets + file_sd (pliki targetów, jeśli istnieją).
 # --selftest: dowód pozytywny (brak duplikatu => PASS) i negatywny (duplikat => FAIL).
 set -uo pipefail
-ROOT="${AIGON_ROOT:-/opt/PROD}"
+ROOT="${AIGON_ROOT:-/srv/aigon}"
 PROM="${PROM_YML:-$ROOT/observability/prometheus/prometheus.yml}"
 
 check() {
@@ -29,7 +29,7 @@ for j in jobs:
             addrs += [str(x) for x in (sc.get("targets") or [])]
     for fsd in (j.get("file_sd_configs") or []):
         for pat in (fsd.get("files") or []):
-            for f in glob.glob(pat.replace("/etc/prometheus", os.path.join(os.environ.get("PROM_DIR", "/opt/PROD/observability/prometheus")))):
+            for f in glob.glob(pat.replace("/etc/prometheus", os.path.join(os.environ.get("PROM_DIR", "/srv/aigon/observability/prometheus")))):
                 try:
                     data = json.load(open(f))
                 except Exception:

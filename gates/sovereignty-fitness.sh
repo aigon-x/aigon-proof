@@ -190,7 +190,7 @@ findings = []      # {file, line, sample, pattern, has_sovereign}
 scanned_roots = []
 for base in roots:
     # Ścieżka ABSOLUTNA (np. fixture testu) jest skanowana jak jest;
-    # względna jest rebazowana pod /opt/PROD.
+    # względna jest rebazowana pod /srv/aigon.
     if os.path.isabs(base):
         rootdir = os.path.normpath(base)
     else:

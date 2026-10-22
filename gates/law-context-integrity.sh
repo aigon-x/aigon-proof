@@ -15,7 +15,7 @@
 #  Override: LAW_CI_FILES (lista plików instrukcji). exit 0 = PASS, 1 = FAIL.
 # ═══════════════════════════════════════════════════════════════════════
 set -uo pipefail
-FILES="${LAW_CI_FILES:-$HOME/.claude/CLAUDE.md /opt/PROD/AGENTS.md $HOME/.qwen/AGENTS.md $HOME/.hermes/AGENTS.md}"
+FILES="${LAW_CI_FILES:-$HOME/.claude/CLAUDE.md /srv/aigon/AGENTS.md $HOME/.qwen/AGENTS.md $HOME/.hermes/AGENTS.md}"
 GEN="${LAW_CI_GENERATED:-$HOME/.claude/CLAUDE.md}"
 fail=0; inc=0
 for f in $FILES; do

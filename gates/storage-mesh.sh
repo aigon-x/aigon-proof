@@ -33,7 +33,7 @@ DNS_YAML="${ROOT}/config/canonical/mesh-dns.yaml"
 RULES_YML="${ROOT}/observability/prometheus/rules.yml"
 CRON_YAML="${ROOT}/config/cron.yaml"
 PROM="${AIGON_PROM_URL:-http://127.0.0.1:49091}"
-STORAGE_HOST_IP="100.115.90.62"
+STORAGE_HOST_IP="192.0.2.12"
 STORAGE_SSH="root@${STORAGE_HOST_IP}"
 OFFLINE="${AIGON_STORAGE_GATE_OFFLINE:-0}"
 FAIL=0
@@ -59,7 +59,7 @@ PY
   rc_bad=$?
   echo "== SELFTEST: sabotaż DNS (usunięta nazwa) =="
   tmpd="$(mktemp)"
-  grep -v "storage.aigon.consul" "$DNS_YAML" > "$tmpd"
+  grep -v "storage.mesh.internal" "$DNS_YAML" > "$tmpd"
   AIGON_STORAGE_DNS_YAML="$tmpd" AIGON_STORAGE_GATE_OFFLINE=1 bash "${BASH_SOURCE[0]}" >/dev/null 2>&1
   rc_dns=$?
   rm -f "$tmp" "$tmpd"
@@ -93,9 +93,9 @@ d = yaml.safe_load(open(sys.argv[1], encoding="utf-8")) or {}
 ext = d.get("external_hosts") or {}
 st = ext.get("storage") or {}
 names = st.get("names") or []
-sys.exit(0 if st.get("ip") == "100.115.90.62" and "storage.aigon.consul" in names else 1)
+sys.exit(0 if st.get("ip") == "192.0.2.12" and "storage.mesh.internal" in names else 1)
 PY
-resolved="$(getent hosts storage.aigon.consul 2>/dev/null | awk '{print $1; exit}')"
+resolved="$(getent hosts storage.mesh.internal 2>/dev/null | awk '{print $1; exit}')"
 if [ "$dns_ok" = 1 ] && [ "$resolved" = "$STORAGE_HOST_IP" ]; then
   ok "H2 DNS external_hosts.storage + getent = $resolved"
 else

@@ -49,7 +49,7 @@ fi
 
 echo "gpu-resident: FAIL — BRAK rezydenta na GPU (VRAM=${VRAM:-?} MiB)."
 echo "  Kanon 'GPU = DOKLADNIE 1 model rezydentny' zlamany."
-echo "  Diagnoza: python3 /opt/PROD/scripts/aigon-gpu-resident-check.py --json"
+echo "  Diagnoza: python3 /srv/aigon/scripts/aigon-gpu-resident-check.py --json"
 echo "           journalctl -u ollama --since '20 min ago' | grep -E 'load_model|Load failed'"
 echo "           tail /var/log/aigon/ollama-spin-guard.log"
 exit 1

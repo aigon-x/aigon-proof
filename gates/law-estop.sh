@@ -15,7 +15,7 @@
 #  Override: LAW_ESTOP_ROOT. exit 0 = PASS, 1 = FAIL.
 # ═══════════════════════════════════════════════════════════════════════
 set -uo pipefail
-ROOT="${LAW_ESTOP_ROOT:-/opt/PROD}"
+ROOT="${LAW_ESTOP_ROOT:-/srv/aigon}"
 fail=0
 if grep -qE 'route\("/api/v1/admin/kill"' "$ROOT/runtime/crates/aigon-runtime/src/api.rs" 2>/dev/null; then
   echo "[PASS] trasa /api/v1/admin/kill obecna w api.rs"

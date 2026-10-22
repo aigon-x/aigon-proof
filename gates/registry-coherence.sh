@@ -31,7 +31,7 @@ say "=== GATE-134 REGISTRY-COHERENCE ==="
 
 CANON_DIR="runtime/knowledge/canon/products"
 PG_CONTAINER="${AIGON_PG_CONTAINER:-aigon-datastores-postgres}"
-PG_HOST="${AIGON_PG_HOST:-100.99.59.100}"
+PG_HOST="${AIGON_PG_HOST:-192.0.2.19}"
 PG_PORT="${AIGON_PG_PORT:-25437}"
 PG_USER="${AIGON_PG_USER:-aigon}"
 PG_DB="${AIGON_PG_DB:-aigon}"

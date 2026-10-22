@@ -338,7 +338,7 @@ async fn skills(Query(q): Query<LimitQuery>) -> Response {
 }
 
 async fn prompts(Query(q): Query<LimitQuery>) -> Response {
-    let root = std::env::var("AIGON_PROMPTS").unwrap_or_else(|_| "/opt/PROD/config".to_string());
+    let root = std::env::var("AIGON_PROMPTS").unwrap_or_else(|_| "/srv/aigon/config".to_string());
     Json(data::prompts(&root, q.limit.unwrap_or(50).clamp(1, 300))).into_response()
 }
 

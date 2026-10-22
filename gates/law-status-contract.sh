@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Schema PASS is not live constitutional verification; --closure rederives evidence.
 set -euo pipefail
-ROOT="${AIGON_ROOT:-/opt/PROD}"
+ROOT="${AIGON_ROOT:-/srv/aigon}"
 CONTRACT_FILE="${CONTRACT_FILE:-$ROOT/config/canonical/constitution-status-contract.yaml}"
 mode=contract
 args=()

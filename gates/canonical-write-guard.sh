@@ -2,7 +2,7 @@
 # GATE-D3: verify a canonical snapshot against an existing, independently managed
 # baseline. This post-check does not authorize a write or prevent a later write.
 # Exit codes: 0 integrity PASS; 1 FAIL; 2 advisory posture WARN.
-# --selftest uses only its own temporary tree, never /opt/PROD.
+# --selftest uses only its own temporary tree, never /srv/aigon.
 set -uo pipefail
 ROOT="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/../.." && pwd -P)" || exit 1
 ENGINE="$ROOT/tools/quality/canonical_integrity_gate.py"

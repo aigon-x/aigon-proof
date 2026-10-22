@@ -1,0 +1,45 @@
+name: Bug report
+description: Something behaves differently than documented
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please do not report security issues here — see SECURITY.md.
+        Include exact commands and observed output; "it does not work" cannot be reproduced.
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behaviour
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behaviour
+      description: Include the error text and, where relevant, the receipt or passport involved.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Reproduction steps
+      placeholder: |
+        1. bash scripts/run-demo.sh
+        2. ...
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Commit or version
+      description: Output of `git rev-parse --short HEAD`
+    validations:
+      required: true
+  - type: input
+    id: platform
+    attributes:
+      label: Platform
+      placeholder: Linux x86_64, Rust 1.89
+    validations:
+      required: true

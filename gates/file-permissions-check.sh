@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # ============================================================================
-#  file-permissions-check.sh — GATE-127: KANON UPRAWNIEŃ PLIKÓW /opt/PROD
+#  file-permissions-check.sh — GATE-127: KANON UPRAWNIEŃ PLIKÓW /srv/aigon
 #                                                              [qg G247]
 # ============================================================================
 #  POWÓD (ROOT CAUSE, zmierzony 2026-09-24):
@@ -10,7 +10,7 @@
 #  `config/canonical/gate-registry.yaml` występuje NAPIS „G246". Nie otwierał
 #  ani jednego pliku, nie sprawdzał ani jednego trybu. Wynik: PASS na zawsze,
 #  niezależnie od stanu systemu. Zmierzone 2026-09-24: `CERTIFICATION: PASS`,
-#  `Checks: 1, FAIL: 0` — przy 1259 plikach łamiących kanon w /opt/PROD.
+#  `Checks: 1, FAIL: 0` — przy 1259 plikach łamiących kanon w /srv/aigon.
 #  To fałszywy zielony w czystej postaci: bramka istnieje, nic nie pilnuje.
 #
 #  CO ZŁAPAŁ PRAWDZIWY DEFEKT (bez tego gate'u): `scripts/lib/selfmail.py`
@@ -41,7 +41,7 @@ set -u
 ROOT="$(verify_root)"
 cd "$ROOT" || exit 1
 
-say "=== GATE-127 FILE-PERMISSIONS (kanon uprawnień /opt/PROD) ==="
+say "=== GATE-127 FILE-PERMISSIONS (kanon uprawnień /srv/aigon) ==="
 
 AUDIT="scripts/audit-fileperm.py"
 LIB="scripts/lib/fileperm.py"
@@ -119,11 +119,11 @@ if [ "$RC" -ne 0 ]; then
   # dekorację (ta sama klasa co GATE-112 sprawdzający napis „G246").
   WARN_N="$(python3 - <<'PYEOF'
 import sys
-sys.path.insert(0, "/opt/PROD/scripts/lib")
+sys.path.insert(0, "/srv/aigon/scripts/lib")
 try:
     from fileperm import audit, audit_counts
     import importlib.util
-    spec = importlib.util.spec_from_file_location("aud", "/opt/PROD/scripts/audit-fileperm.py")
+    spec = importlib.util.spec_from_file_location("aud", "/srv/aigon/scripts/audit-fileperm.py")
     m = importlib.util.module_from_spec(spec); spec.loader.exec_module(m)
     hard, soft = audit_counts(audit(list(m.walk(["scripts", "config", "observability", "tools"]))))
     print(hard)

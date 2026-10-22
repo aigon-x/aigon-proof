@@ -184,7 +184,8 @@ impl Governance {
         &self,
         Parameters(args): Parameters<LimitArgs>,
     ) -> Result<CallToolResult, McpError> {
-        let root = std::env::var("AIGON_SKILLS").unwrap_or_else(|_| "/opt/PROD/skills".to_string());
+        let root =
+            std::env::var("AIGON_SKILLS").unwrap_or_else(|_| "/srv/aigon/skills".to_string());
         text(serde_json::json!(data::skills(
             &root,
             args.limit.clamp(1, 300)
@@ -197,7 +198,7 @@ impl Governance {
         Parameters(args): Parameters<LimitArgs>,
     ) -> Result<CallToolResult, McpError> {
         let root =
-            std::env::var("AIGON_PROMPTS").unwrap_or_else(|_| "/opt/PROD/config".to_string());
+            std::env::var("AIGON_PROMPTS").unwrap_or_else(|_| "/srv/aigon/config".to_string());
         text(serde_json::json!(data::prompts(
             &root,
             args.limit.clamp(1, 300)
@@ -278,7 +279,7 @@ impl Governance {
             },
             async {
                 let root = std::env::var("AIGON_SKILLS")
-                    .unwrap_or_else(|_| "/opt/PROD/skills".to_string());
+                    .unwrap_or_else(|_| "/srv/aigon/skills".to_string());
                 let q = args.query.to_lowercase();
                 data::skills(&root, 300)
                     .into_iter()
@@ -327,7 +328,8 @@ impl Governance {
 
     #[tool(description = "List skills grouped by category with counts")]
     async fn skills_by_category(&self) -> Result<CallToolResult, McpError> {
-        let root = std::env::var("AIGON_SKILLS").unwrap_or_else(|_| "/opt/PROD/skills".to_string());
+        let root =
+            std::env::var("AIGON_SKILLS").unwrap_or_else(|_| "/srv/aigon/skills".to_string());
         let skills = data::skills(&root, 10_000);
         let mut counts: std::collections::BTreeMap<String, usize> = Default::default();
         for skill in &skills {

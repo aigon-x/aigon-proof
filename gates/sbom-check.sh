@@ -2,7 +2,7 @@
 # ============================================================================
 # sbom-check.sh — SBOM-CHECK GATE (GATE-091)   [qg G061]
 # ============================================================================
-# Obecnosc manifestu/SBOM zaleznosci w /opt/PROD. Fail-closed: brak dowodu
+# Obecnosc manifestu/SBOM zaleznosci w /srv/aigon. Fail-closed: brak dowodu
 # deklaracji = BLOCKING FAIL, nigdy skip.
 # Unified gate: JEDEN skrypt (tools/verify/sbom-check.sh) widoczny jako gate
 # (registry) I jako modul verify (gates.yaml) — pipeline CI i lokalna pelna

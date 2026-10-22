@@ -18,7 +18,7 @@
 # exit 0 = PASS, 1 = FAIL/ERROR.
 #
 #   TRY_PATHS       katalogi do skanu (domyślnie scripts tools — względem korzenia)
-#   TRY_ROOT        korzeń (domyślnie /opt/PROD)
+#   TRY_ROOT        korzeń (domyślnie /srv/aigon)
 #   TRY_MAX_RETRY   próg R1
 #   TRY_QWEN_SETTINGS  plik dla R3 (pusty = pomiń)
 set -uo pipefail

@@ -15,7 +15,7 @@
 # ═══════════════════════════════════════════════════════════════════════════
 set -uo pipefail
 
-ROOT="${AIGON_ROOT:-/opt/PROD}"
+ROOT="${AIGON_ROOT:-/srv/aigon}"
 GEN="$ROOT/scripts/nexus-graph.py"
 ORPH="$ROOT/scripts/nexus-orphans.py"
 TEXTFILE="${AIGON_TEXTFILE_DIR:-/var/lib/node_exporter/textfile}"

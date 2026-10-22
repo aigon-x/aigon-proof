@@ -69,7 +69,7 @@ trigger_for_profile() {
 # ── PLAN: co jest już osiągalne osią A, co nie ─────────────────────────
 PLAN_TSV="$(python3 - "$REGISTRY_YAML" "$HOOKS_YAML" "$GATES_DIR" <<'PYEOF'
 import os, sys, yaml
-ROOT = '/opt/PROD'
+ROOT = '/srv/aigon'
 reg = yaml.safe_load(open(sys.argv[1]))['gates']
 hooks = yaml.safe_load(open(sys.argv[2]))['hooks']
 gates_dir = sys.argv[3]
@@ -93,7 +93,7 @@ PYEOF
 if [ "$MODE" = "--json" ]; then
   python3 - "$REGISTRY_YAML" "$HOOKS_YAML" "$GATES_DIR" <<'PYEOF' | python3 -m json.tool
 import json, os, sys, yaml
-ROOT = '/opt/PROD'
+ROOT = '/srv/aigon'
 reg = yaml.safe_load(open(sys.argv[1]))['gates']
 hooks = yaml.safe_load(open(sys.argv[2]))['hooks']
 gates_dir = sys.argv[3]
@@ -183,7 +183,7 @@ EXEMPT_COUNT="$(awk -F'\t' '$5=="EXEMPT"' "$DEC_FILE" | wc -l)"
 if [ "$MODE" = "--check" ]; then
   python3 - "$REGISTRY_YAML" "$HOOKS_YAML" "$GATES_DIR" "$DEC_FILE" <<'PYEOF'
 import os, sys, yaml
-ROOT = '/opt/PROD'
+ROOT = '/srv/aigon'
 reg = yaml.safe_load(open(sys.argv[1]))['gates']
 hooks = yaml.safe_load(open(sys.argv[2]))['hooks']
 gates_dir, dec = sys.argv[3], sys.argv[4]

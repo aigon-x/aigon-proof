@@ -14,13 +14,13 @@
 #
 # Użycie:
 #   bash scan-ssot-vs-agent-copy-drift.sh [ROOT] [SKILLS_DIR_AGENTA]
-#   ROOT=/opt/PROD                                        (default)
+#   ROOT=/srv/aigon                                        (default)
 #   SKILLS_DIR_AGENTA=/home/$USER/.hermes/skills          (default)
 #
 # Kontrakt: 0 = brak rozjazdu; 1 = znaleziono rozjazd(y); 2 = błąd użycia.
 set -uo pipefail
 
-ROOT="${1:-${AIGON_PROD_ROOT:-/opt/PROD}}"
+ROOT="${1:-${AIGON_PROD_ROOT:-/srv/aigon}}"
 HS="${2:-$HOME/.hermes/skills}"
 SHARED="$ROOT/skills/shared"
 

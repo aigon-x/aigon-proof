@@ -46,8 +46,8 @@ for f in "$HOME"/.aigon/todo/*.ndjson; do
   [ -f "$f" ] || continue
   tail -n 400 "$f" 2>/dev/null | scan_text "$f"
 done
-if git -C /opt/PROD rev-parse --git-dir >/dev/null 2>&1; then
-  git -C /opt/PROD log -n 30 --pretty=format:'%s %b' 2>/dev/null | scan_text "git:last30"
+if git -C /srv/aigon rev-parse --git-dir >/dev/null 2>&1; then
+  git -C /srv/aigon log -n 30 --pretty=format:'%s %b' 2>/dev/null | scan_text "git:last30"
 fi
 
 if [ "$HITS" -gt 0 ]; then

@@ -51,7 +51,7 @@ curl -sf http://localhost:7000/health
 curl -s --max-time 60 -o /tmp/test.txt -w "%{http_code}" http://localhost:7000/api/v1/epithets
 
 # 3. Check subagent live transcripts for early failure signals
-for f in /home/sniegul/.hermes/cache/delegation/live/<delegation_id>/task-*.log; do
+for f in /home/operator/.hermes/cache/delegation/live/<delegation_id>/task-*.log; do
   echo "=== $(basename $f) ==="; tail -3 "$f"; echo
 done
 ```

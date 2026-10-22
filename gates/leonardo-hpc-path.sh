@@ -39,10 +39,10 @@ JSON=0
 # Dom operatora = SSOT. Reaktor chodzi jako root (HOME=/root), a hook-runner
 # triggera cyclic:hourly jako aigon (HOME=/home/aigon); klucz/cert Cineca zyja
 # w domu OPERATORA (kanon: scripts/leonardo-watchdog.sh, leonardo-command-center-snapshot.py,
-# aigon-leonardo-exporter.sh uzywaja /home/sniegul). Uzycie $HOME znaczylo, ze
+# aigon-leonardo-exporter.sh uzywaja /home/operator). Uzycie $HOME znaczylo, ze
 # bramka mierzyla cudze .ssh (nieistniejace) -> FALSZYWA CZERWIEN (FAIL jako
 # root/aigon, PASS jako operator). Ta sama klasa co ledger-coverage 2026-10-13 08:00.
-HOME_OPER="${AIGON_OPER_HOME:-/home/sniegul}"
+HOME_OPER="${AIGON_OPER_HOME:-/home/operator}"
 CERT="${AIGON_LEONARDO_CERT_FILE:-$HOME_OPER/.ssh/id_cineca_step_ecdsa-cert.pub}"
 PROM_DIR="${AIGON_LEONARDO_PROM_DIR:-/var/lib/node_exporter/textfile_collector}"
 SSH_MODE="${AIGON_LEONARDO_SSH:-ssh}"          # "none" = pomiń sonda SSH

@@ -17,7 +17,7 @@
 # ═══════════════════════════════════════════════════════════════════════
 set -uo pipefail
 
-ROOT="${AIGON_ROOT:-/opt/PROD}"
+ROOT="${AIGON_ROOT:-/srv/aigon}"
 INGEST="${ROOT}/scripts/skills-ingest-cron.sh"
 SSOT_DIR="${ROOT}/skills/shared"
 
@@ -25,7 +25,7 @@ SSOT_DIR="${ROOT}/skills/shared"
 [ -d "$SSOT_DIR" ] || { echo "FAIL: brak katalogu SSOT $SSOT_DIR"; exit 1; }
 
 # ── Bramka wejscia: skill MUSI miec niepusty SKILL.md (w sobie ALBO w podkatalogu) ──
-# PITFALL (2026-09-24): /opt/PROD/skills/shared/<x> bywa KOLEKCJA (np. anthropic-skills,
+# PITFALL (2026-09-24): /srv/aigon/skills/shared/<x> bywa KOLEKCJA (np. anthropic-skills,
 # superpowers) — SKILL.md zyje w podkatalogach, nie na szczycie. Bramka sprawdzajaca
 # tylko <x>/SKILL.md dawala FALSZYWY FAIL na 2 z 2390. Sprawdzamy tez glebiej.
 BROKEN=0; N=0; COLLECTIONS=0

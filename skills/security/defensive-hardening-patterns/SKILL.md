@@ -231,7 +231,7 @@ knowledge-shellu.
   - tryb AUDIT na start (1.2), promocja do STRICT po okresie obserwacji.
 - **Produkty compliance (vairyfy/sigil)** — same muszą być przykładem: dowody
   hardeningu do `aigon-evidence-store` (audyt SOC2/GDPR — powiązany skill:
-  compliance-gates-checklist).
+  governance-rubric-audit).
 
 ### 2.3 Frontend / nginx
 - Konfy: `products/frontend/nginx.docker.conf`, `core/mesh-nginx.conf`.
@@ -239,7 +239,7 @@ knowledge-shellu.
   limit na `/api/`, deny dla `/admin`/`/.git` z zewnątrz (wzorzec: ograniczenia na
   brzegu zamiast w aplikacji).
 - XSS: escaping na wyjściu + testy wejścia wzorcami `XSS_PATTERNS` (1.7) w E2E
-  (skill full-e2e-dashboard-playwright-audit).
+  (skill verification-test-design).
 
 ### 2.4 Dostosowanie języka
 - Rust (aigon-runtime `api.rs`, backend vairyfy `veritas`, pozostałe backendy Rust):
@@ -261,7 +261,7 @@ self-report. Kategorie: AUTH, SQLI, WEJŚCIE/THREAT, EVENT/MONITORING, ODPOWIED�
 DECEPTION.
 
 ### AUTH
-- [ ] A-1 Żadnych sekretów w kodzie/configu — Vault (config/secrets.yaml → sync), rotacja JWT (skill: api-key-ops / vault-*)
+- [ ] A-1 Żadnych sekretów w kodzie/configu — Vault (config/secrets.yaml → sync), rotacja JWT (skill: credential-security-sweep / vault-*)
 - [ ] A-2 Auth na KAŻDYM endpointzie (runtime: `auth_guard::require_api_auth` na routerze, nie per-handler)
 - [ ] A-3 Rate limit na logowanie/brute-force (per-IP, próg ~5/min) + blokada po N failed logins (1.7 `_check_brute_force`)
 - [ ] A-4 Walidacja formatu identyfikatorów (uuid/id — 1.5 `VALIDATION_PATTERNS`) na wejściu

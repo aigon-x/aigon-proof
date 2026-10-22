@@ -16,7 +16,7 @@
 #  Override: LAW_TOD_FILE. exit 0 = PASS, 1 = FAIL.
 # ═══════════════════════════════════════════════════════════════════════
 set -uo pipefail
-F="${LAW_TOD_FILE:-/opt/PROD/runtime/crates/aigon-kernel/src/kernel_cloning.rs}"
+F="${LAW_TOD_FILE:-/srv/aigon/runtime/crates/aigon-kernel/src/kernel_cloning.rs}"
 [ -f "$F" ] || { echo "[FAIL] brak $F"; exit 1; }
 fail=0
 ncurl=$(grep -cE 'Command::new\((bin|"(/usr/bin/)?curl")\)' "$F")

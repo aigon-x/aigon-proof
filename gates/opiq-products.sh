@@ -8,13 +8,13 @@
 #  (defekt klasy "napisane bez wpiecia", LAW: written-must-be-wired).
 #
 #  ZMIERZONE 2026-09-30: `make verify` wisialo >120 s, bo verify.sh bralo
-#  `git rev-parse --show-toplevel` -> /opt/PROD (nadrzedne repo) i skanowalo
+#  `git rev-parse --show-toplevel` -> /srv/aigon (nadrzedne repo) i skanowalo
 #  CALE drzewo. Po przypieciu ROOT do katalogu projektu: PASS w ~7 s.
 #
 #  Bramka przechodzi tylko, gdy WSZYSTKIE 4 projekty przejda `make verify`.
 # ═══════════════════════════════════════════════════════════════════════════
 set -uo pipefail
-ROOT="${AIGON_PROJECT_ROOT:-/opt/PROD}/products/optiq"
+ROOT="${AIGON_PROJECT_ROOT:-/srv/aigon}/products/optiq"
 PROJECTS="${OPTIQ_PROJECTS:-magazyn construction fenix employes}"
 TIMEOUT="${OPTIQ_VERIFY_TIMEOUT:-120}"
 FAIL=0

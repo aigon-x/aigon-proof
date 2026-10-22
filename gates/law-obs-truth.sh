@@ -6,7 +6,7 @@
 # Wejścia (nadpisywalne w teście): LAW_DRAFT, PROM_URL, LAW_PROM_FIXTURE
 # (JSON {metric: liczba|null} zamiast żywego Prometheusa).
 set -uo pipefail
-ROOT="${AIGON_ROOT:-/opt/PROD}"
+ROOT="${AIGON_ROOT:-/srv/aigon}"
 LAW_DRAFT="${LAW_DRAFT:-$ROOT/config/canonical/constitution-drafts/S9-observability.yaml}"
 PROM_URL="${PROM_URL:-http://127.0.0.1:49091}"
 export LAW_DRAFT PROM_URL LAW_PROM_FIXTURE="${LAW_PROM_FIXTURE:-}"

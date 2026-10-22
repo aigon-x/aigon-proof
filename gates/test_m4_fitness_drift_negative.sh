@@ -50,7 +50,7 @@ def suite(scope):
                      ('script loses executable bit', lambda: script.chmod(0o755), lambda: script.chmod(0o644))]
         else:
             cases = [('new hardcoded mesh address', lambda: script.write_text('#!/bin/sh\ntrue\n'),
-                      lambda: script.write_text('#!/bin/sh\nHOST=100.99.88.77\n')),
+                      lambda: script.write_text('#!/bin/sh\nHOST=192.0.2.20\n')),
                      ('unreadable ratchet missing', lambda: allow.write_text('hardcoded_node_ips: []\n'),
                       lambda: allow.unlink())]
         for name, restore, corrupt in cases:

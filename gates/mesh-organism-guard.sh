@@ -6,10 +6,10 @@
 set -uo pipefail
 STRICT=0; SELFTEST=0; HITS=0
 for a in "$@"; do case "$a" in --strict) STRICT=1;; --selftest) SELFTEST=1;; esac; done
-AM=/opt/PROD/config/agent-models.yaml
-PRESENCE=/opt/PROD/scripts/aigon-agent-presence.sh
-SKILL=/opt/PROD/skills/shared/mesh-organism/SKILL.md
-HOOKS=/opt/PROD/config/canonical/hooks.yaml
+AM=/srv/aigon/config/agent-models.yaml
+PRESENCE=/srv/aigon/scripts/aigon-agent-presence.sh
+SKILL=/srv/aigon/skills/shared/mesh-organism/SKILL.md
+HOOKS=/srv/aigon/config/canonical/hooks.yaml
 
 _check() {  # $1=opis, $2=0/1 (1=ok)
   if [ "$2" != 1 ]; then HITS=$((HITS+1)); printf 'WARN [mesh-organism] %s\n' "$1"; fi

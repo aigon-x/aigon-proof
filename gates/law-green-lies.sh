@@ -9,7 +9,7 @@
 # Wejścia: HEALTH_JSON_FILE (fixture zamiast /health), CRON_PROM_FILE,
 #          GREEN_LIE_GATES (lista ścieżek adapterów, spacje).
 set -uo pipefail
-ROOT="${AIGON_ROOT:-/opt/PROD}"
+ROOT="${AIGON_ROOT:-/srv/aigon}"
 CRON_PROM_FILE="${CRON_PROM_FILE:-/var/lib/node_exporter/textfile_collector/aigon-cron-liveness.prom}"
 GREEN_LIE_GATES="${GREEN_LIE_GATES-$ROOT/tools/gates/obs-slo.sh $ROOT/tools/gates/obs-alerts.sh $ROOT/tools/gates/dlq-process-check.sh}"
 CRON_MAX_AGE="${CRON_MAX_AGE:-300}"

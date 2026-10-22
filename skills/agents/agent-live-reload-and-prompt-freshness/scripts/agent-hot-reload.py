@@ -56,9 +56,9 @@ W1_FILES = [
     HERMES / "memories" / "MEMORY.md",
     HERMES / "memories" / "USER.md",
     # SSOT wspólny
-    Path("/opt/PROD/config/agent-identity.md"),
-    Path("/opt/PROD/config/agent-models.yaml"),
-    Path("/opt/PROD/AGENTS.md"),
+    Path("/srv/aigon/config/agent-identity.md"),
+    Path("/srv/aigon/config/agent-models.yaml"),
+    Path("/srv/aigon/AGENTS.md"),
     # Rodzina: tożsamości per agent
     HERMES.parent / ".qwen" / "AGENTS.md",
     HERMES.parent / ".claude" / "AGENTS.md",
@@ -81,7 +81,7 @@ W1_CODE = [
 # Pluginy: hooki (transform_llm_output) nie wchodzą w żywą sesję.
 W1_PLUGINS = [HERMES / "plugins"]
 # SSOT wymagający natychmiastowego syncu (zamiast okna 15 min).
-W2_SSOT = Path("/opt/PROD/config/agent-models.yaml")
+W2_SSOT = Path("/srv/aigon/config/agent-models.yaml")
 
 
 def log(msg: str) -> None:
@@ -158,12 +158,12 @@ def invalidate_prompt_caches() -> list[str]:
 
 
 def force_sync() -> str:
-    script = Path("/opt/PROD/scripts/sync-agent-models.py")
+    script = Path("/srv/aigon/scripts/sync-agent-models.py")
     if not script.exists():
         return f"BRAK {script} — sync niemozliwy"
     try:
         r = subprocess.run([sys.executable, str(script)],
-                           capture_output=True, text=True, timeout=180, cwd="/opt/PROD")
+                           capture_output=True, text=True, timeout=180, cwd="/srv/aigon")
         return "sync-agent-models: OK" if r.returncode == 0 else \
                f"sync-agent-models: rc={r.returncode} {(r.stderr or '')[:150]}"
     except subprocess.TimeoutExpired:

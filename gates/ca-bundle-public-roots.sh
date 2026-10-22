@@ -15,7 +15,7 @@
 #  CO MIERZY: dla kazdego DZIALAJACEGO kontenera z SSL_CERT_FILE lub
 #    REQUESTS_CA_BUNDLE w env — liczbe certyfikatow w tym pliku WEWNATRZ
 #    kontenera. < CA_MIN_CERTS (def. 2) = brak publicznych rootow = FAIL.
-#    Poprawny wzorzec: /opt/PROD/core/tls/ca-bundle.crt (system + AIGON CA).
+#    Poprawny wzorzec: /srv/aigon/core/tls/ca-bundle.crt (system + AIGON CA).
 #
 #  KONTRAKT: exit 0 = PASS, exit 1 = FAIL. Metryka textfile (gdy katalog
 #    istnieje): aigon_ca_bundle_no_public_roots{container}.

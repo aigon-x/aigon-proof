@@ -19,7 +19,7 @@
 set -uo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../../../.." && pwd)"
 
-RUNTIME="${AIGON_RUNTIME_URL:-https://100.99.59.100:7000}"
+RUNTIME="${AIGON_RUNTIME_URL:-https://192.0.2.19:7000}"
 FAILED=0
 declare -a REASONS=()
 
@@ -27,10 +27,10 @@ note_fail() { REASONS+=("$1"); FAILED=1; }
 
 # Klucz runtime: bez niego /api/v1/mesh zwraca pusta liste, a bramka czytala
 # to jako "0 nodow" (pomiar slepy, nie dowod awarii). Klucz z env albo z
-# /opt/PROD/core/.env (env_file runtime) — NIGDY z argv.
+# /srv/aigon/core/.env (env_file runtime) — NIGDY z argv.
 _rt_key="${AIGON_RUNTIME_SHARED_SECRET:-${AIGON_RUNTIME_API_KEY:-}}"
-if [ -z "$_rt_key" ] && [ -r /opt/PROD/core/.env ]; then
-  _rt_key="$(grep -m1 '^AIGON_RUNTIME_SHARED_SECRET=' /opt/PROD/core/.env 2>/dev/null | cut -d= -f2- | tr -d '\r\n')"
+if [ -z "$_rt_key" ] && [ -r /srv/aigon/core/.env ]; then
+  _rt_key="$(grep -m1 '^AIGON_RUNTIME_SHARED_SECRET=' /srv/aigon/core/.env 2>/dev/null | cut -d= -f2- | tr -d '\r\n')"
 fi
 AUTH=(); [ -n "$_rt_key" ] && AUTH=(-H "X-API-Key: $_rt_key")
 

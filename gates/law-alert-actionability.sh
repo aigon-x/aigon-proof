@@ -6,7 +6,7 @@
 # adapter verify zwraca rc=0 nawet przy FAIL. Read-only.
 # Wejścia: RULES_FILE, OBS_ALERTS_GATE (pusty = pomiń wrapper, np. w teście).
 set -uo pipefail
-ROOT="${AIGON_ROOT:-/opt/PROD}"
+ROOT="${AIGON_ROOT:-/srv/aigon}"
 RULES_FILE="${RULES_FILE:-$ROOT/observability/prometheus/rules.yml}"
 OBS_ALERTS_GATE="${OBS_ALERTS_GATE-$ROOT/tools/gates/obs-alerts.sh}"
 rc=0

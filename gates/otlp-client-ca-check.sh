@@ -208,7 +208,7 @@ for c in CONTAINERS:
 
 # ── 2. SKRYPTY HOSTA (.sh z własnym curl na OTLP) ────────────────────────
 scripts = sh("bash", "-c",
-             "grep -rl '44318' /opt/PROD/scripts/ 2>/dev/null | grep -v '.bak' || true").split()
+             "grep -rl '44318' /srv/aigon/scripts/ 2>/dev/null | grep -v '.bak' || true").split()
 for f in scripts:
     if not f.endswith(".sh"):
         continue

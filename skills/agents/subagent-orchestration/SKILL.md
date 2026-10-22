@@ -142,7 +142,7 @@ for d in szamani.ai fartpol.com vairify.online; do dig +short "$d"; done
 
 # Trace nginx proxy_pass → actual port → container
 #   szamani.ai → proxy_pass 127.0.0.1:10000 → szamani-app (Port 3003)
-#   fartpol.com → root /home/sniegul/sites/fartpol-cf (bind mount, not Docker)
+#   fartpol.com → root /home/operator/sites/fartpol-cf (bind mount, not Docker)
 #   vairify.online → proxy_pass 127.0.0.1:10081 → vairyfy-frontend (:5005)
 ```
 
@@ -159,7 +159,7 @@ When 3+ subagents are running simultaneously (possible but time-consuming), you 
 
 ```bash
 # Watch ALL subagent transcripts simultaneously (grouped by task ID)
-for f in /home/sniegul/.hermes/cache/delegation/live/<delegation_id>/task-*.log; do
+for f in /home/operator/.hermes/cache/delegation/live/<delegation_id>/task-*.log; do
   echo "=== $(basename $f) ==="; tail -1 "$f"; echo
 done
 ```
@@ -167,8 +167,8 @@ done
 Or stream live with separate terminals:
 ```bash
 # One terminal per subagent — use pty per call
-tail -f /home/sniegul/.hermes/cache/delegation/live/<delegation_id>/task-0.log
-tail -f /home/sniegul/.hermes/cache/delegation/live/<delegation_id>/task-1.log
+tail -f /home/operator/.hermes/cache/delegation/live/<delegation_id>/task-0.log
+tail -f /home/operator/.hermes/cache/delegation/live/<delegation_id>/task-1.log
 # etc.
 ```
 
@@ -189,7 +189,7 @@ If you (the parent) need to continue a task started by a subagent, re-read the f
 
 When a subagent reports a **pre-existing build error** (missing import, wrong syntax, struct-reachability issue in an unrelated file), do NOT wait for the subagent to diagnose and retry itself. The subagent will spend 3-5 minutes running redundant verification commands before finally retrying. Instead:
 
-1. **Detect**: While the subagent runs, tail its transcript: `tail -f /home/sniegul/.hermes/cache/delegation/live/<delegation_id>/task-0.log`
+1. **Detect**: While the subagent runs, tail its transcript: `tail -f /home/operator/.hermes/cache/delegation/live/<delegation_id>/task-0.log`
 2. **Diagnose**: The subagent's first `cargo build` output already shows the exact error and the helptext fix (`help: consider importing this enum` + the exact `use` line to add). Read the file on the main thread and apply the fix.
 3. **Fix**: Patch the file immediately on the main thread. One `patch()` call is enough for mechanical fixes like missing imports.
 4. **Verify**: Run `cargo check -p <affected-crate>` on the main thread to confirm the fix compiles.
@@ -374,7 +374,7 @@ From AIGON-Runtime v2 Phase 1 Foundation (2026-07-23):
 
     **Silent kill failure — process owned by another user.** Even `pidof` + `kill` can fail silently. The `kill` command returns exit code 0 and prints no error, but the process remains alive because the target PID is owned by a different user (e.g., the runtime was started by `claude` user, but you SSH as `sniegul`). Shell `kill $PID 2>/dev/null` swallows the EPERM error. **Detection:** After `kill $PID; sleep 3; pidof aigon-runtime-v2`, if the same PID still appears, check its owner: `ps -o user= -p $PID`. If it says a different user, you cannot kill it without sudo. **Fix:** Use `sudo kill $PID` when available, or SSH as the process owner directly. When neither is possible, accept the ghost process and start a new instance — the old one won't interfere as long as it doesn't hold the listen port.
 
-    **SCP-specific limitation:** Even subagents that CAN authenticate and SSH (not fabricated) cannot SCP files from the parent's LOCAL filesystem. The subagent runs in an isolated conversation with its own terminal session — it has no access to `/home/sniegul/bin/`, `<workspace>/runtime/target/release/`, or any other path on the parent machine. A subagent task with `scp <workspace>/runtime/target/release/aigon-runtime-v2 sniegul@remote:/tmp/` will fail because the source path doesn't exist in the subagent's filesystem. **Fix:** Pre-copy the binary to every remote node from the parent (`terminal()`), THEN dispatch subagents for any remaining orchestration tasks (config edits, service restarts, verification). Or dispatch background `terminal()` processes from the parent for the entire SCP+kill+restart flow rather than using subagents at all.
+    **SCP-specific limitation:** Even subagents that CAN authenticate and SSH (not fabricated) cannot SCP files from the parent's LOCAL filesystem. The subagent runs in an isolated conversation with its own terminal session — it has no access to `/home/operator/bin/`, `<workspace>/runtime/target/release/`, or any other path on the parent machine. A subagent task with `scp <workspace>/runtime/target/release/aigon-runtime-v2 sniegul@remote:/tmp/` will fail because the source path doesn't exist in the subagent's filesystem. **Fix:** Pre-copy the binary to every remote node from the parent (`terminal()`), THEN dispatch subagents for any remaining orchestration tasks (config edits, service restarts, verification). Or dispatch background `terminal()` processes from the parent for the entire SCP+kill+restart flow rather than using subagents at all.
 
     Subagents dispatched to operate on remote machines (SSH commands, SCP, Docker cp+restart, apt/npm/pip installs) may report `completed` with `api_calls=1-2` and a narrative like "I'll copy the binary and restart" — but no actual commands were executed. Verified 2026-07-23: 15 subagents dispatched to install aigon-code, claude, hermes, ollama, API keys, and runtime fix on 6 remote nodes via SSH. ALL 15 returned `completed` with fabricated output. Reality: zero SSH/SCP processes seen on any target, files absent, versions unchanged.
 
@@ -475,14 +475,14 @@ Before dispatching any subagent for remote operations, check:
     ```bash
     python3 -c "
     import re
-    with open('/home/sniegul/.hermes/config.yaml') as f:
+    with open('/home/operator/.hermes/config.yaml') as f:
       content = f.read()
     content = re.sub(
       r'delegation:\s*\n\s+model: deepseek-reasoner',
       'delegation:\n  model: deepseek-v4-flash',
       content
     )
-    with open('/home/sniegul/.hermes/config.yaml', 'w') as f:
+    with open('/home/operator/.hermes/config.yaml', 'w') as f:
       f.write(content)
     "
     ```
@@ -848,7 +848,7 @@ For any deliverable where subagent-produced HTML references external files (imag
    ```
    The fallback fires silently if the live endpoint is unreachable. The presentation still shows real IQ, kernel health, and mesh data — just from the captured snapshot rather than live.
 8. **SVG `<use href>` cross-file reference fails from localhost HTTP** — A preview HTML that references an SVG file via `<use href="./potion-icon.svg#svgView"/>` may render an empty page when served from `http://localhost:<port>/`. This fails because browsers restrict cross-file SVG `<use>` references even from the same origin when served via HTTP (the SVG and HTML must share the exact same document context). The `#svgView` fragment identifier alone doesn't fix it. **Fix:** Inline the full SVG content directly into the preview HTML. Remove the `<use>` element and embed the `<svg>` tag with its viewBox, defs, filters, and all geometry. The preview becomes a fully self-contained HTML file with no external dependencies. Works from both `file://` and `http://localhost`.
-9. **HyperFrames binary may lack execute permission** — After `npm install`, the `hyperframes` binary at `/home/sniegul/.npm-global/bin/hyperframes` may have no execute permission (`chmod -x`). Running `npx hyperframes@0.7.71 check` then fails with `Permission denied`. **Fix:** `chmod +x /home/sniegul/.npm-global/bin/hyperframes` before running any hyperframes command. Run this as a setup step in the parent before dispatching HyperFrames subagents.
+9. **HyperFrames binary may lack execute permission** — After `npm install`, the `hyperframes` binary at `/home/operator/.npm-global/bin/hyperframes` may have no execute permission (`chmod -x`). Running `npx hyperframes@0.7.71 check` then fails with `Permission denied`. **Fix:** `chmod +x /home/operator/.npm-global/bin/hyperframes` before running any hyperframes command. Run this as a setup step in the parent before dispatching HyperFrames subagents.
 
 10. **HyperFrames `init` creates nested subdirectory** — When a subagent runs `npx hyperframes init <name>` inside a pre-created output directory (e.g., `output/03-my-project/`), the project lands in `output/03-my-project/my-project/` instead of directly in `output/03-my-project/`. After the subagent returns, scan for this nesting with `find <output_dir> -name index.html -o -name package.json` and restructure by moving files from the nested subdirectory up. **After restructuring, assets (`assets/*`) may still be missing** — the subagent wrote HTML references like `assets/logo.svg` and `assets/opinia1.webp` to the nested directory's index.html, but during the parent's `cp -r` restructure the `assets/` directory silently fails to copy if no `mkdir -p assets` was run first. **Verification after restructuring:** `curl -s -o /dev/null -w "%{http_code}" http://localhost:<port>/output/<project>/assets/logo.svg` — must return 200, not 404. If missing, re-download or regenerate all referenced assets. See `references/hyperframes-init-nested-directory.md` for the full fix workflow.
 
@@ -1042,8 +1042,8 @@ Each tribunal task context must include: exact search paths, patterns, output fo
 **Step 4 — Monitor live transcripts while subagents run (optional):**
 
 ```bash
-ls /home/sniegul/.hermes/cache/delegation/live/<delegation_id>/
-tail -50 /home/sniegul/.hermes/cache/delegation/live/<delegation_id>/task-3.log
+ls /home/operator/.hermes/cache/delegation/live/<delegation_id>/
+tail -50 /home/operator/.hermes/cache/delegation/live/<delegation_id>/task-3.log
 ```
 
 **Step 5 — When ALL return, consolidate into one master report:**
@@ -1070,7 +1070,7 @@ Because subagents write nothing, ZERO risk of file conflict.
 
 1. **Subagent summary is TRUNCATED when >2,275 chars.** Read the saved file for complete findings.
 2. **Delegation model mismatch.** If parent model differs from delegation pin, ALL subagents fail. Verify: `grep -A3 'delegation' ~/.hermes/config.yaml`
-3. **Consolidated summary from delegate_task is head+tail truncated.** Full output at `/home/sniegul/.hermes/cache/delegation/live/<delegation_id>/task-<N>.log`
+3. **Consolidated summary from delegate_task is head+tail truncated.** Full output at `/home/operator/.hermes/cache/delegation/live/<delegation_id>/task-<N>.log`
 4. **Answer with concrete metrics** when user asks "i jak?" — "14/15 done, Tribunal 4 still running".
 
 ## Parallel Web Data Collection — N Subagents, N Web Pages, One Consolidated Dataset

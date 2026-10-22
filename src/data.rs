@@ -66,7 +66,7 @@ fn bundled_path(relative: &str) -> PathBuf {
 }
 
 /// Resolve the skill root. Standalone runs use the bundled `skills/` directory so a
-/// fresh clone does not silently depend on `/opt/PROD`.
+/// fresh clone does not silently depend on `/srv/aigon`.
 pub fn skills_root() -> PathBuf {
     if let Ok(root) = std::env::var("AIGON_SKILLS") {
         let root = root.trim().to_string();
@@ -80,7 +80,7 @@ pub fn skills_root() -> PathBuf {
             return bundled;
         }
     }
-    PathBuf::from("/opt/PROD/skills")
+    PathBuf::from("/srv/aigon/skills")
 }
 
 fn fallback(local: &str, canonical: &str) -> PathBuf {
@@ -98,7 +98,7 @@ fn constitution_path() -> PathBuf {
         .unwrap_or_else(|_| {
             fallback(
                 "fixtures/canon/constitution.yaml",
-                "/opt/PROD/config/canonical/constitution.generated.yaml",
+                "/srv/aigon/config/canonical/constitution.generated.yaml",
             )
         })
 }
@@ -109,7 +109,7 @@ fn gates_path() -> PathBuf {
         .unwrap_or_else(|_| {
             fallback(
                 "fixtures/canon/gates.yaml",
-                "/opt/PROD/config/canonical/gates.yaml",
+                "/srv/aigon/config/canonical/gates.yaml",
             )
         })
 }
@@ -120,7 +120,7 @@ fn perfection_path() -> PathBuf {
         .unwrap_or_else(|_| {
             fallback(
                 "fixtures/canon/perfection.json",
-                "/opt/PROD/products/monai/monai-hackathons/state/perfection.json",
+                "/srv/aigon/products/monai/monai-hackathons/state/perfection.json",
             )
         })
 }
@@ -480,9 +480,9 @@ fn script_exists(script: &str) -> bool {
         return false;
     }
     let roots = [
-        "/opt/PROD/tools/verify",
-        "/opt/PROD/tools/gates",
-        "/opt/PROD/tools",
+        "/srv/aigon/tools/verify",
+        "/srv/aigon/tools/gates",
+        "/srv/aigon/tools",
     ];
     roots.iter().any(|root| {
         let path = std::path::Path::new(root).join(script);
@@ -560,7 +560,7 @@ pub fn capabilities(limit: usize) -> Result<Vec<Capability>> {
         .unwrap_or_else(|_| {
             fallback(
                 "fixtures/canon/capabilities.yaml",
-                "/opt/PROD/runtime/manifests/capabilities.yaml",
+                "/srv/aigon/runtime/manifests/capabilities.yaml",
             )
         });
     let doc = read_yaml(&path)?;

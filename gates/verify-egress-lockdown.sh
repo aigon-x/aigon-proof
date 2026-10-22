@@ -20,7 +20,7 @@
 #   F. NEGATYW  — dowód, że klasyfikator D NAPRAWDĘ łapie ogniwo płatne
 #                 (przypadek negatywny; brak wykrycia = FAIL bramki)
 #
-# Uruchomienie:  bash /opt/PROD/tools/gates/verify-egress-lockdown.sh
+# Uruchomienie:  bash /srv/aigon/tools/gates/verify-egress-lockdown.sh
 # Exit: 0 = wszystko czyste, 1 = WYKRYTO WYCIEK (alarm).
 set -uo pipefail
 
@@ -29,12 +29,12 @@ ok()   { printf '  PASS  %s\n' "$*"; PASS=$((PASS+1)); }
 bad()  { printf '  FAIL  %s\n' "$*"; FAIL=$((FAIL+1)); }
 info() { printf '  --    %s\n' "$*"; }
 
-QHOME="${HOME_OPER:-/home/sniegul}"
-PROXY="/opt/PROD/products/aigon-code/backend-rs/src/handlers/proxy.rs"
+QHOME="${HOME_OPER:-/home/operator}"
+PROXY="/srv/aigon/products/aigon-code/backend-rs/src/handlers/proxy.rs"
 GATE_CONTAINER="${AIGON_GATE_CONTAINER:-aigon-code-server}"
 WINDOW="${EGRESS_WINDOW:-24h}"
-SSOT="/opt/PROD/config/agent-models.yaml"
-CANON="/opt/PROD/config/canonical/agent-egress.yaml"
+SSOT="/srv/aigon/config/agent-models.yaml"
+CANON="/srv/aigon/config/canonical/agent-egress.yaml"
 
 echo "=== GATE: egress lockdown (LAW-EGRESS-1) ==="
 

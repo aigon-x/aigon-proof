@@ -8,7 +8,7 @@ OGÓLNOHOSTOWA, nie lokalna.
 
 ```
 RC=126  w całej flocie cronów   ← brak prawa wykonania
-hook-runner: /home/sniegul/.local/bin/python3: Brak dostępu
+hook-runner: /home/operator/.local/bin/python3: Brak dostępu
 ```
 
 `python3` przestał się uruchamiać — **także dla roota**: bez bitu `+x` `execve`

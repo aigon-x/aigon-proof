@@ -17,7 +17,7 @@
 set -uo pipefail
 export LC_ALL=C
 
-ROOT="${AIGON_GATE_ROOT:-/opt/PROD}"
+ROOT="${AIGON_GATE_ROOT:-/srv/aigon}"
 LAW="$ROOT/config/canonical/law-fleet-role-1.yaml"
 BUILDERS="$ROOT/config/canonical/builders.yaml"
 PROG_MIN="${PROG_MIN:-10}"

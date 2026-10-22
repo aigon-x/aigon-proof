@@ -4,7 +4,7 @@
 #
 #  Wykrywa martwe adresy MCP z CANONICAL-STRUCTURE-2026-08-21 (S8):
 #    config agentów wskazuje 127.0.0.1:38080 (bramka MCP), a bramka żyje
-#    na masterze 100.99.59.100:38080 — lokalny adres nie odpowiada.
+#    na masterze 192.0.2.19:38080 — lokalny adres nie odpowiada.
 #
 #  Sprawdza: (1) adresy MCP w configach agentów (settings.json),
 #  (2) liveness każdego adresu (TCP connect), (3) raportuje martwe.
@@ -24,8 +24,8 @@ report() {
 
 # ── zbiór adresów MCP z configów agentów ──────────────────────────────
 # HOME_OPER — dom OPERATORA (SSOT); reaktor chodzi jako root (HOME=/root) i bez tego
-# zwracał fałszywe WARN „brak adresów MCP" (configi żyją w /home/sniegul).
-HOME_OPER="${AIGON_OPER_HOME:-/home/sniegul}"
+# zwracał fałszywe WARN „brak adresów MCP" (configi żyją w /home/operator).
+HOME_OPER="${AIGON_OPER_HOME:-/home/operator}"
 mcp_addrs=""
 for cfg in "$HOME_OPER/.qwen/settings.json" "$HOME_OPER/.claude/settings.json" "$HOME_OPER/.grok/config.toml" "$HOME_OPER/.config/grok/config.toml"; do
   [ -r "$cfg" ] || continue

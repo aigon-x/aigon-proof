@@ -2,8 +2,14 @@
 name = "aigon-governance-mcp"
 version = "0.1.0"
 edition = "2021"
+rust-version = "1.89"
 description = "MCP server exposing the AIGON constitution, gate catalogue and measured perfection"
 license = "MIT"
+repository = "https://github.com/aigon-x/aigon-proof"
+homepage = "https://github.com/aigon-x/aigon-proof"
+readme = "README.md"
+keywords = ["mcp", "ai-agents", "authorization", "audit", "human-in-the-loop"]
+categories = ["development-tools", "authentication"]
 
 [dependencies]
 anyhow = "1"

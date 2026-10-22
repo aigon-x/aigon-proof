@@ -1,0 +1,38 @@
+name: Feature request
+description: Propose a capability or an executor adapter
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: Which concrete situation fails today?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposal
+      description: What should change, and which invariant does it touch?
+    validations:
+      required: true
+  - type: textarea
+    id: boundary
+    attributes:
+      label: Security boundary
+      description: |
+        Does the proposal let an agent obtain consent, reuse an approval, or execute
+        without a passport? If yes, explain why that is safe.
+    validations:
+      required: true
+  - type: dropdown
+    id: scope
+    attributes:
+      label: Scope
+      options:
+        - Core approval and execution
+        - MCP surface
+        - Governance explorer
+        - Packaging and docs
+    validations:
+      required: true

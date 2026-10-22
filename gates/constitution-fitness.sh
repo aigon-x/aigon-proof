@@ -120,7 +120,7 @@ if os.path.exists(allowp):
         if wpis:
             allow[wpis] = uzas.strip()
 
-_MAP = os.path.join(os.environ.get('ROOT', '/opt/PROD'),
+_MAP = os.path.join(os.environ.get('ROOT', '/srv/aigon'),
                     'config/canonical/constitution-fitness-map.yaml')
 if os.path.exists(_MAP):
     try:

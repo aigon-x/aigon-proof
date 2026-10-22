@@ -8,10 +8,10 @@
 # ═══════════════════════════════════════════════════════════════════════
 set -uo pipefail
 
-CFG=/opt/PROD/config/excellence-loop.yaml
-EVID=/opt/PROD/data/excellence
+CFG=/srv/aigon/config/excellence-loop.yaml
+EVID=/srv/aigon/data/excellence
 METRICS="$EVID/excellence.prom"
-RUNNER=/opt/PROD/scripts/excellence-loop.py
+RUNNER=/srv/aigon/scripts/excellence-loop.py
 
 # 1. rejestr kadencji (SSOT) istnieje
 if [ ! -f "$CFG" ]; then

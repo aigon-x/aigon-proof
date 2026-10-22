@@ -15,7 +15,7 @@
 #    - przebieg jest ŚWIEŻY (< 24h wg mtime) — nieświeży = WARN, nie FAIL
 #      (severity tego gate'u w profilu full to WARNING — patrz gates.yaml).
 #  Pełny przebieg tylko na żądanie: AIGON_CERBERUS_FULL=1 (opcja operacyjna,
-#  np. cron release) — z RUNTIME_DIR=/opt/PROD/runtime i timeoutem 600s.
+#  np. cron release) — z RUNTIME_DIR=/srv/aigon/runtime i timeoutem 600s.
 #
 #  Kontrakt z hook-runner.sh:
 #    exit 0 = PASS

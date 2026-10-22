@@ -2109,7 +2109,7 @@ laws:
     ---
 
 
-    *AIGON-X Constitution v2 — The Unattainable Standard · 100 praw (Ω0-Ω9 + LAW-1..101) · Suweren: sniegul@szamani.ai*
+    *AIGON-X Constitution v2 — The Unattainable Standard · 100 praw (Ω0-Ω9 + LAW-1..101) · Suweren: kontakt@szamani.ai*
 
     '
 - id: LAW-VERIFY-1
@@ -2156,14 +2156,14 @@ laws:
     Nody z rozjechałym repo wykonują RÓŻNY kod. Rejestr: config/canonical/mesh-repo-coherence.yaml.'
 - id: LAW-DNS-1
   layer: mapped
-  name: 'DNS-First: adresy nodów mesha = *.aigon.consul, nie gołe IP'
+  name: 'DNS-First: adresy nodów mesha = *.mesh.internal, nie gołe IP'
   violation_class: P1
   immutable: false
   fitness_type: enforcer+asset
   fitness_cmd: tools/gates/dns-first-check.sh
   evidence_required: tools/gates/dns-first-check.sh
-  text: 'ROZKAZ SUWERENA 2026-10-12 (zmierzone naruszenie: AIGON_MESH_MASTER_URLS w .env poligonu wpisany IP-ami https://100.99.59.100:7000,...
-    zamiast DNS). IP jest przechodnie, DNS jest trwały — adresy nodów mesha w .env/compose/config MUSZĄ być *.aigon.consul
+  text: 'ROZKAZ SUWERENA 2026-10-12 (zmierzone naruszenie: AIGON_MESH_MASTER_URLS w .env poligonu wpisany IP-ami https://192.0.2.19:7000,...
+    zamiast DNS). IP jest przechodnie, DNS jest trwały — adresy nodów mesha w .env/compose/config MUSZĄ być *.mesh.internal
     (prod/contabo/monitor/local/...), nie gołymi 100.x.x.x. Bramka skanuje .env + docker-compose.yml po URL-e http(s)://IP
     mesha.'
 - id: LAW-METRIC-INDEPENDENCE

@@ -301,26 +301,26 @@ secrets:
     field: token
     env_name: FIXTURE_TOKEN
     targets: [config/secrets/fixture.token]
-    nodes: [100.99.59.100]
+    nodes: [192.0.2.19]
 YAML
   cat > "$tmp/mesh-nodes.yaml" <<'YAML'
 nodes:
   local:
-    ip: 100.98.144.70
+    ip: 192.0.2.18
     role: worker
   prod:
-    ip: 100.99.59.100
+    ip: 192.0.2.19
     role: worker
 YAML
   mkdir -p "$tmp/config/secrets"
-  printf 'NODE:100.98.144.70|MOUNT:%s\nNODE:100.98.144.70|ENV:FIXTURE_TOKEN\nNODE:100.98.144.70|EXISTS:%s\nNODE:100.99.59.100|ENV:FIXTURE_TOKEN\nNODE:100.99.59.100|EXISTS:%s\n' \
+  printf 'NODE:192.0.2.18|MOUNT:%s\nNODE:192.0.2.18|ENV:FIXTURE_TOKEN\nNODE:192.0.2.18|EXISTS:%s\nNODE:192.0.2.19|ENV:FIXTURE_TOKEN\nNODE:192.0.2.19|EXISTS:%s\n' \
     "$tmp/config/secrets/fixture.token" "$tmp/config/secrets/fixture.token" "$tmp/config/secrets/fixture.token" > "$tmp/consumers.txt"
 
   run() { AIGON_SECRETS_ROOT="$tmp" AIGON_SECRETS_CONFIG="$tmp/secrets.yaml" \
           AIGON_MESH_NODES_CONFIG="$tmp/mesh-nodes.yaml" AIGON_CONSUMERS_FILE="$1" bash "$0" 2>&1; }
 
   out="$(run "$tmp/consumers.txt")"; rc_bad=$?
-  if [ "$rc_bad" -eq 1 ] && echo "$out" | grep -q 'FAIL R1' && echo "$out" | grep -q '100.98.144.70 czyta'; then
+  if [ "$rc_bad" -eq 1 ] && echo "$out" | grep -q 'FAIL R1' && echo "$out" | grep -q '192.0.2.18 czyta'; then
     echo "selftest 1/5 PASS: R1 pominiety konsument (lokalny) -> FAIL(1)"
   else
     echo "selftest 1/5 FAIL: oczekiwano rc=1 + FAIL R1, jest rc=$rc_bad"; echo "$out" | sed 's/^/    /'; rc=1
@@ -329,7 +329,7 @@ YAML
   python3 - "$tmp/secrets.yaml" <<'PY'
 import sys
 p = sys.argv[1]
-t = open(p).read(); open(p, 'w').write(t.replace("nodes: [100.99.59.100]", "nodes: [100.98.144.70, 100.99.59.100]"))
+t = open(p).read(); open(p, 'w').write(t.replace("nodes: [192.0.2.19]", "nodes: [192.0.2.18, 192.0.2.19]"))
 PY
   out="$(run "$tmp/consumers.txt")"; rc_ok=$?
   if [ "$rc_ok" -eq 0 ] && echo "$out" | grep -q '^PASS'; then
@@ -341,7 +341,7 @@ PY
   python3 - "$tmp/secrets.yaml" <<'PY'
 import sys
 p = sys.argv[1]
-t = open(p).read(); open(p, 'w').write(t.replace("nodes: [100.98.144.70, 100.99.59.100]", "nodes: [prod]"))
+t = open(p).read(); open(p, 'w').write(t.replace("nodes: [192.0.2.18, 192.0.2.19]", "nodes: [prod]"))
 PY
   out="$(run "$tmp/consumers.txt")"; rc_name=$?
   if [ "$rc_name" -eq 1 ] && echo "$out" | grep -q 'FAIL R2'; then
@@ -354,12 +354,12 @@ PY
   python3 - "$tmp/secrets.yaml" <<'PYX'
 import sys
 p = sys.argv[1]
-t = open(p).read(); open(p, 'w').write(t.replace("nodes: [prod]", "nodes: [100.98.144.70]"))
+t = open(p).read(); open(p, 'w').write(t.replace("nodes: [prod]", "nodes: [192.0.2.18]"))
 PYX
-  printf 'NODE:100.98.144.70|MOUNT:%s\nNODE:100.99.59.100|MOUNT:%s\nNODE:100.99.59.100|EXISTS:%s\n' \
+  printf 'NODE:192.0.2.18|MOUNT:%s\nNODE:192.0.2.19|MOUNT:%s\nNODE:192.0.2.19|EXISTS:%s\n' \
     "$tmp/config/secrets/fixture.token" "$tmp/config/secrets/fixture.token" "$tmp/config/secrets/fixture.token" > "$tmp/consumers-remote.txt"
   out="$(run "$tmp/consumers-remote.txt")"; rc_rem=$?
-  if [ "$rc_rem" -eq 0 ] && echo "$out" | grep -q 'WARN R1-remote' && echo "$out" | grep -q '100.99.59.100 czyta'; then
+  if [ "$rc_rem" -eq 0 ] && echo "$out" | grep -q 'WARN R1-remote' && echo "$out" | grep -q '192.0.2.19 czyta'; then
     echo "selftest 5/5 PASS: zdalny konsument -> PASS(0) + WARN"
   else
     echo "selftest 5/5 FAIL: oczekiwano rc=0 + WARN R1-remote, jest rc=$rc_rem"; echo "$out" | sed 's/^/    /'; rc=1

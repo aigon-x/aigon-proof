@@ -51,7 +51,7 @@ if [ "${1:-}" = "--selftest" ]; then
 fi
 
 PLAN="${1:-${AIGON_WAVE_PLAN:-}}"
-[ -z "$PLAN" ] && [ -f /opt/PROD/config/canonical/wave-plan.yaml ] && PLAN=/opt/PROD/config/canonical/wave-plan.yaml
+[ -z "$PLAN" ] && [ -f /srv/aigon/config/canonical/wave-plan.yaml ] && PLAN=/srv/aigon/config/canonical/wave-plan.yaml
 if [ -z "$PLAN" ] || [ ! -f "$PLAN" ]; then
   echo "SKIP: brak planu fal (argument / AIGON_WAVE_PLAN / config/canonical/wave-plan.yaml)"
   echo "=== RESULT === PASS (skip)"

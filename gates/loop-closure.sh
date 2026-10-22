@@ -2,9 +2,9 @@
 # G-L1 (LAW-101 perfection): every loop has a closed contract or an explicit
 # owner/reason/next_check. No CLOSED without evidence. No false green.
 set -euo pipefail
-REG="${1:-/opt/PROD/config/canonical/loop-registry.yaml}"
-SKILL=/opt/PROD/skills/shared/doskonalosc-100plus/SKILL.md
-AGENTS=/opt/PROD/config/agent-models.yaml
+REG="${1:-/srv/aigon/config/canonical/loop-registry.yaml}"
+SKILL=/srv/aigon/skills/shared/doskonalosc-100plus/SKILL.md
+AGENTS=/srv/aigon/config/agent-models.yaml
 python3 - "$REG" "$SKILL" "$AGENTS" <<'PY'
 import sys, yaml
 reg, skill, agents = sys.argv[1:4]

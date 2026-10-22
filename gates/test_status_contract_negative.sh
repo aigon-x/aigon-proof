@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Real reusable engine tests; deterministic fixtures, no live state mutation.
 set -euo pipefail
-ROOT="${AIGON_ROOT:-/opt/PROD}"
+ROOT="${AIGON_ROOT:-/srv/aigon}"
 export PYTHONDONTWRITEBYTECODE=1
 exec python3 - "$ROOT" <<'PY'
 import copy

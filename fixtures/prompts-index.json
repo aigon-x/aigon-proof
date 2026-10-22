@@ -3,7 +3,7 @@
   "name": "AGENTS.content.generated.md",
   "path": "AGENTS.content.generated.md",
   "sha256": "b42fa48f5e0f91d2bd1d3d794f77d437381c67426d83a78cb80b8a7979e35081",
-  "description": "@/opt/PROD/config/agent-identity.md"
+  "description": "@/srv/aigon/config/agent-identity.md"
  },
  {
   "name": "PERSONA-MOWY.md",

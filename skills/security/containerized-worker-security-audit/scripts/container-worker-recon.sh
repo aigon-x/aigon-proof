@@ -8,7 +8,7 @@ set -euo pipefail
 
 PROJECT="${1:-.}"
 PORTS="${2:-39100 6379}"
-SECRET_PATHS="${SECRET_PATHS:-/opt/PROD/.env /opt/PROD/runtime/.secrets/runtime-master.env /opt/PROD/voice/.env}"
+SECRET_PATHS="${SECRET_PATHS:-/srv/aigon/.env /srv/aigon/runtime/.secrets/runtime-master.env /srv/aigon/voice/.env}"
 
 if ! command -v rg >/dev/null 2>&1; then
   echo "ERROR: ripgrep (rg) is required" >&2

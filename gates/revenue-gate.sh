@@ -12,7 +12,7 @@
 # Kontrakt hook-runner: exit 0 = PASS, exit 1 = FAIL.
 # ═══════════════════════════════════════════════════════════════════════
 set -uo pipefail
-ROOT="/opt/PROD"
+ROOT="/srv/aigon"
 ENGINE="$ROOT/tools/revenue/revenue_gate.py"
 SNAP="$ROOT/tools/revenue/snapshot-monai-20261018.json"
 REG="$ROOT/tools/revenue/product-registry.json"

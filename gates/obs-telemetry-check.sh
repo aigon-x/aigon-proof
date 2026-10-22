@@ -29,7 +29,7 @@ cd "$ROOT" || exit 1
 
 say "=== GATE-088 OBS-TELEMETRY (OTel instrumentation gate) ==="
 
-# ── Kolektory OTLP znane na meshu (SSOT: /opt/PROD/docker-compose.yml otel-collector) ──
+# ── Kolektory OTLP znane na meshu (SSOT: /srv/aigon/docker-compose.yml otel-collector) ──
 # :44318 = OTLP HTTP eksporter (kolektor aigon-observability-otel-collector).
 OTLP_HTTP_HOST="${OTLP_HTTP_HOST:-127.0.0.1:44318}"
 

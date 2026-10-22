@@ -7,7 +7,7 @@
 # Override ścieżek (testy negatywne): PRECEDENCE_FILE, REGISTRY_FILE.
 # rc 0 = PASS, 1 = FAIL.
 set -uo pipefail
-ROOT="${AIGON_ROOT:-/opt/PROD}"
+ROOT="${AIGON_ROOT:-/srv/aigon}"
 PRECEDENCE_FILE="${PRECEDENCE_FILE:-$ROOT/config/canonical/constitution-drafts/M2-precedence.yaml}"
 REGISTRY_FILE="${REGISTRY_FILE:-$ROOT/config/canonical/constitution.generated.yaml}"
 

@@ -26,7 +26,7 @@
 # ============================================================================
 set -uo pipefail
 
-ROOT="${AIGON_ROOT:-/opt/PROD}"
+ROOT="${AIGON_ROOT:-/srv/aigon}"
 SCRIPT="$ROOT/scripts/runtime-health-graph.py"
 CFG="$ROOT/config/canonical/runtime-health-graph.yaml"
 TMPDIR_RUN="$(mktemp -d /tmp/rhg-gate.XXXXXX)"

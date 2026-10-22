@@ -1,5 +1,5 @@
 //! Standalone guarantee: with AIGON_STANDALONE=1 the server must serve the bundled canon,
-//! the bundled gate scripts and the skills index without touching /opt/PROD.
+//! the bundled gate scripts and the skills index without touching /srv/aigon.
 
 #[test]
 fn bundled_snapshot_is_complete() {

@@ -6,7 +6,7 @@
 # parsowana z wyjścia (adapter zwraca rc=0 przy FAIL). Read-only.
 # Wejścia: SLO_FILE, RULES_FILE, LAW_DRAFT, OBS_SLO_GATE (pusty = pomiń).
 set -uo pipefail
-ROOT="${AIGON_ROOT:-/opt/PROD}"
+ROOT="${AIGON_ROOT:-/srv/aigon}"
 SLO_FILE="${SLO_FILE:-$ROOT/config/canonical/slo.yaml}"
 RULES_FILE="${RULES_FILE:-$ROOT/observability/prometheus/rules.yml}"
 LAW_DRAFT="${LAW_DRAFT:-$ROOT/config/canonical/constitution-drafts/S9-observability.yaml}"

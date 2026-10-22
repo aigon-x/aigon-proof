@@ -25,7 +25,7 @@
 # ══════════════════════════════════════════════════════════════════════════
 set -uo pipefail
 
-ROOT="${AIGON_ROOT:-/opt/PROD}"
+ROOT="${AIGON_ROOT:-/srv/aigon}"
 CFG="$ROOT/config/canonical/llm-cascade.yaml"
 LAW="LAW-LLM-FLOW-1"
 [ "${1:-}" = "--selftest" ] && SELFTEST=1 || SELFTEST=0

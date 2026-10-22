@@ -15,7 +15,7 @@
 #  Override: LAW_HOLD_HEALERS (lista plików). exit 0 = PASS, 1 = FAIL.
 # ═══════════════════════════════════════════════════════════════════════
 set -uo pipefail
-R=/opt/PROD/scripts
+R=/srv/aigon/scripts
 HEALERS="${LAW_HOLD_HEALERS:-$R/self-heal.sh $R/stack-health-check.sh $R/docker-protect.sh}"
 fail=0
 for f in $HEALERS; do

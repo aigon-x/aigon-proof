@@ -25,7 +25,7 @@
 # ============================================================================
 set -uo pipefail
 
-REPO="${AIGON_PROD_ROOT:-/opt/PROD}"
+REPO="${AIGON_PROD_ROOT:-/srv/aigon}"
 GATE="$REPO/tools/gates/skill-registry-integrity.py"
 
 fail() { echo "FAIL: $*"; exit 1; }

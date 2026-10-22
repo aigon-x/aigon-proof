@@ -20,7 +20,7 @@
 # ══════════════════════════════════════════════════════════════════════════
 set -uo pipefail
 
-ROOT="${AIGON_ROOT:-/opt/PROD}"
+ROOT="${AIGON_ROOT:-/srv/aigon}"
 SELFTEST=0; [ "${1:-}" = "--selftest" ] && SELFTEST=1
 PROG_MIN="${AIGON_BUILD_PROG_MIN:-10}"
 HOST="$(hostname -s)"

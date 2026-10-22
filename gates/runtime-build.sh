@@ -27,7 +27,7 @@
 #  Zmienne env:
 #    AIGON_RUNTIME_BUILD_PKGS     — co sprawdzac (default: "-p aigon-runtime")
 #    AIGON_RUNTIME_BUILD_TIMEOUT  — sekundy (default 1800; pierwszy run jest zimny)
-#    AIGON_RUNTIME_BUILD_WT       — katalog worktree (default /opt/PROD/runtime-headcheck)
+#    AIGON_RUNTIME_BUILD_WT       — katalog worktree (default /srv/aigon/runtime-headcheck)
 #    AIGON_CARGO                  — sciezka do cargo (default ~/.cargo/bin/cargo)
 # ═══════════════════════════════════════════════════════════════════════
 set -uo pipefail
@@ -76,7 +76,7 @@ cd "$WT/runtime" || warn "nie wchodze do $WT/runtime"
 # Staly katalog target dla sprawdzen HEAD (env: AIGON_RUNTIME_BUILD_TARGET).
 # Dlaczego osobny i staly: (1) nie zasmiecamy ani nie blokujemy glownego
 # runtime/target, ktorym buduja inni agenci; (2) STALA sciezka worktree
-# (/opt/PROD/runtime-headcheck) sprawia, ze od drugiego przebiegu cargo
+# (/srv/aigon/runtime-headcheck) sprawia, ze od drugiego przebiegu cargo
 # korzysta z cache i sprawdzenie jest przyrostowe — inaczej kazda godzina
 # startowalaby zimny pelny build. Pierwszy przebieg jest zimny (minuty).
 export CARGO_TARGET_DIR="${AIGON_RUNTIME_BUILD_TARGET:-$ROOT/runtime/target-headcheck}"

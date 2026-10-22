@@ -4,7 +4,7 @@
 #  na glibc kontenera docelowego (hook-runner: tools/gates/<id>.sh).
 #
 #  PO CO (incydent 2026-09-22, zmierzony): do kanonicznej lokalizacji
-#  /opt/PROD/runtime-bin/localbin/aigon-code-server wstawiono obca binarke
+#  /srv/aigon/runtime-bin/localbin/aigon-code-server wstawiono obca binarke
 #  zebudowana na glibc 2.39 (15 MB, rozmiar identyczny z runtime/target/release),
 #  a obraz 127.0.0.1:55000/aigon-code-server:production ma glibc 2.36 (Debian 12).
 #  Skutek: `/usr/local/bin/aigon-code-server: libc.so.6: version GLIBC_2.39 not
@@ -72,7 +72,7 @@ def glibc_of_image(image):
         return None
 
 # mounty z runtime-bin/localbin
-mounts = re.findall(r'^\s*-\s*(/opt/PROD/runtime-bin/localbin/[A-Za-z0-9._-]+):(\S+?)(?::ro)?\s*$',
+mounts = re.findall(r'^\s*-\s*(/srv/aigon/runtime-bin/localbin/[A-Za-z0-9._-]+):(\S+?)(?::ro)?\s*$',
                     text, re.M)
 if not mounts:
     print("WARN binary-glibc-fit (zero montazy runtime-bin/localbin w compose)")
@@ -86,7 +86,7 @@ for line in text.splitlines():
     if m:
         cur = m.group(1)
         continue
-    m = re.match(r'^\s*-\s*(/opt/PROD/runtime-bin/localbin/[A-Za-z0-9._-]+):', line)
+    m = re.match(r'^\s*-\s*(/srv/aigon/runtime-bin/localbin/[A-Za-z0-9._-]+):', line)
     if m and cur:
         svc_of.setdefault(m.group(1), cur)
 

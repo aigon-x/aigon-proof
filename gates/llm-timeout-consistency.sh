@@ -36,11 +36,11 @@
 # ═══════════════════════════════════════════════════════════════════════
 set -uo pipefail
 
-ROOT="${AIGON_ROOT:-/opt/PROD}"
+ROOT="${AIGON_ROOT:-/srv/aigon}"
 # HOME_OPER — dom OPERATORA (SSOT), niezależny od wołającego (root/aigon/sniegul).
 # $HOME dawał FAŁSZYWA CZERWIEŃ: reaktor (root, HOME=/root) nie widział ~/.qwen ani
 # ~/.bashrc operatora -> „brak AIGON_RUNTIME_TIMEOUT" mimo zdrowego SSOT.
-HOME_OPER="${AIGON_OPER_HOME:-/home/sniegul}"
+HOME_OPER="${AIGON_OPER_HOME:-/home/operator}"
 STANDALONE="$ROOT/runtime/config/standalone.yaml"
 AGENT_MODELS="$ROOT/config/agent-models.yaml"
 QWEN_ENV="$HOME_OPER/.qwen/.env"

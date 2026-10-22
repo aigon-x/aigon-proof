@@ -6,9 +6,9 @@ P=0; F=0
 ok(){ echo "  PASS: $1"; P=$((P+1)); }
 bad(){ echo "  FAIL: $1"; F=$((F+1)); }
 
-AITO=/opt/PROD/products/drony/aito
+AITO=/srv/aigon/products/drony/aito
 OTLP=$AITO/aito-telemetry/src/otlp.rs
-AUTH=/opt/PROD/runtime/crates/aigon-runtime/src/auth_guard.rs
+AUTH=/srv/aigon/runtime/crates/aigon-runtime/src/auth_guard.rs
 
 echo "=== A. AITO: biblioteka REALNIE obsługuje HTTPS ==="
 # 1. Czy parse_endpoint przestał być twardą bramką?
@@ -53,7 +53,7 @@ if grep -q '{var}_FILE' <<<"$SEC"; then ok "obsługuje {VAR}_FILE"; else bad "br
 if grep -q 'istnieje, ale jest pusty' <<<"$SEC"; then ok "pusty plik != sukces (jawny warn)"; else bad "pusty plik cicho zwraca None"; fi
 
 echo "=== E. RUNTIME: kompilacja crate'a z helperem ==="
-cd /opt/PROD
+cd /srv/aigon
 if timeout 500 cargo check -p aigon-runtime >/tmp/hv-rt.log 2>&1; then ok "cargo check -p aigon-runtime PASS"; else bad "cargo check FAIL"; tail -6 /tmp/hv-rt.log; fi
 
 echo

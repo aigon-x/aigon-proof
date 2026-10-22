@@ -27,7 +27,7 @@
 #  1) Bounded retry. Gate chodzi m.in. w triggerze runtime:deploy ZARAZ po
 #     `compose recreate`, a odtworzony runtime startuje minuty (boot-tick
 #     trzyma write lock; zmierzone 2-9 min). Jedna proba w tej samej
-#     sekundzie dawala FALSZYWY FAIL: "FAIL (chore: 100.98.144.70=000)"
+#     sekundzie dawala FALSZYWY FAIL: "FAIL (chore: 192.0.2.18=000)"
 #     ~3 s po recreate, gdy ten sam node odpowiadal 200 dwie minuty pozniej.
 #     Teraz: ponawianie do WAIT_SECS, werdykt z podaniem czasu.
 #  2) Honoring expected_down. Poprzednia wersja czytala WSZYSTKIE `ip:`

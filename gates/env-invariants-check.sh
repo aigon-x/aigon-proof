@@ -118,10 +118,10 @@ for compose in $COMPOSES; do
 done
 
 # ── ENV-005: SAM PLIK .env — czy jest POPRAWNY składniowo? ──────────────────
-# POWÓD (incydent 2026-09-28): do /opt/PROD/core/.env został dopisany BLOK
+# POWÓD (incydent 2026-09-28): do /srv/aigon/core/.env został dopisany BLOK
 # KODU SHELL (76 linii skryptu sync z liniami-powidłami `X=X` zamiast `X=`).
 # Skutek: `docker compose` padał na KAŻDEJ komendzie —
-#   "failed to read /opt/PROD/core/.env: line N: unexpected character ..."
+#   "failed to read /srv/aigon/core/.env: line N: unexpected character ..."
 # — czyli NIE DAŁO SIĘ odtworzyć żadnego kontenera (deploy zablokowany).
 # Dotychczasowe bramki sprawdzały TYLKO interpolację w compose; treści .env
 # nie widział nikt. Ten check zamyka klasę: `.env` to plik KLUCZ=WARTOŚĆ,

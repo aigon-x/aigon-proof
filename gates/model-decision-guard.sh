@@ -13,7 +13,7 @@
 #
 # Kody: 0 PASS, 1 FAIL, 2 UNKNOWN (brak źródła — nie udajemy zieleni).
 set -uo pipefail
-ROOT="${AIGON_ROOT:-/opt/PROD}"
+ROOT="${AIGON_ROOT:-/srv/aigon}"
 SSOT="$ROOT/config/canonical/model-classifier.yaml"
 MC="$ROOT/tools/model-classifier/mc.py"
 

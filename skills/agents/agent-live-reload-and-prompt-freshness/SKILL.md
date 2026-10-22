@@ -116,7 +116,7 @@ Poprawny test, przez **venv Hermesa** (nie systemowy `python3`):
 
 ```bash
 ~/.hermes/hermes-agent/venv/bin/python -c '
-import sys; sys.path.insert(0,"/home/sniegul/.hermes/hermes-agent")
+import sys; sys.path.insert(0,"/home/operator/.hermes/hermes-agent")
 from agent.prompt_builder import build_skills_system_prompt
 f = build_skills_system_prompt(); n = build_skills_system_prompt(names_only_all=True)
 print(len(f)//4, len(n)//4, f != n)   # rozne liczby + True = dziala

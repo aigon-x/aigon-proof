@@ -12,7 +12,7 @@
 #  Override: LAW_ESC_FILE. exit 0 = PASS, 1 = FAIL.
 # ═══════════════════════════════════════════════════════════════════════
 set -uo pipefail
-F="${LAW_ESC_FILE:-/opt/PROD/config/autonomy.yaml}"
+F="${LAW_ESC_FILE:-/srv/aigon/config/autonomy.yaml}"
 python3 - "$F" <<'PY'
 import sys, yaml
 try: d = yaml.safe_load(open(sys.argv[1])) or {}

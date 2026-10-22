@@ -161,11 +161,11 @@ for d in szamani.ai fartpol.com vairify.online; do dig +short "$d"; done
 
 # Step 3: Trace proxy_pass → actual containers (nginx config → port → docker)
 #   szamani.ai:443 → proxy_pass 127.0.0.1:10000 → 127.0.0.1:4400 (szamani-app)
-#   fartpol.com:80 → root /home/sniegul/sites/fartpol-cf (bind mount)
+#   fartpol.com:80 → root /home/operator/sites/fartpol-cf (bind mount)
 #   vairify.online:80 → proxy_pass 127.0.0.1:10081 → 127.0.0.1:5005
 
 # Step 4: Create tenant + projects + deployments
-#   TENANT: Szamani (owner: j.sniegocki@szamani.ai)
+#   TENANT: Szamani (owner: kontakt@szamani.ai)
 #   PROJECTS: szamani-ai, fartpol, vairify-online, live-szamani
 #   12 deployment records (PROD, SITE, CONTABO, MONITOR, LOCAL)
 ```

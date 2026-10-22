@@ -23,7 +23,7 @@ import urllib.error
 import urllib.request
 
 CONFIG = os.path.expanduser("~/.hermes/config.yaml")
-TOKEN_FILE = "/opt/PROD/config/secrets/agent-mcp.token"
+TOKEN_FILE = "/srv/aigon/config/secrets/agent-mcp.token"
 
 
 def read_file(path):

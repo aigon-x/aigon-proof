@@ -6,7 +6,7 @@
 # zakazany. Komentarze pomijane. Read-only.
 # Wejścia: SCAN_DIR (domyślnie scripts/).
 set -uo pipefail
-ROOT="${AIGON_ROOT:-/opt/PROD}"
+ROOT="${AIGON_ROOT:-/srv/aigon}"
 export SCAN_DIR="${SCAN_DIR:-$ROOT/scripts}"
 
 timeout 30 python3 - <<'PY'

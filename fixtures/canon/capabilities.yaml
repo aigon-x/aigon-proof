@@ -384,7 +384,7 @@ entries:
 - name: ops:cleanup
   backend: ops
   enabled: true
-  description: Disk cleanup — run /opt/PROD/scripts/disk-cleanup.sh (os_cleanup)
+  description: Disk cleanup — run /srv/aigon/scripts/disk-cleanup.sh (os_cleanup)
 - name: ops:log-manager
   backend: ops
   enabled: true
@@ -401,11 +401,11 @@ entries:
   backend: ops
   enabled: true
   description: 'Backup status — read-only przegląd katalogów/plików backupów AIGON: ścieżka, rozmiar (du -sh), mtime (os_backup_status;
-    find /opt/PROD -maxdepth 3 *backup*/*snapshot*)'
+    find /srv/aigon -maxdepth 3 *backup*/*snapshot*)'
 - name: ops:platform-power
   backend: ops
   enabled: true
-  description: 'Dynamiczne zarządzanie ciepłem hosta. Skrypt /opt/PROD/scripts/platform-power.sh: gdy GPU>=90 albo tlimit<0
+  description: 'Dynamiczne zarządzanie ciepłem hosta. Skrypt /srv/aigon/scripts/platform-power.sh: gdy GPU>=90 albo tlimit<0
     albo CPU>=98 — wentylatory lenovo_wmi_other na fanN_max i zejście profilu o stopień (performance→balanced→power-saver).
     Chłód (CPU<=88 i GPU<=80) oddaje desired i EC (fan target 0). Span OTLP platform.power + metryki platform.* → Tempo :43220
     i kolektor :44318/:9464. POST action=status|enforce|set|runtime-tick. max-power odmówione. Kontener runtime bez /sys nie
@@ -498,7 +498,7 @@ entries:
   backend: native
   enabled: true
   description: git-mcp — NATYWNY handler (aigon-scheduler, libgit2; decyzja Suwerena 2026-08-29) — status/diff/log/show/branch/create_branch/checkout/add/commit/init
-    na whitelist AIGON_GIT_REPO_ROOT || /opt/PROD. git_reset WYŁĄCZONY. Zamiennik serwera Python mcp-server-git (MCP_PART2)
+    na whitelist AIGON_GIT_REPO_ROOT || /srv/aigon. git_reset WYŁĄCZONY. Zamiennik serwera Python mcp-server-git (MCP_PART2)
 - name: mcp:crawl4ai
   backend: mcp
   enabled: true
@@ -513,7 +513,7 @@ entries:
   backend: mcp
   enabled: true
   description: 'maddy-mail MCP — CZYTANIE skrzynek Maddy (IMAP-over-PG) BEZ SSH: mail_folders, mail_list, mail_search, mail_read,
-    mail_thread. READ-ONLY (zero wysyłki). Serwer stdio przez mcp_stdio_shim. Łączy się wprost z Postgresem 100.99.59.100:25437
+    mail_thread. READ-ONLY (zero wysyłki). Serwer stdio przez mcp_stdio_shim. Łączy się wprost z Postgresem 192.0.2.19:25437
     + /data/messages. KIEDY: "sprawdź pocztę", "co przyszło na skrzynkę", "znajdź maila od X" — zamiast ssh/docker exec/psql/base64'
 - name: mcp:camera-vision
   backend: mcp
@@ -622,7 +622,7 @@ entries:
 - name: repo-coherence
   backend: mesh
   enabled: true
-  description: 'Spójność repo po nodach: /opt/PROD na KAŻDYM nodzie, porównywane (drift-check) + syncowane (LAW-104) — KIEDY:
+  description: 'Spójność repo po nodach: /srv/aigon na KAŻDYM nodzie, porównywane (drift-check) + syncowane (LAW-104) — KIEDY:
     rozjazd repo/konfiguracji między nodami mesha (drift-checker.sh)'
 - name: reports
   backend: business
@@ -661,19 +661,19 @@ entries:
 - name: ops:capability_issuer
   backend: ops
   enabled: true
-  description: 'PLAN WYDAWANIA DOSTĘPU (Access Controller): zamiana capability z rejestru na KRÓTKOTRWAŁY token Vaulta, z TTL i audytem. Skrypt hostowy /opt/PROD/scripts/dostep-issuer.py czyta capability z config/canonical/capabilities.yaml (nie przyjmuje uprawnien z reki), ODMawia gdy capability nie istnieje albo nie ma TTL (zasada P4 projektu: brak TTL = defekt), nie przekracza TTL z rejestru, i zapisuje KAZDE wydanie oraz KAZDA odmowe w /var/log/aigon/dostep-audit.jsonl w schemacie z docs/prd/secure-access-controller/AUDYT.md (event_id, identity, capability, risk_level, ttl_seconds, expires_at, grant_id, prev_event_id). KIEDY: trzeba dac komus/maszynie dostep na czas (maskzyna zewnetrzna, sesja administracyjna) bez tworzenia trwalego sekretu. ZMIERZONE 2026-10-14: wydanie dla machine:guest (capability vault.external.namespace, TTL 1800 s) -> grant_id cap-b6ec4d4e + audyt evt-1984963b; zadanie TTL ponad limit rejestru -> ODMOWA z wpisem audytowym. Projekt: docs/prd/secure-access-controller/.'
+  description: 'PLAN WYDAWANIA DOSTĘPU (Access Controller): zamiana capability z rejestru na KRÓTKOTRWAŁY token Vaulta, z TTL i audytem. Skrypt hostowy /srv/aigon/scripts/dostep-issuer.py czyta capability z config/canonical/capabilities.yaml (nie przyjmuje uprawnien z reki), ODMawia gdy capability nie istnieje albo nie ma TTL (zasada P4 projektu: brak TTL = defekt), nie przekracza TTL z rejestru, i zapisuje KAZDE wydanie oraz KAZDA odmowe w /var/log/aigon/dostep-audit.jsonl w schemacie z docs/prd/secure-access-controller/AUDYT.md (event_id, identity, capability, risk_level, ttl_seconds, expires_at, grant_id, prev_event_id). KIEDY: trzeba dac komus/maszynie dostep na czas (maskzyna zewnetrzna, sesja administracyjna) bez tworzenia trwalego sekretu. ZMIERZONE 2026-10-14: wydanie dla machine:guest (capability vault.external.namespace, TTL 1800 s) -> grant_id cap-b6ec4d4e + audyt evt-1984963b; zadanie TTL ponad limit rejestru -> ODMOWA z wpisem audytowym. Projekt: docs/prd/secure-access-controller/.'
 - name: ops:tailnet_access
   backend: ops
   enabled: true
-  description: 'DOSTEP MASZYN Z ZEWNATRZ DO TAILNETU I DO VAULTA + KLAUCZE AUTORYZACYJNE PRZEZ API (bez panelu). Tailnet jakub.sniegocki@gmail.com stoi na Tailscale; maszyna spoza mesha wchodzi do tailnetu kluczem autoryzacyjnym i uzywa Vaulta po http://vault.aigon.consul:58200 (kanoniczny klaster w datacenter). Klucze autoryzacyjne tworzy, listuje i odwoluje skrypt hostowy /opt/PROD/scripts/tailnet-klucz.py przez administracyjne API Tailscale (POST /api/v2/tailnet/-/keys), czytajac poswiadczenie kanonicznie: env TAILSCALE_API_KEY -> /opt/PROD/config/secrets/tailscale.env -> Vault secret/aigon-x/network/tailscale pole api_key. Dolaczanie maszyny: /opt/PROD/scripts/dolacz-maszyne-zewnetrzna.sh --tailscale <klucz> (albo --tunel przez cloudflared). Konto dla maszyny zewnetrznej: polityka guest (tylko tenants/guest/* i odczyt secret/guest/*), token w /opt/PROD/infra/vault/guest.token. KIEDY: nowa maszyna spoza mesha ma dostac Vaulta, trzeba wydac/odwolac klucz autoryzacyjny, sprawdzic inwentarz tailnetu, albo wpiac brakujace poswiadczenie API. ZMIERZONE 2026-10-14: panelu Tailscale NIE da sie automatyzowac (OAuth + MFA) — dlatego klucz API wchodzi raz kanoniczna droga; tokeny serwisowe Cloudflare Access na tym koncie NIE dzialaja (swiezy token + polityka service_token + service_auth_401_redirect=false => 302), wiec maszyny ida tailnetem, nie CF. Bez poswiadczenia skrypt ODMawia (exit 2) i mowi, gdzie klucz wpiac. Skill: tailnet-dostep-i-klucze.'
+  description: 'DOSTEP MASZYN Z ZEWNATRZ DO TAILNETU I DO VAULTA + KLAUCZE AUTORYZACYJNE PRZEZ API (bez panelu). Tailnet kontakt@szamani.ai stoi na Tailscale; maszyna spoza mesha wchodzi do tailnetu kluczem autoryzacyjnym i uzywa Vaulta po http://vault.mesh.internal:8200 (kanoniczny klaster w datacenter). Klucze autoryzacyjne tworzy, listuje i odwoluje skrypt hostowy /srv/aigon/scripts/tailnet-klucz.py przez administracyjne API Tailscale (POST /api/v2/tailnet/-/keys), czytajac poswiadczenie kanonicznie: env TAILSCALE_API_KEY -> /srv/aigon/config/secrets/tailscale.env -> Vault secret/aigon-x/network/tailscale pole api_key. Dolaczanie maszyny: /srv/aigon/scripts/dolacz-maszyne-zewnetrzna.sh --tailscale <klucz> (albo --tunel przez cloudflared). Konto dla maszyny zewnetrznej: polityka guest (tylko tenants/guest/* i odczyt secret/guest/*), token w /srv/aigon/infra/vault/guest.token. KIEDY: nowa maszyna spoza mesha ma dostac Vaulta, trzeba wydac/odwolac klucz autoryzacyjny, sprawdzic inwentarz tailnetu, albo wpiac brakujace poswiadczenie API. ZMIERZONE 2026-10-14: panelu Tailscale NIE da sie automatyzowac (OAuth + MFA) — dlatego klucz API wchodzi raz kanoniczna droga; tokeny serwisowe Cloudflare Access na tym koncie NIE dzialaja (swiezy token + polityka service_token + service_auth_401_redirect=false => 302), wiec maszyny ida tailnetem, nie CF. Bez poswiadczenia skrypt ODMawia (exit 2) i mowi, gdzie klucz wpiac. Skill: secrets-management.'
 - name: ops:external_devices
   backend: ops
   enabled: true
-  description: 'ZARZADZANIE URZADZENIAMI ZEWNETRZNYMI — konsola PlayStation (odkrycie po TCP 9295 z potwierdzeniem producenta MAC, status klienta i osiagalnosci, rejestracja KLUCZEM bez PSN, strumien na wirtualny ekran, zrzuty ekranu jako dowod tego, co widzi gracz) oraz iPhone (model/iOS/UDID, stan zaufania, logi urzadzenia, kopia zapasowa WYLACZNIE na dysk — /tmp to tmpfs w RAM). KAMERY IP (RTSP): odkrycie po portach 554/8554/8000/8080, odczyt konfiguracji rejestratora z Vaulta (secret/aigon-x/iot/cameras: host, user, rtsp_port, 4 kanaly z nazwami), zrzut klatki przez ffmpeg WYLACZNIE na dysk (dowod wzrokowy). DRUKARKI: odkrycie w LAN (631 IPP / 515 LPD / 9100 RAW) + mDNS _ipp._tcp, kolejki CUPS i domyslny cel, status, wydruk zadania, ustawienie domyslnej kolejki. Skrypt hostowy: /opt/PROD/scripts/external-devices.sh. KIEDY: weryfikacja UI na konsoli, obsluga telefonu, audyt urzadzen w LAN/USB. ZMIERZONE 2026-10-14: wbudowany lookup PSN w chiaki-ng i strona psn.flipscreen.games zwracaja pustke (JSON.parse w QML i w konsoli przegladarki), wiec Account-ID da sie wziac tylko z sesji zalogowanej, a droga bez PSN to --registkey; chiaki 2.2.0 z apt nie sparuje sie automatyzacja (pole PSN Online-ID nieprzyjmujace tekstu).'
+  description: 'ZARZADZANIE URZADZENIAMI ZEWNETRZNYMI — konsola PlayStation (odkrycie po TCP 9295 z potwierdzeniem producenta MAC, status klienta i osiagalnosci, rejestracja KLUCZEM bez PSN, strumien na wirtualny ekran, zrzuty ekranu jako dowod tego, co widzi gracz) oraz iPhone (model/iOS/UDID, stan zaufania, logi urzadzenia, kopia zapasowa WYLACZNIE na dysk — /tmp to tmpfs w RAM). KAMERY IP (RTSP): odkrycie po portach 554/8554/8000/8080, odczyt konfiguracji rejestratora z Vaulta (secret/aigon-x/iot/cameras: host, user, rtsp_port, 4 kanaly z nazwami), zrzut klatki przez ffmpeg WYLACZNIE na dysk (dowod wzrokowy). DRUKARKI: odkrycie w LAN (631 IPP / 515 LPD / 9100 RAW) + mDNS _ipp._tcp, kolejki CUPS i domyslny cel, status, wydruk zadania, ustawienie domyslnej kolejki. Skrypt hostowy: /srv/aigon/scripts/external-devices.sh. KIEDY: weryfikacja UI na konsoli, obsluga telefonu, audyt urzadzen w LAN/USB. ZMIERZONE 2026-10-14: wbudowany lookup PSN w chiaki-ng i strona psn.flipscreen.games zwracaja pustke (JSON.parse w QML i w konsoli przegladarki), wiec Account-ID da sie wziac tylko z sesji zalogowanej, a droga bez PSN to --registkey; chiaki 2.2.0 z apt nie sparuje sie automatyzacja (pole PSN Online-ID nieprzyjmujace tekstu).'
 - name: forge.studio.control
   backend: product
   enabled: true
-  description: 'FORGE OMEGA 2.0.0 — JEDNA capability studia gier: ocena jednego kanonicznego snapshotu studia (pelny baseline PRD, dowody, niezaleznosc recenzji, poprzednie bramki, UAT, krytyczne znaleziska, podpisy wymagane dla kandydata). Wynik: PASS, FAIL, INSUFFICIENT_EVIDENCE albo WAIVED + lista luk i rekomendacja. Rdzen: dependency-free crate Rust w /opt/PROD/forge-omega/capability/rust (manifest: capability/manifest.yaml; 33 testy natywne przechodza — zmierzone 2026-10-14: cargo test --offline --locked => 33 passed, 0 failed); crate jest wylaczony z workspace /opt/PROD/Cargo.toml (workspace.exclude), zeby budowal sie samodzielnie. KIEDY: przed promocja kandydata na wydanie gry — bramka gotowosci studia, NIE budowanie gry i NIE publikacja. ZMIERZONE 2026-10-14 (status UNPROVEN): 1) wejscie publiczne przyjmuje referencje snapshotu, a nie liste dowodow od modelu — Autorytet ma pochodzic z istniejacych zaufanych uslug hosta, nie z FixtureAuthority w tests/; 2) 16 kontraktow adapterow w /opt/PROD/forge-omega/adapters/contracts to UNBOUND (wymagania do powiazania z realnymi narzedziami hosta), wiec capability NIE ma jeszcze pelnego lancucha wykonawczego; 3) ewale behawioralne 64 kompetencji (256 przypadkow) sa NOT_RUN — zgodnie z MASTERPROMPT_WDROZENIE.md nie promuje sie kompetencji do PROVEN bez przebiegu na zakwalifikowanych modelach i niezaleznej rubryki; 4) wpis deklaruje capability w manifeście (SSOT tego, CO istnieje), a obiekt w skompilowanej fabryce runtime (register_canonical) NIE jest jeszcze podpiety — to nastepny krok, nie fakt. Skille studia: /opt/PROD/skills/shared (64), material referencyjny: /opt/PROD/forge-omega, provenance: skills/shared/FORGE-OMEGA-2.0.0-PROVENANCE.md.'
+  description: 'FORGE OMEGA 2.0.0 — JEDNA capability studia gier: ocena jednego kanonicznego snapshotu studia (pelny baseline PRD, dowody, niezaleznosc recenzji, poprzednie bramki, UAT, krytyczne znaleziska, podpisy wymagane dla kandydata). Wynik: PASS, FAIL, INSUFFICIENT_EVIDENCE albo WAIVED + lista luk i rekomendacja. Rdzen: dependency-free crate Rust w /srv/aigon/forge-omega/capability/rust (manifest: capability/manifest.yaml; 33 testy natywne przechodza — zmierzone 2026-10-14: cargo test --offline --locked => 33 passed, 0 failed); crate jest wylaczony z workspace /srv/aigon/Cargo.toml (workspace.exclude), zeby budowal sie samodzielnie. KIEDY: przed promocja kandydata na wydanie gry — bramka gotowosci studia, NIE budowanie gry i NIE publikacja. ZMIERZONE 2026-10-14 (status UNPROVEN): 1) wejscie publiczne przyjmuje referencje snapshotu, a nie liste dowodow od modelu — Autorytet ma pochodzic z istniejacych zaufanych uslug hosta, nie z FixtureAuthority w tests/; 2) 16 kontraktow adapterow w /srv/aigon/forge-omega/adapters/contracts to UNBOUND (wymagania do powiazania z realnymi narzedziami hosta), wiec capability NIE ma jeszcze pelnego lancucha wykonawczego; 3) ewale behawioralne 64 kompetencji (256 przypadkow) sa NOT_RUN — zgodnie z MASTERPROMPT_WDROZENIE.md nie promuje sie kompetencji do PROVEN bez przebiegu na zakwalifikowanych modelach i niezaleznej rubryki; 4) wpis deklaruje capability w manifeście (SSOT tego, CO istnieje), a obiekt w skompilowanej fabryce runtime (register_canonical) NIE jest jeszcze podpiety — to nastepny krok, nie fakt. Skille studia: /srv/aigon/skills/shared (64), material referencyjny: /srv/aigon/forge-omega, provenance: skills/shared/FORGE-OMEGA-2.0.0-PROVENANCE.md.'
 - name: mcp:rea
   backend: mcp
   enabled: true

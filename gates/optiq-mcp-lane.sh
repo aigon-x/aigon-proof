@@ -110,8 +110,8 @@ PY
 
   # 6. drift ingress/DNS wobec kanonu — ten sam skrypt, który provisioning robi
   #    w trybie --apply; tu wołany w trybie pomiaru (zero zmian).
-  if [[ -r /opt/PROD/infra/vault/vault-init.json ]]; then
-    drift="$(python3 /opt/PROD/scripts/optiq-mcp-tunnel-dns.py --check 2>&1 | grep -c 'DRIFT' || true)"
+  if [[ -r /srv/aigon/infra/vault/vault-init.json ]]; then
+    drift="$(python3 /srv/aigon/scripts/optiq-mcp-tunnel-dns.py --check 2>&1 | grep -c 'DRIFT' || true)"
     if [[ "${drift:-0}" != "0" ]]; then
       bad "drift tunelu/DNS — wpisy brakujące wobec kanonu"
     else
@@ -122,7 +122,7 @@ PY
   fi
 
   # 7. uprawnienia sekretu (świat NIE może czytać)
-  for f in /opt/PROD/config/secrets/optiq-mcp-oauth-secret; do
+  for f in /srv/aigon/config/secrets/optiq-mcp-oauth-secret; do
     [[ -f "$f" ]] || { bad "brak pliku $f"; continue; }
     perm="$(stat -c '%a' "$f")"
     if (( (perm % 10) & 4 )); then

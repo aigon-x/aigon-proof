@@ -12,7 +12,7 @@
 #
 # Kody: 0 PASS, 1 FAIL, 2 UNKNOWN.
 set -uo pipefail
-ROOT="${AIGON_ROOT:-/opt/PROD}"
+ROOT="${AIGON_ROOT:-/srv/aigon}"
 CFG="$ROOT/config/canonical/model-classifier.yaml"
 WINDOW="${ALWAYS_ANSWER_WINDOW:-200}"
 TTL_H="${ALWAYS_ANSWER_TTL_H:-168}"

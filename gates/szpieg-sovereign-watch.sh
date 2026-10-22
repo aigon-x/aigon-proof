@@ -8,18 +8,18 @@
 #  (skill + capability + prawo) i że lifecycle pozostaje PRAWDZIWY (nikt nie
 #  deklaruje ACTIVE_VERIFIED bez dowodu działania na runtime).
 #
-#  Kontrakt: 0 = PASS, 1 = FAIL. READ-ONLY (nie modyfikuje /opt/PROD; walidator
+#  Kontrakt: 0 = PASS, 1 = FAIL. READ-ONLY (nie modyfikuje /srv/aigon; walidator
 #  pakietu uruchamiany na kopii w mktemp, która jest usuwana). FAIL-CLOSED:
 #  brak interpretera z zależnościami walidatora = FAIL (brak dowodu != PASS).
 # ============================================================================
 set -uo pipefail
 
-ROOT="/opt/PROD"
+ROOT="/srv/aigon"
 # HOME_OPER — dom OPERATORA (SSOT), niezależny od tego, KTO woła bramkę (root/aigon).
 # $HOME dawał FAŁSZYWA CZERWIEŃ, gdy reaktor (root, HOME=/root) szukał lokalnej
 # instalacji skilla w /root/.hermes. Kanon: ten sam wzorzec co law-action-budget.sh /
 # ledger-coverage.sh / leonardo-hpc-path.sh (toc 20eabee94216 — ujednolicenie HOME_OPER).
-HOME_OPER="${AIGON_OPER_HOME:-/home/sniegul}"
+HOME_OPER="${AIGON_OPER_HOME:-/home/operator}"
 LOCAL_SKILL="$HOME_OPER/.hermes/skills/szpieg-sovereign-watch"
 SHARED_SKILL="$ROOT/skills/shared/szpieg-sovereign-watch"
 FAIL=0
@@ -28,7 +28,7 @@ ok(){ echo "  OK  $1"; }
 
 echo "== szpieg-sovereign-watch =="
 
-# [1] Instalacja skilla: lokalny ($HOME) ORAZ SSOT shared (/opt/PROD)
+# [1] Instalacja skilla: lokalny ($HOME) ORAZ SSOT shared (/srv/aigon)
 for D in "$LOCAL_SKILL" "$SHARED_SKILL"; do
   [ -f "$D/SKILL.md" ]        || fail "brak SKILL.md w $D"
   [ -f "$D/capability.yaml" ] || fail "brak capability.yaml w $D"
@@ -86,7 +86,7 @@ grep -q 'tools/gates/szpieg-sovereign-watch.sh' "$ROOT/config/canonical/constitu
 grep -qE 'rfc3339-validator' "$SHARED_SKILL/tools/requirements.txt" 2>/dev/null \
   || fail "tools/requirements.txt bez rfc3339-validator (defekt: jsonschema FormatChecker bez date-time)"
 
-# [6] Walidator pakietu 53/53 — na tymczasowej kopii (read-only dla /opt/PROD).
+# [6] Walidator pakietu 53/53 — na tymczasowej kopii (read-only dla /srv/aigon).
 #     FAIL-CLOSED: brak interpretera z zależnościami = FAIL, nie skip.
 PY_BIN=""
 for c in "${SZPIEG_VALIDATOR_PY:-}" \

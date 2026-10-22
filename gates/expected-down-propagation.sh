@@ -23,7 +23,7 @@
 # ══════════════════════════════════════════════════════════════════════════
 set -uo pipefail
 
-ROOT="${AIGON_ROOT:-/opt/PROD}"
+ROOT="${AIGON_ROOT:-/srv/aigon}"
 SSOT="$ROOT/config/mesh-nodes.yaml"
 SELFTEST=0
 [ "${1:-}" = "--selftest" ] && SELFTEST=1
@@ -70,10 +70,10 @@ json.dump({
 }, open(p, "w"))
 PY
 else
-    ENV_FILE="${AIGON_ENV_FILE:-/opt/PROD/.env}"
+    ENV_FILE="${AIGON_ENV_FILE:-/srv/aigon/.env}"
     KEY="$(sed -n 's/^RUNTIME_SHARED_SECRET=//p' "$ENV_FILE" 2>/dev/null | head -1 | tr -d '"')"
     [ -n "$KEY" ] || KEY="$(sed -n 's/^AIGON_RUNTIME_SHARED_SECRET=//p' "$ENV_FILE" 2>/dev/null | head -1 | tr -d '"')"
-    API="${AIGON_MESH_API:-https://prod.aigon.consul:7000}"
+    API="${AIGON_MESH_API:-https://prod.mesh.internal:7000}"
     MESH="$(mktemp /tmp/expdown.XXXXXX.json)"
     timeout 25 curl -sk -H "X-API-Key: ${KEY}" "${API}/api/v1/mesh" > "$MESH" 2>/dev/null || true
     if [ ! -s "$MESH" ]; then

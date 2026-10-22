@@ -11,7 +11,7 @@
 #   a jesli nie to dlaczego... chuj martwy kod, podpinac, jak cos bylo
 #   napisane tzn ze bylo potrzebne".
 #
-#   Zmierzone w /opt/PROD/scripts: 474 pliki; 436 wpięte, 38 SIEROT.
+#   Zmierzone w /srv/aigon/scripts: 474 pliki; 436 wpięte, 38 SIEROT.
 #   Sierota = nikt jej nie woła: nie ma jej w cron.yaml, backups.yaml,
 #   hooks.yaml, docker-compose.yml, systemd, /etc/cron.d, tools/gates ani
 #   w innym skrypcie. Taki plik NIE DZIAŁA — jest deklaracją intencji.

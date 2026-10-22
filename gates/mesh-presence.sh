@@ -35,7 +35,7 @@ try:
     # czytala pole 'status' i liczyła len(nodes) — a runtime /health podaje stan
     # w polu 'state' (Healthy/Unreachable/Dead). Filtr był MARTWY (status zawsze
     # None => 'online'), więc nod ze state=Unreachable był liczony jako obecny
-    # (falszywy ZIELONY: zmierzone — poligon 100.121.86.42 Unreachable 8 dni, a
+    # (falszywy ZIELONY: zmierzone — poligon 192.0.2.13 Unreachable 8 dni, a
     # brama raportowala 8/8). Teraz liczymy TYLKO nody nie-bedace w stanie zlym;
     # akceptujemy oba pola ('state' i 'status'), brak pola = online (kompatybilnosc
     # wstepna z fixture'ami). Nody Unreachable/Dead NIE zawyzaja obecnosci.

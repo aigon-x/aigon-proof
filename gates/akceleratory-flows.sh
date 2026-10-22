@@ -19,7 +19,7 @@
 #      Brak wymaganego pola = SIEROTA = FAIL.
 #   3. `id` wymagane i unikalne (duplikat = dwie prawdy o jednym przepływie).
 #   4. `script` wskazuje plik, który ISTNIEJE (najpierw względem katalogu
-#      produktu, potem względem /opt/PROD — skrypty hostowe żyją w scripts/).
+#      produktu, potem względem /srv/aigon — skrypty hostowe żyją w scripts/).
 #      Brak pliku = WARN (widoczne; nie blokuje, ale cisza byłaby fałszywym zielonym).
 #   5. Dowód przebiegu (`defaults.evidence`, domyślnie data/reports/flow-audit.json):
 #      * brak pliku            → STALE/UNKNOWN (WARN) — brak pomiaru != PASS,
@@ -202,7 +202,7 @@ for flow in enabled:
     if script:
         sp = Path(script)
         if not sp.is_absolute():
-            # produkt -> kanoniczny root (skrypty hostowe: /opt/PROD/scripts/*)
+            # produkt -> kanoniczny root (skrypty hostowe: /srv/aigon/scripts/*)
             for base in (ACC, ROOT):
                 if (base / script).exists():
                     sp = base / script

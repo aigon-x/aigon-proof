@@ -3,8 +3,8 @@
 #  skill-registry-integrity.py — GATE: spójność rejestru skilli (wieloźródłowa)
 #
 #  Bramka FALSYFIKOWALNA: wstrzyknij skill poza kanonem albo duplikat nazwy →
-#  exit 1. Trzy klasy naruszeń (zmierzone 2026-09-29 w /opt/PROD):
-#    LUKA-3  kanon (/opt/PROD/skills/shared) UBOŻSZY niż kopie lokalne agentów
+#  exit 1. Trzy klasy naruszeń (zmierzone 2026-09-29 w /srv/aigon):
+#    LUKA-3  kanon (/srv/aigon/skills/shared) UBOŻSZY niż kopie lokalne agentów
 #            (brak testu „kanon ⊇ lokalne").
 #    LUKA-4  skill w manifeście (config/agent-models.yaml → skills:->manifest:)
 #            bez katalogu w kanonie → sync go nie dostarczy / usunie (PRUNE).

@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
-# TEMPLATE-CANON G-20f: wymaga scripts/ + /opt/PROD
+# TEMPLATE-CANON G-20f: wymaga scripts/ + /srv/aigon
 # ═══════════════════════════════════════════════════════════════════════
 #  tools/gates/scripts-tests.sh — gate scripts-tests (hook-runner)
 #
 #  PO CO (rozkaz Suwerena 2026-09-30: „chuj martwy kod, podpinac, jak cos
 #  bylo napisane tzn ze bylo potrzebne"):
-#  W /opt/PROD/scripts leżały TESTY i WERYFIKATORY, których NIKT nie wołał —
+#  W /srv/aigon/scripts leżały TESTY i WERYFIKATORY, których NIKT nie wołał —
 #  test istnieje, ale nie jest uruchamiany, więc nie chroni NICZEGO.
 #  To najgorsza klasa martwego kodu: wygląda jak zabezpieczenie, a jest
 #  deklaracją intencji.

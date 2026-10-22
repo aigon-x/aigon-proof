@@ -115,9 +115,9 @@ PY
 fi
 
 # ── 3. ŻYCIE ŹRÓDEŁ (LAW-MEM-3) — warstwy CZYTANE Z SSOT, nie z hardkodu ───
-HOME_DIR="${AIGON_MEMORY_HOME:-${HOME:-/home/sniegul}}"
+HOME_DIR="${AIGON_MEMORY_HOME:-${HOME:-/home/operator}}"
 if [[ -z "${AIGON_MEMORY_HOME:-}" ]]; then
-  [ -d "$HOME_DIR/.qwen" ] || HOME_DIR="/home/sniegul"
+  [ -d "$HOME_DIR/.qwen" ] || HOME_DIR="/home/operator"
 fi
 
 while IFS=$'\t' read -r kind msg; do

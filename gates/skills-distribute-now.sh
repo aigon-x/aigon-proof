@@ -24,7 +24,7 @@
 # ═══════════════════════════════════════════════════════════════════════
 set -uo pipefail
 
-ROOT="${AIGON_PROD_ROOT:-/opt/PROD}"
+ROOT="${AIGON_PROD_ROOT:-/srv/aigon}"
 cd "$ROOT" || { echo "FAIL brak $ROOT"; exit 1; }
 
 PY="$(command -v python3 || true)"

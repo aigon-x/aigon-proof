@@ -21,8 +21,8 @@
 # ═══════════════════════════════════════════════════════════════════════
 set -uo pipefail
 
-ROOT="${AIGON_ROOT:-/opt/PROD}"
-HOME_OPER="${AIGON_OPER_HOME:-/home/sniegul}"
+ROOT="${AIGON_ROOT:-/srv/aigon}"
+HOME_OPER="${AIGON_OPER_HOME:-/home/operator}"
 fails=0
 warns=0
 

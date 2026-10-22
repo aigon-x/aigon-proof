@@ -15,7 +15,7 @@
 #  Kontrakt z hook-runner.sh (identyczny jak agent-fabric.sh):
 #    exit 0 = PASS
 #    exit 1 = FAIL (budżet przekroczony / dryf deklaracji)
-#    exit 2 = WARN (brak dostępu do /home/sniegul — gate cykliczny jako aigon)
+#    exit 2 = WARN (brak dostępu do /home/operator — gate cykliczny jako aigon)
 # ═══════════════════════════════════════════════════════════════════════
 set -uo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
@@ -26,8 +26,8 @@ if [ $RC -eq 0 ]; then
   echo "PASS context-budget ($(echo "$OUT" | tail -1))"
   exit 0
 fi
-if echo "$OUT" | grep -q 'brak dostępu do /home/sniegul'; then
-  echo "WARN context-budget (gate cykliczny jako user aigon — brak /home/sniegul; egzekucja przy pre-push)"
+if echo "$OUT" | grep -q 'brak dostępu do /home/operator'; then
+  echo "WARN context-budget (gate cykliczny jako user aigon — brak /home/operator; egzekucja przy pre-push)"
   exit 2
 fi
 echo "FAIL context-budget ($(echo "$OUT" | grep -E '^(FAILED|E )' | head -3))"

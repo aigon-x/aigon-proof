@@ -3,7 +3,7 @@
 # Psuje KOPIĘ M2 w mktemp -d; żywy plik nietknięty.
 # Każda mutacja MUSI dać FAIL, a oryginał PASS. rc 0 = test PASS.
 set -uo pipefail
-ROOT="${AIGON_ROOT:-/opt/PROD}"
+ROOT="${AIGON_ROOT:-/srv/aigon}"
 GATE="$ROOT/tools/gates/law-precedence-matrix.sh"
 SRC="$ROOT/config/canonical/constitution-drafts/M2-precedence.yaml"
 T="$(mktemp -d)"; trap 'rm -rf "$T"' EXIT

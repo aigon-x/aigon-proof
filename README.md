@@ -1,5 +1,9 @@
 # AIGON PROOF
 
+[![ci](https://github.com/aigon-x/aigon-proof/actions/workflows/ci.yml/badge.svg)](https://github.com/aigon-x/aigon-proof/actions/workflows/ci.yml)
+[![license: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![MCP](https://img.shields.io/badge/MCP-2025--11--25-informational)](https://modelcontextprotocol.io)
+
 **Approve the action. Verify the outcome.**
 
 Built for the Alexa+ track of Build, Ship, Shape: Amazon Developer Hackathon.

@@ -15,7 +15,7 @@
 # ═══════════════════════════════════════════════════════════════════════════
 set -uo pipefail
 
-ROOT="${PROD_ROOT:-/opt/PROD}"
+ROOT="${PROD_ROOT:-/srv/aigon}"
 LAW="$ROOT/config/canonical/law-llm-flow.yaml"
 CAT="$ROOT/config/canonical/models-catalog.yaml"
 MAT="$ROOT/config/canonical/model-matrix.yaml"

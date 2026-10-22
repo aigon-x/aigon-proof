@@ -4,7 +4,7 @@
 #  (b) każdy GAP (API nie daje aktualnej wersji) ma owner + next_action + review_by
 # Użycie: live-truth-guard.sh [--strict] [--selftest]
 set -uo pipefail
-REG="/opt/PROD/config/canonical/live-truth.yaml"
+REG="/srv/aigon/config/canonical/live-truth.yaml"
 mode="${1:-}"
 
 if [ "$mode" = "--selftest" ]; then

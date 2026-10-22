@@ -5,7 +5,7 @@
 #
 #  DEFEKT ZMIERZONY 2026-10-19 (zgłoszenie Suwerena): panel mapy raz działał,
 #  raz dawał 404 na nowym chunku. Przyczyna: build UI szedł TYLKO na
-#  local-aigon, a nginx balansuje między prod-aigon (master 100.99.59.100)
+#  local-aigon, a nginx balansuje między prod-aigon (master 192.0.2.19)
 #  i contabo-aigon. prod-aigon miał stary index.html → 404 na nowym
 #  NeuralMap-<hash>.js; contabo nie miał go wcale do czasu ręcznego rsync.
 #  To TA SAMA klasa co graph.json mapy: artefakt bez dystrybucji na repliki.
@@ -21,9 +21,9 @@
 # ═══════════════════════════════════════════════════════════════════════════
 set -uo pipefail
 
-ROOT="${AIGON_ROOT:-/opt/PROD}"
+ROOT="${AIGON_ROOT:-/srv/aigon}"
 DIST="$ROOT/products/mesh-observatory/ui/dist"
-KEY="${AIGON_SSH_KEY:-/home/sniegul/.ssh/id_aigon_local}"
+KEY="${AIGON_SSH_KEY:-/home/operator/.ssh/id_aigon_local}"
 REPLICAS="${AIGON_UI_REPLICAS:-prod-aigon contabo-aigon}"
 SSH_OPTS="-o ConnectTimeout=8 -o IdentitiesOnly=yes -i $KEY -o StrictHostKeyChecking=accept-new"
 FAILS=0
@@ -57,7 +57,7 @@ for h in $REPLICAS; do
     echo "FAIL C1 $h nieosiagalny po SSH (brak dowodu parity)"
     FAILS=$((FAILS+1)); continue
   fi
-  rmd5="$(ssh $SSH_OPTS "root@$h" "md5sum /opt/PROD/products/mesh-observatory/ui/dist/index.html 2>/dev/null | cut -d' ' -f1" 2>/dev/null)"
+  rmd5="$(ssh $SSH_OPTS "root@$h" "md5sum /srv/aigon/products/mesh-observatory/ui/dist/index.html 2>/dev/null | cut -d' ' -f1" 2>/dev/null)"
   if [ "$rmd5" = "$local_md5" ]; then
     echo "PASS C2 $h index.html zgodny"
   else
@@ -65,7 +65,7 @@ for h in $REPLICAS; do
     FAILS=$((FAILS+1))
   fi
   if [ -n "$chunk" ]; then
-    if ssh $SSH_OPTS "root@$h" "test -f /opt/PROD/products/mesh-observatory/ui/dist/assets/$chunk" 2>/dev/null; then
+    if ssh $SSH_OPTS "root@$h" "test -f /srv/aigon/products/mesh-observatory/ui/dist/assets/$chunk" 2>/dev/null; then
       echo "PASS C3 $h ma $chunk"
     else
       echo "FAIL C3 $h: brak $chunk — 404 dla czesci zadan w balansie"

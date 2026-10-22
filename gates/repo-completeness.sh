@@ -97,7 +97,7 @@ if os.path.exists(allowp):
 viol, checked = [], 0
 
 def rel(p):
-    p = p.replace('/opt/PROD/', '').lstrip('./')
+    p = p.replace('/srv/aigon/', '').lstrip('./')
     return p
 
 def require(path, source, kind):
@@ -135,13 +135,13 @@ if os.path.exists(cargo):
                 continue
             require(member, 'Cargo.toml:members', 'workspace-member')
 
-# ── 2. cron: kazdy skrypt /opt/PROD/... ma byc w repo ──────────────────
+# ── 2. cron: kazdy skrypt /srv/aigon/... ma byc w repo ──────────────────
 if os.path.isfile(cronp) and os.access(cronp, os.R_OK):
     for line in open(cronp, encoding='utf-8', errors='replace'):
         s = line.strip()
         if not s or s.startswith('#'):
             continue
-        for hit in re.findall(r'/opt/PROD/[\w./\-]+\.(?:sh|py)', s):
+        for hit in re.findall(r'/srv/aigon/[\w./\-]+\.(?:sh|py)', s):
             require(hit, os.path.basename(cronp), 'cron-script')
 
 # ── 3. rejestr PIPELINES ───────────────────────────────────────────────

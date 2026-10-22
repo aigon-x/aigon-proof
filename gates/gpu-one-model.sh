@@ -108,7 +108,7 @@ fi
 #  sie po kazdej edycji manifestu (patch template/params) — twarde ID cicho
 #  rozbrajalo allowliste (zmierzone 2026-09-24: 434456081734 -> f3b6f337191f).
 #  Fallback: stala lista nizej (gdy SSOT nieczytelny — WARN, nie FAIL).
-_SSOT="${AIGON_GPU_SSOT:-/opt/PROD/config/agent-models.yaml}"
+_SSOT="${AIGON_GPU_SSOT:-/srv/aigon/config/agent-models.yaml}"
 _ssot_names=$(sed -n '/^  gpu:/,/^  [a-zA-Z_]/p' "$_SSOT" 2>/dev/null \
               | sed -n '/allowed_model_names:/,/^    [a-zA-Z_]/p' \
               | grep -oE "^ *- '[^']+'" | sed "s/^ *- '\(.*\)'$/\1/")

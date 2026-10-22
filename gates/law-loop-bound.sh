@@ -11,7 +11,7 @@
 #  samym wcięciu. Override: LAW_LOOP_GLOB. exit 0 = PASS, 1 = FAIL.
 # ═══════════════════════════════════════════════════════════════════════
 set -uo pipefail
-GLOB="${LAW_LOOP_GLOB:-/opt/PROD/scripts/*.sh}"
+GLOB="${LAW_LOOP_GLOB:-/srv/aigon/scripts/*.sh}"
 fail=0; total=0
 for f in $GLOB; do
   [ -f "$f" ] || continue

@@ -11,7 +11,7 @@
 #  Wpięcie:       config/canonical/hooks.yaml + gates.yaml (module: wiring-doctor)
 # ══════════════════════════════════════════════════════════════════════════
 set -uo pipefail
-ROOT="${AIGON_PROJECT_ROOT:-/opt/PROD}"
+ROOT="${AIGON_PROJECT_ROOT:-/srv/aigon}"
 PY="${AIGON_OTEL_PYTHON:-$ROOT/.venv-otel/bin/python}"
 
 if [[ ! -x "$PY" ]]; then

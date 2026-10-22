@@ -6,7 +6,7 @@
 #   1) TRUJĄCA POZOSTAŁOŚĆ: `nftables.service` był `enabled` a `failed` na prod,
 #      monitor, site, optiq (+ poligon). Na monitor/optiq conf zawierał
 #      `table inet filter` z `policy drop` i SZEROKĄ allowlistą (7000, 38080, 31704
-#      z KAŻDEGO źródła) oraz BEZ Vaulta :58200. Naprawa „na szybko" (iif → iifname)
+#      z KAŻDEGO źródła) oraz BEZ Vaulta :8200. Naprawa „na szybko" (iif → iifname)
 #      włączyłaby ruleset, który JEDNOCZEŚNIE otwiera porty publicznie i ucina Vault.
 #   2) STOP = WIPE: `systemctl stop nftables` na Debianie uruchamia
 #      `ExecStop=/usr/sbin/nft flush ruleset`, co kasuje CAŁY ruleset —

@@ -46,5 +46,5 @@
 ## Limits
 
 * Hybrid retrieval needs the local ONNX model; lexical fallback stays available.
-* Bundled fixtures are the fallback; live `/opt/PROD` files win when present.
+* Bundled fixtures are the fallback; live `/srv/aigon` files win when present.
 * `POST /api/gates/{id}/run` is a trusted-network endpoint; set `AIGON_ALLOW_RUN=0` to disable.

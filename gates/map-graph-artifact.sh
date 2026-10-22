@@ -32,7 +32,7 @@
 # ═══════════════════════════════════════════════════════════════════════════
 set -uo pipefail
 
-ROOT="${AIGON_ROOT:-/opt/PROD}"
+ROOT="${AIGON_ROOT:-/srv/aigon}"
 CONTAINER="${AMO_CONTAINER:-aigon-mesh-observatory}"
 MAX_AGE="${AMO_MAP_MAX_AGE:-86400}"
 ART="/var/lib/mesh-observatory/map/graph.json"
@@ -134,7 +134,7 @@ fi
 # czesci zadan, mimo ze lokalnie bramka swiecila na zielono. Brak parity to
 # ten sam defekt co przy UI: artefakt istnieje, ale nie na kazdej replice.
 REPLICAS="${AIGON_MAP_REPLICAS:-prod-aigon contabo-aigon}"
-KEY="${AIGON_SSH_KEY:-/home/sniegul/.ssh/id_aigon_local}"
+KEY="${AIGON_SSH_KEY:-/home/operator/.ssh/id_aigon_local}"
 SSH_OPTS="-o ConnectTimeout=8 -o IdentitiesOnly=yes -i $KEY -o StrictHostKeyChecking=accept-new"
 for h in $REPLICAS; do
   if ! ssh $SSH_OPTS "root@$h" 'true' 2>/dev/null; then

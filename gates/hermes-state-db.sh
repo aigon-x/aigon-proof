@@ -39,7 +39,7 @@ command -v sqlite3 >/dev/null 2>&1 || fail "brak sqlite3"
 # "database is locked". Ta bramka NIE MOZE dokladac sie do zakorkowania.
 # Gdy system zajety: NIE skanujemy — WARN (nie FAIL), bo brak pomiaru
 # nie jest dowodem awarii bazy.
-GUARD="/opt/PROD/scripts/aigon-heavy-io-guard.sh"
+GUARD="/srv/aigon/scripts/aigon-heavy-io-guard.sh"
 if [ -x "$GUARD" ]; then
   if ! "$GUARD" --check "quick_check $(basename "$DB")" "4.6GB" >/dev/null 2>&1; then
     warn "pomijam quick_check — system pod ciezkim I/O ($("$GUARD" --check "x" "y" 2>&1 | head -1)); bramka NIE skanuje bazy w zakorkowaniu"

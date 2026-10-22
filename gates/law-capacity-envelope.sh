@@ -6,7 +6,7 @@
 # oba rc=1, nigdy PASS. Read-only.
 # Wejścia: CAPACITY_PROM, MESH_NODES, CAPACITY_TTL.
 set -uo pipefail
-ROOT="${AIGON_ROOT:-/opt/PROD}"
+ROOT="${AIGON_ROOT:-/srv/aigon}"
 CAPACITY_PROM="${CAPACITY_PROM:-/var/lib/node_exporter/textfile_collector/aigon-mesh-capacity.prom}"
 MESH_NODES="${MESH_NODES:-$ROOT/config/mesh-nodes.yaml}"
 CAPACITY_TTL="${CAPACITY_TTL:-600}"

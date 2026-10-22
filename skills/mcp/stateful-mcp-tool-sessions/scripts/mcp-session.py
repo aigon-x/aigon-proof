@@ -13,7 +13,7 @@ UŻYCIE:
                  --tool list_strings --tool list_segments
 
   # albo z mcp-config.json serwera (bierze command+args+cwd)
-  mcp-session.py --config /opt/PROD/mcp-servers/servers/x/mcp-config.json \
+  mcp-session.py --config /srv/aigon/mcp-servers/servers/x/mcp-config.json \
                  --open open_binary --path /tmp/a.so --tool list_strings
 
   # lista narzędzi i ich schematów (bez otwierania artefaktu)

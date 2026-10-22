@@ -11,7 +11,7 @@
 # exit 0 = PASS, 1 = FAIL/ERROR (M1 executor_status).
 #
 #   EFFECT_INVENTORY  plik inwentarza (domyślnie config/canonical/constitution-drafts/S1-effect-inventory.yaml)
-#   EFFECT_ROOT       korzeń ścieżek    (domyślnie /opt/PROD)
+#   EFFECT_ROOT       korzeń ścieżek    (domyślnie /srv/aigon)
 set -uo pipefail
 ROOT_DEF="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 EFFECT_ROOT="${EFFECT_ROOT:-$ROOT_DEF}"

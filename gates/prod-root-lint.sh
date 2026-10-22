@@ -3,7 +3,7 @@
 #  tools/gates/prod-root-lint.sh — gate prod-root-lint (cyclic:6h)
 #
 #  STERILE ROOT ENFORCEMENT (skill prod-filesystem-canon §26-28).
-#  Sprawdza root /opt/PROD przeciw ROOT MANIFEST
+#  Sprawdza root /srv/aigon przeciw ROOT MANIFEST
 #  (config/prod-root-manifest.yaml):
 #    - allowed_dirs / allowed_hidden / allowed_files → PASS
 #    - known_legacy / protected_secrets / known_transient → WARN
@@ -97,7 +97,7 @@ if [ "$failures" -gt 0 ]; then
     echo -n "$found_warn" | sed 's/^/  /'
   fi
   echo -n "$found_fail" | sed 's/^/  /'
-  echo "FAIL: prod-root-lint — ${failures} nieautoryzowanych wpisów w root /opt/PROD (wymagana klasyfikacja)"
+  echo "FAIL: prod-root-lint — ${failures} nieautoryzowanych wpisów w root /srv/aigon (wymagana klasyfikacja)"
   exit 1
 fi
 if [ "$warnings" -gt 0 ]; then
@@ -105,5 +105,5 @@ if [ "$warnings" -gt 0 ]; then
   echo -n "$found_warn" | sed 's/^/  /'
   exit 0
 fi
-echo "PASS: root /opt/PROD sterylny — wszystkie wpisy zgodne z manifestem"
+echo "PASS: root /srv/aigon sterylny — wszystkie wpisy zgodne z manifestem"
 exit 0

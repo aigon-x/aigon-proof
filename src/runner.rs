@@ -11,9 +11,9 @@ use serde::Serialize;
 use tokio::process::Command;
 
 const ROOTS: [&str; 3] = [
-    "/opt/PROD/tools/verify",
-    "/opt/PROD/tools/gates",
-    "/opt/PROD/tools",
+    "/srv/aigon/tools/verify",
+    "/srv/aigon/tools/gates",
+    "/srv/aigon/tools",
 ];
 const TIMEOUT: Duration = Duration::from_secs(20);
 const MAX_OUTPUT: usize = 2000;

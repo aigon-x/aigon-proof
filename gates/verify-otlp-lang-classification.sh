@@ -77,7 +77,7 @@ PY
              || bad "brak zmian klasyfikacji — naprawa nie dziala"
 
 echo "=== B. SKLADNIA bramki ==="
-G=/opt/PROD/tools/gates/otlp-client-ca-check.sh
+G=/srv/aigon/tools/gates/otlp-client-ca-check.sh
 bash -n "$G" 2>/dev/null && ok "bash -n" || bad "bash -n"
 
 echo "=== C. BRAMKA UZYWA runtime, NIE nazwy ==="

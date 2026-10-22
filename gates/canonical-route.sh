@@ -19,7 +19,7 @@
 # ══════════════════════════════════════════════════════════════════════════
 set -uo pipefail
 
-ROOT="${AIGON_ROOT:-/opt/PROD}"
+ROOT="${AIGON_ROOT:-/srv/aigon}"
 BRIEF=""; COMMAND=""; SELFTEST=0
 
 while [ $# -gt 0 ]; do
@@ -65,13 +65,13 @@ if [ "$SELFTEST" -eq 1 ]; then
   ( check_text 'docker save img | ssh prod-aigon docker load' selftest >/dev/null 2>&1 ) \
     && fail "selftest: ręczny transfer NIE został złapany" || true
   # 2) kanoniczna trasa = PASS
-  check_text 'canonical_route: /opt/PROD/products/optiq/tools/deploy-all.sh' selftest >/dev/null \
+  check_text 'canonical_route: /srv/aigon/products/optiq/tools/deploy-all.sh' selftest >/dev/null \
     || fail "selftest: kanoniczna trasa została odrzucona"
   # 3) override = PASS z ostrzeżeniem
   check_text 'override: user: świadoma decyzja Suwerena' selftest >/dev/null \
     || fail "selftest: override został odrzucony"
   # 4) scp do node = FAIL
-  ( check_text 'scp -r build prod-aigon:/opt/PROD' selftest >/dev/null 2>&1 ) \
+  ( check_text 'scp -r build prod-aigon:/srv/aigon' selftest >/dev/null 2>&1 ) \
     && fail "selftest: scp do node NIE został złapany" || true
   pass "selftest 4/4 (2× FAIL złapany, 2× PASS przepuszczony)"
 fi

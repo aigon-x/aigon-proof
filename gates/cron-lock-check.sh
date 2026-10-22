@@ -34,7 +34,7 @@
 set -uo pipefail
 export LC_ALL=C
 
-ROOT="${AIGON_PROJECT_ROOT:-/opt/PROD}"
+ROOT="${AIGON_PROJECT_ROOT:-/srv/aigon}"
 CRON="${AIGON_CRON_FILE:-/etc/cron.d/aigon-cron}"
 WAIVERS="${ROOT}/config/canonical/cron-lock-waivers.yaml"
 [ -r "$CRON" ] || { echo "FAIL cron-lock-check: brak $CRON"; exit 1; }
@@ -174,7 +174,7 @@ LINIE=0
 while IFS= read -r line; do
   case "$line" in ''|'#'*|SHELL*|PATH*|MAILTO*) continue ;; esac
   LINIE=$((LINIE+1))
-  script="$(printf '%s' "$line" | grep -oE '/opt/PROD/scripts/[A-Za-z0-9._-]+\.(sh|py)' | head -1)"
+  script="$(printf '%s' "$line" | grep -oE '/srv/aigon/scripts/[A-Za-z0-9._-]+\.(sh|py)' | head -1)"
   [ -z "$script" ] && continue
   base="$(basename "$script")"
   if printf '%s' "$line" | grep -qE 'cron-run\.sh|(^|[^a-z])flock([^a-z]|$)'; then
@@ -203,8 +203,8 @@ for p in /proc/[0-9]*; do
   [ -r "$p/cmdline" ] || continue
   c="$(tr '\0' ' ' < "$p/cmdline" 2>/dev/null)"
   case "$c" in
-    */opt/PROD/scripts/*.sh*|*/opt/PROD/scripts/*.py*)
-      b="$(printf '%s' "$c" | grep -oE '/opt/PROD/scripts/[A-Za-z0-9._-]+' | head -1 | xargs -r basename)"
+    */srv/aigon/scripts/*.sh*|*/srv/aigon/scripts/*.py*)
+      b="$(printf '%s' "$c" | grep -oE '/srv/aigon/scripts/[A-Za-z0-9._-]+' | head -1 | xargs -r basename)"
       [ -n "$b" ] && echo "$b" >> /tmp/_clc_names.$$
       ;;
   esac
@@ -270,7 +270,7 @@ echo "  --- istnienie celow ---"
 MISS=0
 while IFS= read -r line; do
   case "$line" in ''|'#'*|SHELL*|PATH*|MAILTO*) continue ;; esac
-  for f in $(printf '%s' "$line" | grep -oE '/opt/PROD/[A-Za-z0-9._/-]+\.(sh|py)'); do
+  for f in $(printf '%s' "$line" | grep -oE '/srv/aigon/[A-Za-z0-9._/-]+\.(sh|py)'); do
     if [ ! -f "$f" ]; then
       bad "cel nie istnieje: $f"
       MISS=$((MISS+1))

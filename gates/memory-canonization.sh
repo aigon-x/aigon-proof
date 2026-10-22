@@ -24,7 +24,7 @@
 # ═══════════════════════════════════════════════════════════════════════════
 set -uo pipefail
 
-ROOT="${AIGON_ROOT:-/opt/PROD}"
+ROOT="${AIGON_ROOT:-/srv/aigon}"
 SSOT="${AIGON_MEMORY_SSOT:-$ROOT/config/canonical/agent-memory.yaml}"
 SCRIPT="$ROOT/scripts/memory-lifecycle.py"
 MARKER="LAW-MEM-4"

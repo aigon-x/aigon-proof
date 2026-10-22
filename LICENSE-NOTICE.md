@@ -10,7 +10,7 @@ under the same MIT licence. The snapshot is read-only: the server never edits ca
 
 ## Bundled skills (`skills/`)
 
-The 53 curated `SKILL.md` files come from SZAMANI AI's internal skill library (`/opt/PROD/skills`). They
+The 53 curated `SKILL.md` files come from SZAMANI AI's internal skill library (`/srv/aigon/skills`). They
 are internal operating documents, published under MIT with the following caveats:
 
 1. **Third-party names and API samples** inside the prompts (for example Google, AWS, GitLab,

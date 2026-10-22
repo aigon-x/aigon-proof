@@ -21,7 +21,7 @@
 # ══════════════════════════════════════════════════════════════════════════
 set -uo pipefail
 
-ROOT="${AIGON_ROOT:-/opt/PROD}"
+ROOT="${AIGON_ROOT:-/srv/aigon}"
 CFG="$ROOT/config/canonical/agent-focus.yaml"
 SELFTEST=0
 [ "${1:-}" = "--selftest" ] && SELFTEST=1
