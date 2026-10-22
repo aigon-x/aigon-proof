@@ -9,8 +9,8 @@
 
 These are observed feature checks, not proof of universal production security or user satisfaction. WOW reaction remains a user judgement. The service is a single-host local document executor; see SECURITY.md.
 
-Public demonstration (ElevenLabs Cornelius — English and Polish audio tracks, PL/EN subtitles): https://www.youtube.com/watch?v=vKj18oyxVsI
-Polish-narrated version: https://www.youtube.com/watch?v=WaFVxNsdGFI
+Public demonstration (ElevenLabs Cornelius — English and Polish audio tracks, PL/EN subtitles): https://www.youtube.com/watch?v=JkrFSnDyBrM
+Polish-narrated version: https://www.youtube.com/watch?v=mihcNVdBAbU
 
 ## Readability correction after user review
 
