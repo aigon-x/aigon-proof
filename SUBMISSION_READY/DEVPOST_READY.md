@@ -27,6 +27,23 @@ operator authentication. We separated verification from execution, persisted rep
 prevented one approval from authorizing multiple passports, and independently checked actual
 delivered bytes. The current film records this workflow, including negative cases.
 
+## Security as added value
+PROOF enforces approval independently of the assistant's instructions. Server-owned actions,
+exact human consent, signed capabilities, durable replay protection and receipt read-back make
+attempted prompt injection unable to become execution authority. Reviewed corpus hashes reject
+changed bundled reference assets. Our reproducible security assessment covers forged consent,
+command and metadata injection, recipient substitution, replay, retrieval-file poisoning,
+browser request boundaries, static analysis, dependency advisories and public-history secret scans.
+The assessment is a self-review with explicit scope and evidence, not a third-party certification
+or a claim that every model resists jailbreaks.
+
+## Training and model weights
+The default release is model-free and has no training pipeline. Optional neural retrieval can
+load an embedding model only through an explicitly enabled feature. Training-data provenance,
+poisoned-dataset evaluation, approved model/tokenizer hashes, private caches and tampered-weight
+rejection are documented requirements for a future extension; these controls are not advertised
+as completed model-security tests. Approval and execution boundaries remain separate from models.
+
 ## What we learned
 A signed permission is not a receipt. Reliability requires exact human review, observed side
 effects, and retaining reservations when a process dies between authorization and recording delivery.
@@ -43,4 +60,8 @@ A runnable single-host prototype using fictional/public sample documents. No ema
 accounts or native Alexa+ Preview integration. MCP agents supply typed actions; PROOF is not
 its own natural-language model. Product feedback and friction log accompany this submission.
 
+Security scope: https://github.com/aigon-x/aigon-proof/blob/main/SECURITY.md
 Repository: https://github.com/aigon-x/aigon-proof
+
+## Significant updates during the Submission Period
+Between 31 Aug and 23 Oct 2026 this project gained: an exact typed action contract replacing heuristic text parsing; operator-authenticated human approval bound to actor, operation, exact content and recipient; signed capability passports with one-approval-one-execution semantics; durable replay rejection across restarts; fsync + SHA-256 read-back receipts of delivered bytes; a Streamable HTTP MCP transport alongside stdio; and a governance explorer exposing bundled laws, gates and curated skills. The recorded demo shows the approval, the blocked case and the tampered-recipient case.
