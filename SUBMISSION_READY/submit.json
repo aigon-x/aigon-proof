@@ -25,5 +25,22 @@
   "video_url": "https://www.youtube.com/watch?v=w_td--lBsLE",
   "submission_status": "blocked_platform_verification",
   "blocker": "Existing Devpost session repeatedly stops at Cloudflare managed verification; no entry ID obtained.",
-  "manual_submit_url": "https://devpost.com/submit-to/30992"
+  "manual_submit_url": "https://devpost.com/submit-to/30992",
+  "submission": {
+    "track": "Alexa+ Track",
+    "built_with": [
+      "Rust",
+      "Tokio",
+      "Axum",
+      "rmcp",
+      "MCP (Model Context Protocol)",
+      "serde",
+      "sha2",
+      "OpenTelemetry",
+      "HTML",
+      "JavaScript"
+    ],
+    "github_username": "aigon-x"
+  },
+  "status": "ready_for_manual_submit"
 }
