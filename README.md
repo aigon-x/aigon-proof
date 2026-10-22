@@ -15,7 +15,7 @@ and the ONNX dependency of optional governance search. No cloud subscription or 
 
 ```sh
 git clone https://github.com/aigon-x/aigon-proof
-cd aigon-governance-mcp
+cd aigon-proof
 bash scripts/run-demo.sh
 ```
 
