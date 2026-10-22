@@ -10,4 +10,5 @@ Copy the actual submitted project URL/entry ID after clicking Submit. A draft is
 
 Deadline: 23 October 2026, 19:00 UTC / 21:00 Warsaw.
 
-Public demonstration (ElevenLabs Cornelius — Wise Sage): https://www.youtube.com/watch?v=w_td--lBsLE
+Public demonstration (ElevenLabs Cornelius — English and Polish audio tracks, PL/EN subtitles): https://www.youtube.com/watch?v=vKj18oyxVsI
+Polish-narrated version: https://www.youtube.com/watch?v=WaFVxNsdGFI

@@ -145,7 +145,8 @@ FRICTION-LOG.md and video/proof-v2/. A local film is not a Devpost submission re
 
 MIT for original code; LICENSE-NOTICE.md covers bundled notices.
 
-Public demonstration (ElevenLabs Cornelius — Wise Sage): https://www.youtube.com/watch?v=w_td--lBsLE
+Public demonstration (ElevenLabs Cornelius — English and Polish audio tracks, PL/EN subtitles): https://www.youtube.com/watch?v=vKj18oyxVsI
+Polish-narrated version: https://www.youtube.com/watch?v=WaFVxNsdGFI
 
 ### Readable presentation and recording
 

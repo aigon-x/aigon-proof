@@ -32,7 +32,7 @@
     "JavaScript"
   ],
   "video_file": "video/proof-v2/AIGON_PROOF_READABLE_4K.mp4",
-  "video_url": "https://www.youtube.com/watch?v=w_td--lBsLE",
+  "video_url": "https://www.youtube.com/watch?v=vKj18oyxVsI",
   "submission_status": "ready_for_manual_submit",
   "blocker": "ready_for_manual_submit: repo publiczne MIT + CI zielone, wideo publiczne 142 s (<3 min), pakiet kompletny (opis, product feedback, friction log, track, mini challenge). Pozostaje ręczny Submit Suwerena na Devpost (konto + reCAPTCHA).",
   "manual_submit_url": "https://devpost.com/submit-to/30992",
@@ -58,5 +58,6 @@
   "schema_version": "2",
   "missing_to_submit": [
     "reczny Submit na https://amazonappdev2026.devpost.com/submissions/new (konto + reCAPTCHA = czlowiek)"
-  ]
+  ],
+  "video_url_pl": "https://www.youtube.com/watch?v=WaFVxNsdGFI"
 }
