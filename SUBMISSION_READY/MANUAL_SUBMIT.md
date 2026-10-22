@@ -1,6 +1,6 @@
 # Final Devpost submission
 
-Open https://devpost.com/submit-to/30992 in your authenticated browser and complete the platform verification if shown. The platform stops automated navigation at Cloudflare; this is not a project PASS.
+Open https://amazonappdev2026.devpost.com/submissions/new in your authenticated browser and complete the platform verification if shown. The platform stops automated navigation at Cloudflare; this is not a project PASS.
 
 Use submit.json for the exact fields: title AIGON PROOF, Alexa+ track, no unverified mini challenges, public repository, video link, description, Product Feedback and Friction Log. Copy the actual submitted project URL/entry ID after clicking Submit. A draft is not a submitted entry.
 
