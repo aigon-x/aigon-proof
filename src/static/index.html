@@ -1,0 +1,876 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AIGON Governance — laws, gates, perfection</title>
+<meta name="description" content="Read-only explorer over the AIGON constitution: laws, executable gates, capabilities and the records that connect them.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2305070A'/%3E%3Cpath d='M16 5l9 5v7c0 5-4 8-9 10-5-2-9-5-9-10v-7z' fill='none' stroke='%234C82D9' stroke-width='2'/%3E%3C/svg%3E">
+<style>
+:root{
+  --bg:#000;--panel:#12161C;--panel-2:#1A1F27;--line:#232A35;--line-2:#2E3644;
+  --ink:#E9ECF0;--muted:#8A94A6;--dim:#6F7A8A;
+  --accent:#4C82D9;--accent-soft:#A8C4F0;--ok:#3FB950;--ok-soft:#8FE0A3;
+  --bad:#F85149;--bad-soft:#FFA9A4;--warn:#D29922;--warn-soft:#F0CE7E;
+  --r1:6px;--r2:10px;--r3:14px;--pill:999px;
+  --sans:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --t1:120ms;--t2:180ms;--t3:260ms;
+  --topbar:56px;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.55 var(--sans);min-height:100vh;-webkit-font-smoothing:antialiased}
+a{color:var(--accent-soft);text-decoration:none}
+a:hover{color:var(--ink)}
+:focus-visible{outline:2px solid var(--accent-soft);outline-offset:2px;border-radius:4px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
+
+/* shell */
+.topbar{position:sticky;top:0;z-index:30;height:var(--topbar);display:flex;align-items:center;gap:18px;
+  padding:0 clamp(16px,4vw,32px);background:rgba(0,0,0,.94);border-bottom:1px solid var(--line);
+  backdrop-filter:saturate(120%) blur(8px)}
+.brand{display:flex;align-items:center;gap:9px;color:var(--ink);font-weight:600;letter-spacing:-.01em;font-size:14px}
+.brand svg{flex:none;color:var(--accent)}
+.brand em{font-style:normal;color:var(--muted);font-weight:500}
+.nav{margin-left:auto;display:flex;align-items:center;gap:6px}
+.nav a{display:inline-flex;align-items:center;height:44px;padding:0 12px;border-radius:var(--r1);
+  color:var(--muted);font-size:13px;transition:color var(--t1) ease,background var(--t1) ease}
+.nav a:hover{color:var(--ink);background:var(--panel)}
+.status{display:inline-flex;align-items:center;gap:7px;font:11px/1 var(--mono);letter-spacing:.08em;
+  text-transform:uppercase;color:var(--muted);min-height:44px}
+.status i{width:6px;height:6px;border-radius:50%;background:var(--dim);display:block}
+.status[data-state="ok"] i{background:var(--ok)}
+.status[data-state="down"] i{background:var(--bad)}
+
+.shell{max-width:1280px;margin:0 auto;padding:0 clamp(16px,4vw,32px) 72px}
+
+/* hero */
+.hero{padding:44px 0 26px;max-width:820px}
+.eyebrow{margin:0 0 14px;font:11px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--dim)}
+.hero h1{margin:0;font-size:clamp(26px,4.2vw,40px);line-height:1.1;letter-spacing:-.02em;font-weight:600;max-width:18ch}
+.lede{margin:14px 0 0;color:var(--muted);font-size:15px;max-width:64ch}
+.kpis{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;margin:30px 0 0;
+  background:var(--line);border:1px solid var(--line);border-radius:var(--r3);overflow:hidden}
+.kpi{background:var(--panel);padding:18px 20px 16px;display:flex;flex-direction:column;gap:4px}
+.kpi dt{font:11px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.kpi dd{margin:0;font:600 34px/1 var(--mono);letter-spacing:-.02em}
+.kpi .src{font:10.5px/1.3 var(--mono);color:var(--dim);margin-top:6px}
+.signal{margin:14px 0 0;display:flex;flex-wrap:wrap;gap:6px 18px;color:var(--muted);font-size:12.5px}
+.signal b{color:var(--ink);font-family:var(--mono);font-weight:600}
+
+/* search */
+.searchbar{position:sticky;top:var(--topbar);z-index:20;padding:14px 0 10px;background:rgba(0,0,0,.94);
+  border-bottom:1px solid var(--line);backdrop-filter:saturate(120%) blur(8px)}
+.searchrow{display:flex;gap:12px;align-items:stretch;flex-wrap:wrap}
+.field{position:relative;flex:1;min-width:240px;display:flex;align-items:center}
+.field svg{position:absolute;left:14px;color:var(--muted);pointer-events:none}
+.field input{width:100%;height:46px;background:var(--panel-2);border:1px solid var(--line-2);color:var(--ink);
+  border-radius:var(--r2);padding:0 44px 0 42px;font:14px/1 var(--sans);transition:border-color var(--t2) ease,background var(--t2) ease}
+.field input::placeholder{color:var(--dim)}
+.field input:hover{border-color:#3A4455}
+.field input:focus{border-color:var(--accent);background:#151B24;outline:none}
+.field input:focus-visible{outline:2px solid var(--accent-soft);outline-offset:1px}
+.clear{position:absolute;right:6px;width:34px;height:34px;border:0;border-radius:var(--r1);background:transparent;
+  color:var(--muted);cursor:pointer;display:none;align-items:center;justify-content:center}
+.field[data-has="1"] .clear{display:flex}
+.clear:hover{background:var(--panel);color:var(--ink)}
+.modes{display:inline-flex;background:var(--panel-2);border:1px solid var(--line-2);border-radius:var(--r2);padding:3px;gap:2px}
+.mode{appearance:none;border:0;background:transparent;color:var(--muted);font:12px/1 var(--mono);letter-spacing:.06em;
+  text-transform:uppercase;padding:0 14px;min-height:38px;border-radius:var(--r1);cursor:pointer;transition:color var(--t1),background var(--t1)}
+.mode:hover{color:var(--ink)}
+.mode[aria-pressed="true"]{background:var(--panel);color:var(--ink);box-shadow:inset 0 0 0 1px var(--line-2)}
+.hint{margin:9px 0 0;font:11.5px/1.5 var(--mono);color:var(--dim);min-height:17px}
+
+/* panels */
+.workspace{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(300px,.85fr);gap:20px;margin-top:22px}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:var(--r3);overflow:hidden}
+.panel-head{display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:12px 16px;border-bottom:1px solid var(--line);
+  min-height:52px;background:var(--panel)}
+.panel-head h2{margin:0;font:11px/1 var(--mono);letter-spacing:.15em;text-transform:uppercase;color:var(--muted);font-weight:500}
+.count{margin-left:auto;font:11px/1 var(--mono);color:var(--dim);letter-spacing:.06em}
+.panel-body{padding:0}
+
+/* result rows */
+.rows{list-style:none;margin:0;padding:0;max-height:min(58vh,620px);overflow:auto;scrollbar-width:thin}
+.row{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:12px;min-height:52px;
+  padding:9px 16px;border-bottom:1px solid #1B212B;cursor:pointer;transition:background var(--t1) ease}
+.row:last-child{border-bottom:0}
+.row:hover{background:var(--panel-2)}
+.row:focus-visible{outline:2px solid var(--accent-soft);outline-offset:-2px}
+.row[aria-current="true"]{background:#182131;box-shadow:inset 2px 0 0 var(--accent)}
+.row .badge{flex:none;min-width:34px;text-align:center;padding:3px 6px;border-radius:var(--r1);
+  font:10.5px/1.4 var(--mono);letter-spacing:.06em;border:1px solid var(--line-2);color:var(--muted);background:#0E1218}
+.row .badge.p0{color:var(--bad-soft);border-color:rgba(248,81,73,.42);background:rgba(248,81,73,.09)}
+.row .badge.p1{color:var(--accent-soft);border-color:rgba(76,130,217,.45);background:rgba(76,130,217,.1)}
+.row .badge.p2{color:var(--muted)}
+.row .badge.score{color:var(--ok-soft);border-color:rgba(63,185,80,.35);background:rgba(63,185,80,.08)}
+.row-main{min-width:0}
+.row-title{display:block;font-weight:500;font-size:13.5px;line-height:1.35;color:var(--ink);
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.row-meta{display:block;margin-top:3px;font:11px/1.4 var(--mono);color:var(--dim);
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.row-meta .sep{color:#3A4455;margin:0 6px}
+.row .chev{color:#3A4455;transition:transform var(--t1) ease,color var(--t1) ease}
+.row:hover .chev{color:var(--muted);transform:translateX(2px)}
+
+/* detail */
+.detail-panel{position:sticky;top:calc(var(--topbar) + 88px);align-self:start;max-height:calc(100vh - 168px);display:flex;flex-direction:column}
+.detail{padding:18px 18px 22px;overflow:auto;scrollbar-width:thin}
+.detail .kicker{font:11px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--accent-soft)}
+.detail h3{margin:10px 0 0;font-size:19px;line-height:1.28;letter-spacing:-.01em;font-weight:600}
+.detail .meta{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.detail .law-p{margin:12px 0 0;color:#C9D1DC;font-size:13.5px;line-height:1.62}
+.detail .law-list{margin:10px 0 0;padding-left:18px;color:#C9D1DC;font-size:13.5px;line-height:1.6}
+.detail .law-list li{margin:4px 0}
+.detail code{font:12px/1.5 var(--mono);background:#0E1218;border:1px solid var(--line);border-radius:4px;padding:1px 5px}
+.detail .empty{color:var(--muted);font-size:13.5px;margin:0;max-width:38ch}
+.detail .empty strong{display:block;color:var(--ink);font-weight:500;margin-bottom:4px}
+.dl{margin:14px 0 0;display:grid;grid-template-columns:88px minmax(0,1fr);gap:8px 12px;font-size:12.5px}
+.dl dt{color:var(--dim);font:11px/1.8 var(--mono);letter-spacing:.04em;text-transform:uppercase}
+.dl dd{margin:0;font-family:var(--mono);font-size:12px;color:var(--ink);word-break:break-word}
+
+/* chips */
+.chip{appearance:none;display:inline-flex;align-items:center;gap:7px;min-height:44px;padding:0 12px;
+  background:transparent;border:1px solid var(--line-2);border-radius:var(--pill);color:var(--muted);
+  font:11.5px/1 var(--mono);letter-spacing:.05em;cursor:pointer;transition:all var(--t2) ease}
+.chip:hover{color:var(--ink);border-color:#3A4455}
+.chip[aria-pressed="true"]{color:var(--ink);border-color:var(--accent);background:rgba(76,130,217,.12)}
+.chip b{font-weight:500;color:var(--dim)}
+.chip[aria-pressed="true"] b{color:var(--accent-soft)}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-left:auto}
+
+/* graph */
+.graph-panel{margin-top:20px}
+.graph-grid{display:grid;grid-template-columns:minmax(0,1fr) 236px;gap:0}
+.graph-canvas{padding:8px 4px 8px 8px;min-width:0}
+.graph-canvas svg{display:block;width:100%;height:auto}
+.graph-canvas .g-edge{stroke:rgba(233,236,240,.07);stroke-width:1;fill:none;transition:stroke var(--t2) ease,stroke-opacity var(--t2) ease}
+.graph-canvas .g-edge.hot{stroke:var(--accent-soft);stroke-opacity:.85}
+.graph-canvas .g-node{cursor:crosshair;transition:opacity var(--t1) ease}
+.graph-canvas .g-node.dim{opacity:.25}
+.graph-canvas .g-label{fill:var(--dim);font:10px/1 var(--mono);letter-spacing:.06em}
+.graph-canvas .g-hub{fill:none;stroke:rgba(35,42,53,.9)}
+.legend{border-left:1px solid var(--line);padding:18px;display:flex;flex-direction:column;gap:12px;justify-content:center}
+.legend-item{display:flex;align-items:baseline;gap:10px;font-size:12.5px;color:var(--muted)}
+.legend-item i{width:9px;height:9px;border-radius:50%;flex:none;display:block}
+.legend-item span:last-child{margin-left:auto;font:11.5px/1 var(--mono);color:var(--ink)}
+.legend-note{margin:6px 0 0;font:11px/1.5 var(--mono);color:var(--dim)}
+
+/* gates table */
+.gates-panel{margin-top:20px}
+.table-wrap{max-height:min(62vh,640px);overflow:auto;scrollbar-width:thin}
+table{width:100%;border-collapse:collapse;table-layout:fixed}
+th,td{text-align:left;padding:11px 16px;border-bottom:1px solid #1B212B;vertical-align:middle}
+th{font:10.5px/1.4 var(--mono);letter-spacing:.13em;text-transform:uppercase;color:var(--dim);
+  font-weight:500;background:#0E1218;position:sticky;top:0;z-index:1;height:40px}
+tbody tr{height:48px;transition:background var(--t1) ease}
+tbody tr:hover{background:var(--panel-2);cursor:pointer}
+tbody tr[aria-current="true"]{background:#182131}
+td{font-size:13px;color:var(--ink);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+td .g-name{font-family:var(--mono);font-size:12.5px;color:var(--ink)}
+td .g-script{font-family:var(--mono);font-size:11.5px;color:var(--dim);word-break:break-all;white-space:normal;line-height:1.4}
+.sev{display:inline-flex;align-items:center;gap:6px;padding:3px 8px;border-radius:var(--pill);
+  font:10.5px/1.5 var(--mono);letter-spacing:.05em;border:1px solid var(--line-2);color:var(--muted)}
+.sev.blocking{color:var(--bad-soft);border-color:rgba(248,81,73,.4);background:rgba(248,81,73,.08)}
+.sev.warning{color:var(--warn-soft);border-color:rgba(210,153,34,.35);background:rgba(210,153,34,.08)}
+.profiles{display:flex;gap:4px;flex-wrap:nowrap;overflow:hidden}
+.pchip{font:10.5px/1.4 var(--mono);color:var(--muted);border:1px solid var(--line);border-radius:4px;padding:0 5px}
+.pchip.none{color:var(--dim);border-style:dashed}
+.col-gate{width:34%}.col-sev{width:18%}.col-prof{width:16%}.col-script{width:32%}
+
+/* states */
+.state-row{padding:22px 16px;color:var(--muted);font-size:13.5px;line-height:1.6}
+.state-row strong{color:var(--ink);font-weight:500}
+.state-row code{font:12px/1.5 var(--mono);background:#0E1218;border:1px solid var(--line);border-radius:4px;padding:1px 5px}
+.note{margin:12px 0 0;font:11px/1.5 var(--mono);color:var(--dim)}
+footer{margin-top:36px;padding-top:18px;border-top:1px solid var(--line);display:flex;gap:16px;flex-wrap:wrap;
+  font:11px/1.6 var(--mono);color:var(--dim)}
+
+@media (max-width:1040px){
+  .workspace{grid-template-columns:1fr}
+  .detail-panel{position:static;max-height:none}
+  .graph-grid{grid-template-columns:1fr}
+  .legend{border-left:0;border-top:1px solid var(--line);flex-direction:row;flex-wrap:wrap;gap:10px 20px;justify-content:flex-start}
+  .legend-note{width:100%}
+}
+@media (max-width:720px){
+  .hero{padding:30px 0 20px}
+  .kpis{grid-template-columns:1fr;}
+  .kpi{padding:14px 16px}
+  .kpi dd{font-size:28px}
+  .col-script,.g-script{display:none}
+  .col-gate{width:46%}.col-sev{width:26%}.col-prof{width:28%}
+  th,td{padding:10px 12px}
+  .searchrow{gap:10px}
+  .modes{width:100%}
+  .mode{flex:1;justify-content:center}
+  .nav{gap:2px}
+  .nav a{padding:0 8px;font-size:12px}
+  .rows{max-height:none}
+  .panel-head{padding:10px 12px}
+  .detail{padding:16px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;
+    transition-duration:.01ms!important;scroll-behavior:auto!important}
+}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="/">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M12 3l7.5 4v5.4c0 4.2-3 7-7.5 8.6-4.5-1.6-7.5-4.4-7.5-8.6V7L12 3z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+      <path d="M8.6 12.1l2.4 2.4 4.4-4.6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    AIGON <em>Governance</em>
+  </a>
+  <nav class="nav" aria-label="Sections">
+    <a href="/proof">Proof trail</a>
+  </nav>
+  <span class="status" id="health" data-state="idle" role="status"><i></i>API · …</span>
+</header>
+
+<main class="shell">
+  <section class="hero" aria-labelledby="pageTitle">
+    <p class="eyebrow">MCP server · read-only explorer</p>
+    <h1 id="pageTitle">Every agent action traces to a law, a gate, and a verifiable record.</h1>
+    <p class="lede">One Rust server exposes the constitution, the executable gate catalogue and the
+      capabilities they protect — the same data an MCP client sees, without credentials.</p>
+    <dl class="kpis" aria-label="Corpus summary">
+      <div class="kpi">
+        <dt>Laws</dt>
+        <dd id="sLaws">—</dd>
+        <dd class="src">constitution · /api/stats</dd>
+      </div>
+      <div class="kpi">
+        <dt>Gates</dt>
+        <dd id="sGates">—</dd>
+        <dd class="src">executable selftests · /api/stats</dd>
+      </div>
+      <div class="kpi">
+        <dt>Capabilities</dt>
+        <dd id="sCaps">—</dd>
+        <dd class="src">registered backends · /api/capabilities</dd>
+      </div>
+    </dl>
+    <p class="signal">
+      <span><b id="sBlocking">—</b> blocking gates</span>
+      <span><b id="sProjects">—</b> measured projects</span>
+      <span><b id="sGraph">—</b> relations in the graph</span>
+    </p>
+  </section>
+
+  <div class="searchbar">
+    <div class="searchrow" role="search">
+      <div class="field" id="field">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <circle cx="11" cy="11" r="6.5" stroke="currentColor" stroke-width="1.7"/>
+          <path d="M16 16l4.2 4.2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+        </svg>
+        <label class="sr-only" for="q">Search laws</label>
+        <input id="q" type="search" placeholder="Search laws — LAW-Ω1, memory, egress, replay…"
+               autocomplete="off" spellcheck="false" aria-describedby="searchHint">
+        <button class="clear" id="clear" type="button" aria-label="Clear search">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+      <div class="modes" role="group" aria-label="Search mode">
+        <button class="mode" type="button" data-mode="lexical" aria-pressed="true">Lexical</button>
+        <button class="mode" type="button" data-mode="hybrid" aria-pressed="false">Hybrid</button>
+      </div>
+    </div>
+    <p class="hint" id="searchHint" aria-live="polite">Lexical scores exact terms. Hybrid blends terms with embeddings — the first run loads the model, so give it a moment.</p>
+  </div>
+
+  <div class="workspace">
+    <section class="panel results-panel" aria-labelledby="lawsTitle">
+      <div class="panel-head">
+        <h2 id="lawsTitle">Constitution</h2>
+        <span class="count" id="resultCount">—</span>
+      </div>
+      <div class="panel-body">
+        <ul class="rows" id="laws" aria-label="Laws"></ul>
+      </div>
+    </section>
+
+    <aside class="panel detail-panel" aria-labelledby="detailTitle">
+      <div class="panel-head">
+        <h2 id="detailTitle">Definition</h2>
+        <span class="count" id="detailKind"></span>
+      </div>
+      <div class="detail" id="detail" aria-live="polite">
+        <p class="empty"><strong>Nothing selected.</strong>
+          Pick a law on the left to read its full text, weight and layer — or open a gate row below to see its script, severity and profiles.</p>
+      </div>
+    </aside>
+  </div>
+
+  <section class="panel graph-panel" aria-labelledby="graphTitle">
+    <div class="panel-head">
+      <h2 id="graphTitle">Relation graph</h2>
+      <span class="count" id="graphCount">—</span>
+    </div>
+    <div class="graph-grid">
+      <div class="graph-canvas">
+        <svg id="graphSvg" viewBox="0 0 820 470" role="img" aria-labelledby="graphDesc"></svg>
+        <p class="sr-only" id="graphDesc">Radial layout of the governance graph: laws, gates, capability backends and skill categories.</p>
+      </div>
+      <div class="legend" id="graphLegend" aria-label="Graph legend">
+        <p class="legend-note">Hover a node to trace its edges.</p>
+      </div>
+    </div>
+    <p class="note" id="graphNote" style="padding:0 16px 14px">Nodes come from <code>/api/graph</code>; edges are drawn from the same payload.</p>
+  </section>
+
+  <section class="panel gates-panel" aria-labelledby="gatesTitle">
+    <div class="panel-head">
+      <h2 id="gatesTitle">Gates</h2>
+      <div class="chips" id="gateFilters" role="group" aria-label="Filter gates by category">
+        <button class="chip" type="button" data-sev="all" aria-pressed="true">All <b id="cntAll">—</b></button>
+        <button class="chip" type="button" data-sev="BLOCKING" aria-pressed="false">Blocking <b id="cntBlocking">—</b></button>
+        <button class="chip" type="button" data-sev="WARNING" aria-pressed="false">Warning <b id="cntWarning">—</b></button>
+      </div>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <caption class="sr-only">Executable gates with category, profiles and script path</caption>
+        <thead>
+          <tr>
+            <th scope="col" class="col-gate">Gate</th>
+            <th scope="col" class="col-sev">Category</th>
+            <th scope="col" class="col-prof">Profiles</th>
+            <th scope="col" class="col-script">Script</th>
+          </tr>
+        </thead>
+        <tbody id="gates"></tbody>
+      </table>
+    </div>
+    <p class="state-row" id="gatesEmpty" hidden></p>
+  </section>
+
+  <footer>
+    <span>AIGON governance MCP</span>
+    <span>laws · gates · proof</span>
+    <span><a href="/proof">Open the proof trail →</a></span>
+  </footer>
+</main>
+<script>
+const el = (id) => document.getElementById(id);
+const fmt = (n) => (n === null || n === undefined || Number.isNaN(Number(n))) ? '—' : Number(n).toLocaleString('en-US');
+
+const state = {
+  allLaws: [], lawMap: new Map(), gates: [], mode: 'lexical',
+  query: '', severity: 'all', graph: null, lawEl: new Map(), gateEl: new Map()
+};
+
+async function json(url, opts) {
+  const r = await fetch(url, opts);
+  if (!r.ok) throw new Error(`HTTP ${r.status}`);
+  return r.json();
+}
+
+function setStatus(kind, text) {
+  const node = el('health');
+  node.dataset.state = kind;
+  node.innerHTML = '<i></i>';
+  node.append(text);
+}
+
+/* ---------- lawful text: minimal markdown, escaped ---------- */
+function richText(text) {
+  const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  const inline = (s) => esc(s)
+    .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+    .replace(/`([^`]+)`/g, '<code>$1</code>');
+  const frag = document.createDocumentFragment();
+  for (const block of String(text || '').split(/\n{2,}/)) {
+    const lines = block.split('\n').map((l) => l.trim()).filter(Boolean);
+    if (!lines.length) continue;
+    const bullets = lines.every((l) => /^[-*]\s+/.test(l));
+    const numbers = lines.every((l) => /^\d+[.)]\s+/.test(l));
+    if (bullets || numbers) {
+      const list = document.createElement(bullets ? 'ul' : 'ol');
+      list.className = 'law-list';
+      for (const line of lines) {
+        const li = document.createElement('li');
+        li.innerHTML = inline(line.replace(/^([-*]|\d+[.)])\s+/, ''));
+        list.append(li);
+      }
+      frag.append(list);
+    } else {
+      const p = document.createElement('p');
+      p.className = 'law-p';
+      p.innerHTML = inline(lines.join(' '));
+      frag.append(p);
+    }
+  }
+  return frag;
+}
+
+/* ---------- laws ---------- */
+function lawMeta(law, mode) {
+  const bits = [];
+  if (law.layer) bits.push(`layer ${law.layer}`);
+  if (mode === 'hybrid' && typeof law.score === 'number') {
+    bits.push(`score ${law.score.toFixed(3)}`);
+    bits.push(`lexical ${Number(law.lexical || 0).toFixed(3)}`);
+    bits.push(`vector ${Number(law.vector || 0).toFixed(3)}`);
+  }
+  return bits.join(' · ');
+}
+
+function renderLaws(items, mode) {
+  const list = el('laws');
+  state.lawEl.clear();
+  list.replaceChildren();
+  const q = state.query;
+  el('resultCount').textContent = q ? `${items.length} match${items.length === 1 ? '' : 'es'}` : `${items.length} laws`;
+
+  if (!items.length) {
+    const li = document.createElement('li');
+    li.className = 'state-row';
+    li.innerHTML = q
+      ? `No law matches <strong>${q.replace(/[&<>]/g, '')}</strong>. Try a shorter term, a law id such as <code>LAW-Ω1</code>, or switch to hybrid mode.`
+      : 'The constitution is empty — check that the server can read the canon.';
+    list.append(li);
+    return;
+  }
+
+  for (const law of items) {
+    const known = state.lawMap.get(law.id) || law;
+    const weight = known.weight || law.weight;
+    const li = document.createElement('li');
+    li.className = 'row';
+    li.tabIndex = 0;
+    li.setAttribute('role', 'button');
+    li.dataset.id = law.id;
+
+    const badge = document.createElement('span');
+    badge.className = 'badge' + (weight ? ' ' + String(weight).toLowerCase() : (mode === 'hybrid' ? ' score' : ''));
+    badge.textContent = weight || (mode === 'hybrid' && typeof law.score === 'number' ? law.score.toFixed(2) : 'LAW');
+
+    const main = document.createElement('span');
+    main.className = 'row-main';
+    const title = document.createElement('span');
+    title.className = 'row-title';
+    title.textContent = law.title || '(untitled)';
+    const meta = document.createElement('span');
+    meta.className = 'row-meta';
+    meta.textContent = law.id + (lawMeta(known, mode) ? ' · ' + lawMeta(known, mode) : '');
+    main.append(title, meta);
+
+    const chev = document.createElement('span');
+    chev.className = 'chev';
+    chev.setAttribute('aria-hidden', 'true');
+    chev.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+
+    li.append(badge, main, chev);
+    li.addEventListener('click', () => show(law, 'LAW'));
+    li.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); show(law, 'LAW'); }
+    });
+    list.append(li);
+    state.lawEl.set(law.id, li);
+  }
+  markSelected('law', null);
+}
+
+function markSelected(kind, id) {
+  const rows = kind === 'law' ? state.lawEl : state.gateEl;
+  for (const [key, node] of rows) node.setAttribute('aria-current', key === id ? 'true' : 'false');
+}
+
+function renderLoading() {
+  const list = el('laws');
+  state.lawEl.clear();
+  list.replaceChildren();
+  const li = document.createElement('li');
+  li.className = 'state-row';
+  li.textContent = state.mode === 'hybrid'
+    ? 'Evaluating hybrid search — the first call may load the embedding model (this can take up to a minute).'
+    : 'Searching…';
+  list.append(li);
+  el('resultCount').textContent = 'searching';
+}
+
+/* ---------- detail ---------- */
+async function show(item, kind) {
+  const detail = el('detail');
+  el('detailKind').textContent = kind;
+  if (kind === 'LAW') {
+    markSelected('law', item.id);
+    let law = state.lawMap.get(item.id) || item;
+    if (!law.text) {
+      detail.replaceChildren(Object.assign(document.createElement('p'), { className: 'empty', textContent: 'Loading definition…' }));
+      try { law = await json('/api/laws/' + encodeURIComponent(item.id)); } catch (err) {
+        detail.replaceChildren(Object.assign(document.createElement('p'), { className: 'empty', textContent: 'Could not load this law: ' + err.message }));
+        return;
+      }
+    }
+    const kicker = document.createElement('div');
+    kicker.className = 'kicker';
+    kicker.textContent = 'Law · ' + law.id;
+    const h3 = document.createElement('h3');
+    h3.textContent = law.title || '(untitled)';
+    const meta = document.createElement('div');
+    meta.className = 'meta';
+    for (const [label, value] of [['weight', law.weight], ['layer', law.layer]]) {
+      if (!value) continue;
+      const chip = document.createElement('span');
+      chip.className = 'sev';
+      chip.textContent = `${label} ${value}`;
+      meta.append(chip);
+    }
+    detail.replaceChildren(kicker, h3, meta, richText(law.text));
+    detail.scrollTop = 0;
+    return;
+  }
+
+  markSelected('gate', item.id);
+  markSelected('law', null);
+  const kicker = document.createElement('div');
+  kicker.className = 'kicker';
+  kicker.textContent = 'Gate · ' + item.id;
+  const h3 = document.createElement('h3');
+  h3.textContent = item.module || item.id;
+  const meta = document.createElement('div');
+  meta.className = 'meta';
+  const sev = document.createElement('span');
+  sev.className = 'sev ' + (item.severity === 'BLOCKING' ? 'blocking' : 'warning');
+  sev.textContent = item.severity;
+  meta.append(sev);
+  for (const profile of item.profiles || []) {
+    const chip = document.createElement('span');
+    chip.className = 'pchip';
+    chip.textContent = profile;
+    meta.append(chip);
+  }
+  const dl = document.createElement('dl');
+  dl.className = 'dl';
+  const rows = [['id', item.id], ['script', item.script], ['severity', item.severity],
+    ['profiles', (item.profiles || []).join(', ') || 'none']];
+  for (const [key, value] of rows) {
+    const dt = document.createElement('dt');
+    dt.textContent = key;
+    const dd = document.createElement('dd');
+    dd.textContent = value;
+    dl.append(dt, dd);
+  }
+  detail.replaceChildren(kicker, h3, meta, dl);
+  detail.scrollTop = 0;
+}
+
+/* ---------- gates ---------- */
+function renderGates() {
+  const body = el('gates');
+  state.gateEl.clear();
+  body.replaceChildren();
+  const items = state.gates.filter((g) => state.severity === 'all' || g.severity === state.severity);
+  const empty = el('gatesEmpty');
+  empty.hidden = items.length > 0;
+  if (!items.length) {
+    empty.textContent = 'No gate in this category. Switch the filter to All.';
+    return;
+  }
+  const frag = document.createDocumentFragment();
+  for (const gate of items) {
+    const tr = document.createElement('tr');
+    tr.dataset.id = gate.id;
+
+    const td0 = document.createElement('td');
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'g-name';
+    button.style.cssText = 'appearance:none;border:0;background:none;color:inherit;font:inherit;padding:0;cursor:pointer;text-align:left;min-height:44px';
+    button.textContent = gate.id;
+    button.addEventListener('click', (e) => { e.stopPropagation(); show(gate, 'GATE'); });
+    td0.append(button);
+
+    const td1 = document.createElement('td');
+    const sev = document.createElement('span');
+    sev.className = 'sev ' + (gate.severity === 'BLOCKING' ? 'blocking' : 'warning');
+    sev.textContent = gate.severity;
+    td1.append(sev);
+
+    const td2 = document.createElement('td');
+    const box = document.createElement('div');
+    box.className = 'profiles';
+    if ((gate.profiles || []).length) {
+      for (const p of gate.profiles) {
+        const chip = document.createElement('span');
+        chip.className = 'pchip';
+        chip.textContent = p;
+        box.append(chip);
+      }
+    } else {
+      const chip = document.createElement('span');
+      chip.className = 'pchip none';
+      chip.textContent = 'none';
+      box.append(chip);
+    }
+    td2.append(box);
+
+    const td3 = document.createElement('td');
+    td3.className = 'col-script';
+    const script = document.createElement('span');
+    script.className = 'g-script';
+    script.textContent = gate.script;
+    td3.append(script);
+
+    tr.append(td0, td1, td2, td3);
+    tr.addEventListener('click', () => show(gate, 'GATE'));
+    frag.append(tr);
+    state.gateEl.set(gate.id, tr);
+  }
+  body.append(frag);
+}
+
+function updateGateCounts() {
+  const total = state.gates.length;
+  const blocking = state.gates.filter((g) => g.severity === 'BLOCKING').length;
+  el('cntAll').textContent = fmt(total);
+  el('cntBlocking').textContent = fmt(blocking);
+  el('cntWarning').textContent = fmt(total - blocking);
+}
+
+el('gateFilters').addEventListener('click', (e) => {
+  const chip = e.target.closest('.chip');
+  if (!chip) return;
+  state.severity = chip.dataset.sev;
+  for (const node of el('gateFilters').querySelectorAll('.chip')) {
+    node.setAttribute('aria-pressed', node === chip ? 'true' : 'false');
+  }
+  renderGates();
+});
+
+/* ---------- graph ---------- */
+const GRAPH_KINDS = [
+  { kind: 'category', radius: 0.22, r: 5, color: '#8A94A6', label: 'Categories' },
+  { kind: 'backend', radius: 0.44, r: 3.6, color: '#3FB950', label: 'Backends' },
+  { kind: 'law', radius: 0.70, r: 2.6, color: '#E9ECF0', label: 'Laws' },
+  { kind: 'gate', radius: 0.97, r: 2.2, color: '#4C82D9', label: 'Gates' }
+];
+
+function drawGraph(graph) {
+  const svg = el('graphSvg');
+  const NS = 'http://www.w3.org/2000/svg';
+  const cx = 410, cy = 235, maxR = 205;
+  svg.replaceChildren();
+
+  const pos = new Map();
+  const ring = document.createElementNS(NS, 'g');
+  for (const spec of GRAPH_KINDS) {
+    const nodes = graph.nodes.filter((n) => n.kind === spec.kind);
+    nodes.forEach((node, i) => {
+      const angle = (i / Math.max(nodes.length, 1)) * Math.PI * 2 - Math.PI / 2;
+      pos.set(node.id, {
+        x: cx + Math.cos(angle) * maxR * spec.radius,
+        y: cy + Math.sin(angle) * maxR * spec.radius,
+        angle
+      });
+    });
+    const circle = document.createElementNS(NS, 'circle');
+    circle.setAttribute('cx', cx);
+    circle.setAttribute('cy', cy);
+    circle.setAttribute('r', String(maxR * spec.radius));
+    circle.setAttribute('class', 'g-hub');
+    ring.append(circle);
+  }
+  svg.append(ring);
+
+  const edgeLayer = document.createElementNS(NS, 'g');
+  const edges = graph.edges.filter((e) => pos.has(e.source) && pos.has(e.target));
+  for (const edge of edges) {
+    const a = pos.get(edge.source), b = pos.get(edge.target);
+    const path = document.createElementNS(NS, 'path');
+    path.setAttribute('d', `M${a.x.toFixed(1)} ${a.y.toFixed(1)} Q${cx} ${cy} ${b.x.toFixed(1)} ${b.y.toFixed(1)}`);
+    path.setAttribute('class', 'g-edge');
+    path.dataset.source = edge.source;
+    path.dataset.target = edge.target;
+    edgeLayer.append(path);
+  }
+  svg.append(edgeLayer);
+
+  const nodeLayer = document.createElementNS(NS, 'g');
+  for (const spec of GRAPH_KINDS) {
+    for (const node of graph.nodes.filter((n) => n.kind === spec.kind)) {
+      const p = pos.get(node.id);
+      const dot = document.createElementNS(NS, 'circle');
+      dot.setAttribute('cx', p.x.toFixed(1));
+      dot.setAttribute('cy', p.y.toFixed(1));
+      dot.setAttribute('r', String(spec.r));
+      dot.setAttribute('fill', spec.color);
+      dot.setAttribute('class', 'g-node');
+      dot.dataset.id = node.id;
+      const title = document.createElementNS(NS, 'title');
+      title.textContent = `${node.kind}:${node.label}${node.meta ? ' · ' + node.meta : ''}`;
+      dot.append(title);
+      nodeLayer.append(dot);
+      if (node.kind === 'category') {
+        const label = document.createElementNS(NS, 'text');
+        const outward = p.x >= cx ? 1 : -1;
+        label.setAttribute('x', (p.x + outward * 12).toFixed(1));
+        label.setAttribute('y', (p.y + 4).toFixed(1));
+        label.setAttribute('text-anchor', outward === 1 ? 'start' : 'end');
+        label.setAttribute('class', 'g-label');
+        label.textContent = node.label;
+        nodeLayer.append(label);
+      }
+    }
+  }
+  svg.append(nodeLayer);
+
+  const legend = el('graphLegend');
+  legend.replaceChildren();
+  for (const spec of GRAPH_KINDS) {
+    const count = graph.nodes.filter((n) => n.kind === spec.kind).length;
+    const item = document.createElement('p');
+    item.className = 'legend-item';
+    const swatch = document.createElement('i');
+    swatch.style.background = spec.color;
+    const name = document.createElement('span');
+    name.textContent = spec.label;
+    const value = document.createElement('span');
+    value.textContent = fmt(count);
+    item.append(swatch, name, value);
+    legend.append(item);
+  }
+  const note = document.createElement('p');
+  note.className = 'legend-note';
+  note.textContent = `${fmt(edges.length)} of ${fmt(graph.edges.length)} edges rendered`;
+  legend.append(note);
+
+  el('graphCount').textContent = `${fmt(graph.nodes.length)} nodes · ${fmt(graph.edges.length)} edges`;
+  el('sGraph').textContent = fmt(graph.edges.length);
+
+  let active = null;
+  const clear = () => {
+    for (const path of edgeLayer.children) path.classList.remove('hot');
+    for (const dot of nodeLayer.querySelectorAll('.g-node')) dot.classList.remove('dim');
+    active = null;
+  };
+  svg.addEventListener('pointerover', (e) => {
+    const dot = e.target.closest('.g-node');
+    if (!dot || dot === active) return;
+    active = dot;
+    for (const path of edgeLayer.children) {
+      const hit = path.dataset.source === dot.dataset.id || path.dataset.target === dot.dataset.id;
+      path.classList.toggle('hot', hit);
+    }
+    for (const other of nodeLayer.querySelectorAll('.g-node')) {
+      other.classList.toggle('dim', other !== dot);
+    }
+  });
+  svg.addEventListener('pointerleave', clear);
+}
+
+/* ---------- boot ---------- */
+async function loadCapabilities() {
+  try {
+    const caps = await json('/api/capabilities?limit=500');
+    el('sCaps').textContent = fmt(caps.length);
+  } catch (err) {
+    el('sCaps').textContent = '—';
+  }
+}
+
+async function loadGraph() {
+  try {
+    const graph = await json('/api/graph');
+    state.graph = graph;
+    drawGraph(graph);
+  } catch (err) {
+    el('graphCount').textContent = 'unavailable';
+    el('graphNote').textContent = 'Graph unavailable: ' + err.message;
+  }
+}
+
+async function load() {
+  try {
+    const stats = await json('/api/stats');
+    const perf = await json('/api/perfection');
+    el('sLaws').textContent = fmt(stats.laws);
+    el('sGates').textContent = fmt(stats.gates);
+    el('sBlocking').textContent = fmt(stats.gate_severities.BLOCKING || 0);
+    el('sProjects').textContent = perf.available ? perf.projects.length : 0;
+    setStatus('ok', 'API · OK');
+
+    const laws = await json('/api/laws?limit=200');
+    state.allLaws = laws;
+    state.lawMap = new Map(laws.map((law) => [law.id, law]));
+    renderLaws(laws, 'lexical');
+
+    state.gates = await json('/api/gates');
+    updateGateCounts();
+    renderGates();
+
+    loadCapabilities();
+    loadGraph();
+  } catch (err) {
+    setStatus('down', 'API · unreachable');
+    const detail = el('detail');
+    detail.replaceChildren(Object.assign(document.createElement('p'), {
+      className: 'empty', textContent: `Failed to load: ${err.message}`
+    }));
+    el('resultCount').textContent = 'offline';
+  }
+}
+
+async function runSearch(q) {
+  state.query = q;
+  if (!q) { renderLaws(state.allLaws, 'lexical'); return; }
+  renderLoading();
+  try {
+    if (state.mode === 'hybrid') {
+      const result = await json(`/api/laws/hybrid?q=${encodeURIComponent(q)}&limit=60`);
+      renderLaws(result.hits || [], result.mode || 'hybrid');
+      el('searchHint').textContent = result.mode === 'lexical'
+        ? 'Embeddings unavailable — this answer came from lexical scoring only.'
+        : 'Hybrid result: 0.5 × lexical + 0.5 × embedding similarity.';
+    } else {
+      const laws = await json(`/api/laws?q=${encodeURIComponent(q)}&limit=60`);
+      renderLaws(laws, 'lexical');
+      el('searchHint').textContent = `Lexical result for “${q}”. Switch to Hybrid to rank by meaning as well.`;
+    }
+  } catch (err) {
+    el('laws').replaceChildren(Object.assign(document.createElement('li'), {
+      className: 'state-row', textContent: 'Search failed: ' + err.message
+    }));
+    el('resultCount').textContent = 'error';
+  }
+}
+
+let timer = null;
+el('q').addEventListener('input', () => {
+  const value = el('q').value.trim();
+  el('field').dataset.has = value ? '1' : '0';
+  clearTimeout(timer);
+  timer = setTimeout(() => runSearch(value), 180);
+});
+
+el('clear').addEventListener('click', () => {
+  el('q').value = '';
+  el('field').dataset.has = '0';
+  el('q').focus();
+  runSearch('');
+});
+
+for (const button of document.querySelectorAll('.mode')) {
+  button.addEventListener('click', () => {
+    state.mode = button.dataset.mode;
+    for (const node of document.querySelectorAll('.mode')) {
+      node.setAttribute('aria-pressed', node === button ? 'true' : 'false');
+    }
+    runSearch(state.query);
+  });
+}
+
+load();
+</script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+# Include the built-in provider/generic credential rules.
+[extend]
+useDefault = true
+
+# This precise fake token is emitted by the logging-redaction regression gate.
+[allowlist]
+description = "Deliberate OBS-02 redaction canary; never a real credential"
+regexes = ['''sk-canary-obs02-[0-9a-f]+''']

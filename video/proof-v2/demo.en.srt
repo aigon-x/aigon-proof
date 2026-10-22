@@ -1,0 +1,107 @@
+1
+00:00:01,102 --> 00:00:09,542
+An assistant saying done is not proof. AIGON PROOF gives each action an exact review,
+
+2
+00:00:09,542 --> 00:00:14,616
+an authenticated approval, and a receipt for the work actually performed.
+
+3
+00:00:15,989 --> 00:00:21,817
+First, a client contract is addressed to an external partner. The server knows the
+
+4
+00:00:21,817 --> 00:00:27,970
+document contains personal data. It blocks the action. Even an operator cannot
+
+5
+00:00:27,970 --> 00:00:29,921
+approve this policy violation.
+
+6
+00:00:31,882 --> 00:00:38,000
+We explicitly choose the anonymised summary instead. The document and recipient are
+
+7
+00:00:38,000 --> 00:00:43,922
+shown before approval. Nothing in this command invents consent or silently changes
+
+8
+00:00:43,922 --> 00:00:45,396
+the trust boundary.
+
+9
+00:00:46,519 --> 00:00:52,219
+The operator unlocks approval with a private credential. That credential is never
+
+10
+00:00:52,219 --> 00:00:55,435
+part of the agent's command or passport.
+
+11
+00:00:56,629 --> 00:01:03,014
+Approve once records who approved the exact action fingerprint. The server now signs
+
+12
+00:01:03,014 --> 00:01:08,610
+a short-lived passport. This is permission, not a delivery claim.
+
+13
+00:01:10,004 --> 00:01:15,507
+Changing the recipient invalidates the authorization. The original approved action
+
+14
+00:01:15,507 --> 00:01:17,574
+remains available to execute.
+
+15
+00:01:19,041 --> 00:01:24,277
+Execute performs the work. The server writes actual document bytes into the
+
+16
+00:01:24,277 --> 00:01:32,033
+recipient's local inbox, reads them back, verifies their SHA-256 hash, and persists
+
+17
+00:01:32,033 --> 00:01:32,927
+this receipt.
+
+18
+00:01:34,681 --> 00:01:41,101
+A second execution is rejected. One human approval cannot be reused through another
+
+19
+00:01:41,101 --> 00:01:42,436
+passport either.
+
+20
+00:01:45,028 --> 00:01:50,473
+After restarting the server, the receipt history is still here. Approval and replay
+
+21
+00:01:50,473 --> 00:01:54,362
+records are durable, not just browser state.
+
+22
+00:01:55,610 --> 00:02:01,427
+The operator can also deny or revoke an action. A denial does not produce a usable
+
+23
+00:02:01,427 --> 00:02:02,344
+passport.
+
+24
+00:02:05,534 --> 00:02:11,803
+Six negative policy probes check forged approval, sensitive egress and unknown
+
+25
+00:02:11,803 --> 00:02:18,026
+parameters. The demonstration also exercises real recipient tampering and replay.
+
+26
+00:02:20,874 --> 00:02:30,789
+The same Rust service exposes the governance explorer and MCP protocol 2025-11-25.
+
+27
+00:02:30,789 --> 00:02:35,410
+AIGON PROOF: approve the action, verify the outcome.

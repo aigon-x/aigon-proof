@@ -1,0 +1,119 @@
+{
+ "generated_at": "2026-10-20T19:33:27Z",
+ "projects": [
+  {
+   "event": "qloo-agentic-hackathon",
+   "score": 89,
+   "categories": {
+    "K1_tests": 100,
+    "K2_artifacts": 100,
+    "K3_honesty": 100,
+    "K4_sponsor": 100,
+    "K5_repo": 100,
+    "K6_margin": 100,
+    "K7_ui": 100,
+    "K8_security": 100
+   },
+   "gaps": [
+    "STAGE_ONE_UNPROVEN"
+   ],
+   "tests": 23,
+   "tests_pass": true,
+   "markers": {
+    "hackathon.api.qloo.com": true,
+    "/v2/insights": true
+   },
+   "days_left": 10
+  },
+  {
+   "event": "life-after-code",
+   "score": 100,
+   "categories": {
+    "K1_tests": 100,
+    "K2_artifacts": 100,
+    "K3_honesty": 100,
+    "K4_sponsor": 100,
+    "K5_repo": 100,
+    "K6_margin": 100,
+    "K7_ui": 100,
+    "K8_security": 100
+   },
+   "gaps": [],
+   "tests": 74,
+   "tests_pass": true,
+   "markers": {
+    ".gitlab/duo": true,
+    "GITLAB_DUO_TOKEN": true,
+    "apk add git": true
+   },
+   "days_left": 7
+  },
+  {
+   "event": "opencv-ai-competition-2026--powered-by-aws",
+   "score": 100,
+   "categories": {
+    "K1_tests": 100,
+    "K2_artifacts": 100,
+    "K3_honesty": 100,
+    "K4_sponsor": 100,
+    "K5_repo": 100,
+    "K6_margin": 100,
+    "K7_ui": 100,
+    "K8_security": 100
+   },
+   "gaps": [],
+   "tests": 65,
+   "tests_pass": true,
+   "markers": {
+    "opencv-python-headless==5": true,
+    "template.yaml": true,
+    "lambda_handler": true
+   },
+   "days_left": 7
+  },
+  {
+   "event": "nebius-x-nvidia-global-ai-hackathon",
+   "score": 100,
+   "categories": {
+    "K1_tests": 100,
+    "K2_artifacts": 100,
+    "K3_honesty": 100,
+    "K4_sponsor": 100,
+    "K5_repo": 100,
+    "K6_margin": 100,
+    "K7_ui": 100,
+    "K8_security": 100
+   },
+   "gaps": [],
+   "tests": 58,
+   "tests_pass": true,
+   "markers": {
+    "Nemotron": true,
+    "live_smoke": true
+   },
+   "days_left": 10
+  },
+  {
+   "event": "paypal-ai-hackathon",
+   "score": 100,
+   "categories": {
+    "K1_tests": 100,
+    "K2_artifacts": 100,
+    "K3_honesty": 100,
+    "K4_sponsor": 100,
+    "K5_repo": 100,
+    "K6_margin": 100,
+    "K7_ui": 100,
+    "K8_security": 100
+   },
+   "gaps": [],
+   "tests": 49,
+   "tests_pass": true,
+   "markers": {
+    "verify_webhook_signature": true,
+    "PAYPAL_AI_API_KEY": true
+   },
+   "days_left": 23
+  }
+ ]
+}

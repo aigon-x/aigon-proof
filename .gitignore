@@ -1,0 +1,19 @@
+/target
+*.log
+.env
+
+__pycache__/
+.pytest_cache/
+*.pyc
+video/capture/
+video/clips/
+video/frames/
+video/tmp/
+video/audio/
+*.webm
+*.wav
+
+# Private credentials, approvals and delivered documents
+.aigon-proof/
+.agent-artifacts/
+artifacts/evidence/

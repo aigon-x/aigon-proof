@@ -1,0 +1,26 @@
+[
+ {
+  "name": "AGENTS.content.generated.md",
+  "path": "AGENTS.content.generated.md",
+  "sha256": "b42fa48f5e0f91d2bd1d3d794f77d437381c67426d83a78cb80b8a7979e35081",
+  "description": "@/opt/PROD/config/agent-identity.md"
+ },
+ {
+  "name": "PERSONA-MOWY.md",
+  "path": "PERSONA-MOWY.md",
+  "sha256": "a7b210e47c109ededd5613b372503ffc5fbc689f4d3d584bfc41f57366c04afa",
+  "description": "# PERSONA MOWY — kanał głosowy AIGON-X (dla Suwerena)"
+ },
+ {
+  "name": "README.md",
+  "path": "README.md",
+  "sha256": "f92dbf441d9e145bbf1215d26bc1d2b7eca2ada87f9e2e1d4e7ca556e53890c9",
+  "description": "# config"
+ },
+ {
+  "name": "agent-identity.md",
+  "path": "agent-identity.md",
+  "sha256": "2d87844c11c78c3a183960f70533ec5b184f60f2a838c5bd8fe69adcd8d41e6b",
+  "description": "# AIGON-X — UNIFIED AGENT IDENTITY (KANON 2026-09-09)"
+ }
+]

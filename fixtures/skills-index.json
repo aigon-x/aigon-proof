@@ -1,0 +1,373 @@
+[
+ {
+  "name": "agent-artifact-hygiene",
+  "category": "agents",
+  "path": "agents/agent-artifact-hygiene/SKILL.md",
+  "sha256": "80f043b31a6d9c22b90950774217b59af366fd355877512577b1875237fad026",
+  "description": "Użyj, gdy agent (lub subagent) tworzy artefakty pracy — surowe źródła, ekstrakty API, logi zwiadowców, raporty — i trzeba zdecydować, GDZIE one mają żyć, żeby przetrwały. Obejmuje rozdział /tmp vs repo, bramkę „artefakt ma dom w repo\", diagnozę dlaczego /tmp miesza dowód z odpadem, reguły sprzątania cudzych artefaktów oraz przypadek utraty dowodu przez zwiadowcę swarmu. Rozkaz źródłowy — nie masz sprzątać, masz pomyśleć co zrobić, żeby nie było bałaganu. Użyj gdy zadanie dotyczy — Użyj, gdy agent (lub subagent) tworzy artefakty pracy."
+ },
+ {
+  "name": "agent-knowledge-transport",
+  "category": "agents",
+  "path": "agents/agent-knowledge-transport/SKILL.md",
+  "sha256": "2242eeb5a69de7da4ad06deb4f6aece6e05050da64876a9ccf1e8163cdb1b9eb",
+  "description": "Użyj, gdy fakt operacyjny/lekcja ma przetrwać między sesjami i agentami — gdzie go zapisać (pamięć lokalna vs repozytorium vs kanoniczna warstwa wiedzy AIGON Runtime), dlaczego pamięć lokalna się blokuje i jak ją odciążyć, oraz jak zapisać wiedzę, gdy narzędzie odmawia. Zawiera zmierzoną kaskadę nośników i kolejność awaryjną. Użyj gdy zadanie dotyczy — Użyj, gdy fakt operacyjny/lekcja ma przetrwać między sesjami i agentami."
+ },
+ {
+  "name": "agent-live-reload-and-prompt-freshness",
+  "category": "agents",
+  "path": "agents/agent-live-reload-and-prompt-freshness/SKILL.md",
+  "sha256": "7e7ec3d493ec076b0c56f8715d2e78abd462036e82d4abaf05c45abbaf6772fe",
+  "description": "Użyj, gdy zmiana promptu/konfiguracji/pluginu agenta JEST w plikach i przechodzi testy na świeżym procesie, ale ŻYWA sesja działa po staremu (objaw nie znika, delegacja dalej wysyła stary payload..."
+ },
+ {
+  "name": "agent-output-truth-audit",
+  "category": "agents",
+  "path": "agents/agent-output-truth-audit/SKILL.md",
+  "sha256": "71f88e55be6967850e48b9a505dc004e447772107ab285ec9b67acf765881152",
+  "description": "Verify that an autonomous agent's self-reported output (DB success flags, submission/bid IDs, revenue rows) corresponds to REAL external confirmations — catches the \"149 submissions, 62 bids, all success=1, yet zero platform confirmations and zero revenue\" class of false green. Includes container exit-code forensics and compose-vs-running env drift checks."
+ },
+ {
+  "name": "agent-session-resume",
+  "category": "agents",
+  "path": "agents/agent-session-resume/SKILL.md",
+  "sha256": "60cddd5ed4dbb08eb629eb129932349b82bdfbfd04afca7a95f9d95b5529d639",
+  "description": "Find and resume an AI agent session by UUID across multiple backends (qwen-code, mesh task_execute, AIGON sessions, PTY). Covers discovery paths, filesystem layout, and CLI resume with environment pitfalls."
+ },
+ {
+  "name": "agent-skill-router",
+  "category": "agents",
+  "path": "agents/agent-skill-router/SKILL.md",
+  "sha256": "70092deb8b2a694546fc907e428bc04eef98e188ba81694cf4af1d0ccb64d44c",
+  "description": "Wspólny rdzeń wszystkich agentów AIGON-X: ładuje prawa i rdzeń skilli, następnie dobiera specjalistyczne skille, narzędzia, capabilities oraz mesh do zadania."
+ },
+ {
+  "name": "aigon-canon",
+  "category": "governance",
+  "path": "governance/aigon-canon/SKILL.md",
+  "sha256": "2467235c394ac62b34c11018e2cea42b1019b631fb0e535ff11fc4db3d35a61c",
+  "description": "AIGON CANON — Architectural Constitution, Protocol Registry, Governor CI gate. LADUJ PRZED kazda operacja na AIGON-X. Zawiera 10 LAWS + 5 LAW-PATCH sub-laws, Architecture Integrity Score (biezacy 90/100), Patch Governor Rust crate."
+ },
+ {
+  "name": "api-testing",
+  "category": "engineering",
+  "path": "engineering/api-testing/SKILL.md",
+  "sha256": "fe37b90dc5d1d6014d6cfedb9ad5487ea932aba1b23e264571fbdc1755572ec4",
+  "description": ">"
+ },
+ {
+  "name": "canon-law-check",
+  "category": "governance",
+  "path": "governance/canon-law-check/SKILL.md",
+  "sha256": "fb2c64f059c7ce5412a5df00b04bbed28919122a2e51ed5403ef8efe3d6f44a1",
+  "description": "Verify that AIOS canonical includes all laws defined in PROD."
+ },
+ {
+  "name": "capability-wiring-truth-audit",
+  "category": "governance",
+  "path": "governance/capability-wiring-truth-audit/SKILL.md",
+  "sha256": "b6e0124cb9256b3d369ef325bdbdd24d31f450a3deef6b050162b405d07a404d",
+  "description": ">-"
+ },
+ {
+  "name": "component-registry",
+  "category": "engineering",
+  "path": "engineering/component-registry/SKILL.md",
+  "sha256": "96c33a4fcae196830744f1b73bdc65262fa277d333d8ad4a8e876c99b1b4a6b0",
+  "description": ">-"
+ },
+ {
+  "name": "containerized-worker-security-audit",
+  "category": "security",
+  "path": "security/containerized-worker-security-audit/SKILL.md",
+  "sha256": "4b455ce756d6c88d4bd029e8d68048a2ace903b4e98cb82eda8f4a79b9066bf4",
+  "description": ">-"
+ },
+ {
+  "name": "coverage-metric-integrity",
+  "category": "governance",
+  "path": "governance/coverage-metric-integrity/SKILL.md",
+  "sha256": "f5e398a3b66f83363418fabb50a137afe108b80110c7a40729e89da289296599",
+  "description": ">-"
+ },
+ {
+  "name": "credential-security-sweep",
+  "category": "security",
+  "path": "security/credential-security-sweep/SKILL.md",
+  "sha256": "2fb28def29f82621ce0dc02162b0c6c7875ddcb3148ef73da0076c1392f89f3d",
+  "description": ">-"
+ },
+ {
+  "name": "defensive-hardening-patterns",
+  "category": "security",
+  "path": "security/defensive-hardening-patterns/SKILL.md",
+  "sha256": "891b7d17919fa03ae37ee6a2a3869077a7da1c5db653e6bbe59588812a4ae9c5",
+  "description": "Wzorce DEFENSYWNE (hardening) przeniesione z archiwum /opt/projects/wojsko/z-archiwum-qnap-2026-06-05 (security/ + modules/ — odzysk 2026-09-04) na grunt AIGON-X. Skill APLIKOWALNY: jak wzmocnić runtime (middleware api.rs), produkty i nginx — warstwa wejściowa (SQLi/XSS/command-injection), detekcja zagrożeń (behavioral/ML/EDR), monitoring zdarzeń (CEF/SIEM), hardening bazy (prepared statements, whitelisting query), playbooki reakcji (auto-block IP). Użyj gdy: ''zabezpiecz'', ''wzmocnij'', ''hardening'', ''audyt bezpieczeństwa'', ''SQLi'', ''XSS'', ''threat detection'', ''monitoring zdarzeń'', ''middleware security'' w kontekście runtime AIGON-X lub produktów."
+ },
+ {
+  "name": "dependency-vulnerability-scan",
+  "category": "security",
+  "path": "security/dependency-vulnerability-scan/SKILL.md",
+  "sha256": "1a5ffed372dff3dc4d73a5ac82e74becb59d654c146263770ca08726c898a80b",
+  "description": "Skan zależności i podatności CVE — audyt manifestów zależności, triage CVE (CVSS, reachability), remediacja, porównanie z SBOM. Użyj przy audycie bezpieczeństwa i przed release'em."
+ },
+ {
+  "name": "deployment-effect-verification",
+  "category": "governance",
+  "path": "governance/deployment-effect-verification/SKILL.md",
+  "sha256": "de8108b2e432ef78a5ddb741c228ac51986d37f6cdf34c8a1dbfeed1d005bbff",
+  "description": ">-"
+ },
+ {
+  "name": "design-document",
+  "category": "engineering",
+  "path": "engineering/design-document/SKILL.md",
+  "sha256": "3c866700900a68f2d08dc0ffc89db5de3ca03529b527864cc4117308c407595e",
+  "description": "Tworzenie dokumentu projektowego (design doc / ADR): kontekst, decyzje, alternatywy, ryzyka, proces review i akceptacji. Użyj przed implementacją znaczącej zmiany architektonicznej lub funkcjonalnej."
+ },
+ {
+  "name": "false-green-elimination",
+  "category": "governance",
+  "path": "governance/false-green-elimination/SKILL.md",
+  "sha256": "3f45624cd3b25a2fd6f96432cda4f481a9984a34a00ced5a60d0cce7bd870e13",
+  "description": "Wykrywaj i likwiduj FAŁSZYWE SUKCESY w systemach agentowych — statusy \"stored\"/\"green\"/\"ok\" zwracane bez dowodu zapisu, skrypty nazwane \"sync\" robiące tylko GET, logi pokazujące 0/0 mimo zdrowych komponentów, identyfikatory liczone dwiema różnymi regułami. Użyj gdy coś raportuje sukces, ale efektu nie ma; gdy dane \"są\" w hot cache a nie ma ich w źródle prawdy; gdy user mówi \"lepszy brak niż coś zielonego co nie działa\"."
+ },
+ {
+  "name": "full-crate-scaffolding",
+  "category": "engineering",
+  "path": "engineering/full-crate-scaffolding/SKILL.md",
+  "sha256": "b26217e184ae828c899303c8275f46541aa04ad2f53d9ad59655cd61979ade4b",
+  "description": "Pattern for creating production-quality Rust crates from scratch — full implementation, comprehensive tests, zero stubs"
+ },
+ {
+  "name": "gitleaks-secret-scan-gates",
+  "category": "security",
+  "path": "security/gitleaks-secret-scan-gates/SKILL.md",
+  "sha256": "daf6aa0e38fa77aee4bfd0edeee716c6c6e45834dbfec5ee68282c597f4a1449",
+  "description": "Design and debug gitleaks-based secret-scan gates in verify/CI pipelines — scan-scope semantics (working tree vs git history), the --pipe false-PASS trap, allowlist behavior, and classification of scanner hits (real secret vs documentation pattern vs test fixture). Use whenever a secret-scan gate FAILs unexpectedly, a \"clean HEAD\" still reports leaks, or you must write a scanner invocation that only checks current tracked state."
+ },
+ {
+  "name": "governance-bypass-audit",
+  "category": "governance",
+  "path": "governance/governance-bypass-audit/SKILL.md",
+  "sha256": "d8ed2e0e74c340c87dbca988b5c7e9cc5610610f1e4c8947d83e43c12598dfac",
+  "description": "Detect and fix governance bypasses in Rust HTTP routes — replace code-level bypass with policies.json governance rules (project)"
+ },
+ {
+  "name": "governance-rubric-audit",
+  "category": "governance",
+  "path": "governance/governance-rubric-audit/SKILL.md",
+  "sha256": "f07e61d69f66ac25bd7347a95af24fa5158ca7cc43c27283a19fa74dd7d1e91c",
+  "description": ">-"
+ },
+ {
+  "name": "incident-response",
+  "category": "security",
+  "path": "security/incident-response/SKILL.md",
+  "sha256": "6e69c9e41ced3c015dc40b146dd5bcb9c800c718b9d5c80e8bbb787259c641cf",
+  "description": "Reagowanie na incydenty bezpieczeństwa — klasyfikacja SEV, containment, eradication, recovery, komunikacja i lessons learned. Użyj gdy incydent został potwierdzony i wymaga skoordynowanej akcji."
+ },
+ {
+  "name": "mcp-api-key-separation",
+  "category": "mcp",
+  "path": "mcp/mcp-api-key-separation/SKILL.md",
+  "sha256": "49831c3049dd1a70383dedcedf76f1930e349194a03faa31439eb604b50faf10",
+  "description": ">"
+ },
+ {
+  "name": "mcp-bridge-gateway-connection-fix",
+  "category": "mcp",
+  "path": "mcp/mcp-bridge-gateway-connection-fix/SKILL.md",
+  "sha256": "1491ff955e757f8ed7fdc6324fc944338cebad0bc0f8bd64619c5415c171f9f1",
+  "description": "Fix MCP bridge/gateway connection failures — API key auth, SSE streaming, concurrent server startup, Docker DNS networking"
+ },
+ {
+  "name": "mcp-builder",
+  "category": "mcp",
+  "path": "mcp/mcp-builder/SKILL.md",
+  "sha256": "79bf15b64c6b9061422797ba336ee92ef832cba14189e08fcc4206d0bc0ecdd5",
+  "description": "Guide for creating high-quality MCP (Model Context Protocol) servers that enable LLMs to interact with external services through well-designed tools. Use when building MCP servers to integrate external APIs or services, whether in Python (FastMCP) or Node/TypeScript (MCP SDK)."
+ },
+ {
+  "name": "mcp-lane-registry-parity",
+  "category": "mcp",
+  "path": "mcp/mcp-lane-registry-parity/SKILL.md",
+  "sha256": "c3961b728dfb823610244580d07210ff97d8c7898a207f171ab843e75a80fa56",
+  "description": "Use when narzędzia/metadane MCP „nie przechodzą\" przez bramę, gdy klient widzi inny katalog tooli niż backend, albo gdy po zmianie bramy (router/gateway) „czegoś nie ma\". Audyt parytetu rejestrów między lane'ami MCP (backend :38080 vs brama :17002 vs mcp-rs :31704) — pomiar, diff, atrybucja źródła, dopiero potem naprawa."
+ },
+ {
+  "name": "mcp-oauth-external-clients",
+  "category": "mcp",
+  "path": "mcp/mcp-oauth-external-clients/SKILL.md",
+  "sha256": "064c14bb8386f066cf31057a105cc5a2672add88a40db2b54f01cd2f283fa138",
+  "description": ">"
+ },
+ {
+  "name": "mcp-server-authoring-and-registration",
+  "category": "mcp",
+  "path": "mcp/mcp-server-authoring-and-registration/SKILL.md",
+  "sha256": "c8f571e8cb0b87139842e40cf22a175e073447bdc1148ee2884d0c95537b9288",
+  "description": "Autorstwo i REJESTRACJA nowego serwera MCP w stacku AIGON (<workspace>) — kontrakt stdio przez lib/mcp_stdio_shim.py, kształt mcp-config.json, oraz CZTERY miejsca rejestracji, bez których serwer jest SIEROTĄ (mcp-config.json, mcp-servers/MANIFEST.yaml, runtime/manifests/capabilities.yaml, CANONICALITY.yaml) + skill. Użyj, gdy dodajesz nowe narzędzie/klienta (poczta, git, API, baza) jako serwer MCP, gdy istniejący serwer jest zarejestrowany ale każde wywołanie pada, gdy serwer nie pojawia się w katalogu u agenta, albo gdy user pyta „dodałeś do manifestu i kanonu?\\\"."
+ },
+ {
+  "name": "mcp-setup-pitfalls",
+  "category": "mcp",
+  "path": "mcp/mcp-setup-pitfalls/SKILL.md",
+  "sha256": "d7e54322e8199bffaa574fdd7c0046f49bf93863d2627b308d51488267c8ef82",
+  "description": "Common pitfalls when configuring the MCPRegistry path and case sensitivity in multi‑server projects."
+ },
+ {
+  "name": "mcp-sse-http-header-whitespace",
+  "category": "mcp",
+  "path": "mcp/mcp-sse-http-header-whitespace/SKILL.md",
+  "sha256": "1101c7238eaecfe8ebef0d751ff894167ddcb3d1947eb6cbf5acb97dec846998",
+  "description": "Fix HTTP response format strings with leading whitespace in headers causing RFC 7230 folding — breaks Content-Length and header/body separator"
+ },
+ {
+  "name": "mcp-tool-discovery",
+  "category": "mcp",
+  "path": "mcp/mcp-tool-discovery/SKILL.md",
+  "sha256": "6535263d25cfb9ef92345efd86e245f6a2e3ebdfbd61919bd2025760e928fe56",
+  "description": "Systematically discover all MCP tool and capability registrations in an unfamiliar codebase, including non-standard patterns (UCB adapters, capability structs, route proxies). For LIVE probing of running MCP services, see runtime-live-probing."
+ },
+ {
+  "name": "mcp-tools-fix",
+  "category": "mcp",
+  "path": "mcp/mcp-tools-fix/SKILL.md",
+  "sha256": "fb682053cc3c65bbd46ffa5ce2c0d05043c4cfa0850811475bb371d24e9709f8",
+  "description": "Diagnostic and repair workflow for broken MCP tools (empty schemas, mock backends, timeouts, dead handlers)"
+ },
+ {
+  "name": "mcp-tools-mass-test",
+  "category": "mcp",
+  "path": "mcp/mcp-tools-mass-test/SKILL.md",
+  "sha256": "51371fbf5a9849fcf0fc1aaf239094a0ff83958afda7989c3000510a127fb226",
+  "description": "Use when testing all MCP tools massowo — calls every tool registered in the Magic Router MCP bridge in parallel and reports pass/fail per tool."
+ },
+ {
+  "name": "module-graph-wiring-gate",
+  "category": "governance",
+  "path": "governance/module-graph-wiring-gate/SKILL.md",
+  "sha256": "72553213c01da08cca9eef2a6884b641b98959f6ccfda2ef5a417198056865b8",
+  "description": ">-"
+ },
+ {
+  "name": "project-documentation-templates",
+  "category": "engineering",
+  "path": "engineering/project-documentation-templates/SKILL.md",
+  "sha256": "2a3e317da4c3b820a2fe44d00dd79fe07061162c2ccfbd90fca63f5790b85868",
+  "description": "Szablony dokumentacji dla KAŻDEGO typu projektu (mobile/Android, web frontend, backend, infrastruktura/runtime, landing, gra Roblox, CLI, ML). Użyj, gdy generujesz dokumentację techniczną lub produktową dla nowego/istniejącego projektu — wybierz szablon wg typu i wypełnij REALNYMI danymi (nie aspiracjami)."
+ },
+ {
+  "name": "registry-parity-and-key-discipline",
+  "category": "governance",
+  "path": "governance/registry-parity-and-key-discipline/SKILL.md",
+  "sha256": "ce7f423742bc474ab2c3e347200f974640421a9ad5c73716ff8b8d40cae97318",
+  "description": ">-"
+ },
+ {
+  "name": "release-artifact-truth",
+  "category": "governance",
+  "path": "governance/release-artifact-truth/SKILL.md",
+  "sha256": "fee55ce3d84f0a5fd8d302ce88cca9376c7f74e48dff57c7b58077ff6d2876c6",
+  "description": ">-"
+ },
+ {
+  "name": "sbom-generation",
+  "category": "security",
+  "path": "security/sbom-generation/SKILL.md",
+  "sha256": "cc1f33456867a482dfcf8861dff96fd0f4e8017dd261cbcc766ee3e77e8dd3df",
+  "description": "Generowanie i zarządzanie SBOM (Software Bill of Materials) — spis zależności w standardzie CycloneDX/SPDX, weryfikacja podpisów, porównanie z bazą CVE, polityka licencji. Użyj przed release'em i w audycie supply chain."
+ },
+ {
+  "name": "secret-audit-certification",
+  "category": "security",
+  "path": "security/secret-audit-certification/SKILL.md",
+  "sha256": "6973a38c1ade14c7c877f75fd89008fcec8d0f52710703d31314a01f58fab445",
+  "description": ">-"
+ },
+ {
+  "name": "secrets-management",
+  "category": "security",
+  "path": "security/secrets-management/SKILL.md",
+  "sha256": "91a61235d75802b0ea407dddc821cebd464de77eb3e9c48d0aaa953dc4a91093",
+  "description": "Zarządzanie sekretami — wykrywanie wycieków w repo i logach, rotacja, integracja z Vault, polityka dostępu, zero secrets w artefaktach. Użyj przy audycie bezpieczeństwa i przy każdym repo z kluczami."
+ },
+ {
+  "name": "security-remediation",
+  "category": "security",
+  "path": "security/security-remediation/SKILL.md",
+  "sha256": "136a34b6bba6f193cc38dbf36fbb2b58efff2f2c78fff2fc75cc84449c81e9da",
+  "description": "Naprawa podatności i skutków ataków — priorytetyzacja wg ryzyka, patchowanie i wzmacnianie, weryfikacja naprawy, ponowny skan i dowód zamknięcia. Użyj po skanie bezpieczeństwa lub incydencie."
+ },
+ {
+  "name": "stateful-mcp-tool-sessions",
+  "category": "mcp",
+  "path": "mcp/stateful-mcp-tool-sessions/SKILL.md",
+  "sha256": "e5f93ab6c77dd4de0d0a9ab3a21090e374707ab308da455fbcf293acc6b39b44",
+  "description": ">"
+ },
+ {
+  "name": "static-code-analysis",
+  "category": "security",
+  "path": "security/static-code-analysis/SKILL.md",
+  "sha256": "56bbf7d6ebac4dc847f9b315fa43c77cafabfa8667ec198df5a1aa8f268c61c4",
+  "description": "Analiza statyczna kodu (SAST) — wykrywanie podatności i błędów bez uruchamiania, triage fałszywych pozytywów, próg jakości w CI. Użyj przy audycie bezpieczeństwa i w kodzie przed merge."
+ },
+ {
+  "name": "subagent-orchestration",
+  "category": "agents",
+  "path": "agents/subagent-orchestration/SKILL.md",
+  "sha256": "fa6f49adde7cb130c3b65c40617eab154fcfc59fac11b95517c1dd9acde41e19",
+  "description": "Patterns for dispatching parallel Hermes subagents (delegate_task), handling paid-model credit exhaustion, respecting concurrency limits, and verifying outcomes instead of trusting completion flags."
+ },
+ {
+  "name": "systematic-debugging",
+  "category": "engineering",
+  "path": "engineering/systematic-debugging/SKILL.md",
+  "sha256": "6ddb8bc45853c2264d31adb8e7278ea9a51837cebdddbfc685b17d1f9d569a28",
+  "description": "4-phase root cause debugging: understand bugs before fixing."
+ },
+ {
+  "name": "test-suite-placement-and-flake-triage",
+  "category": "engineering",
+  "path": "engineering/test-suite-placement-and-flake-triage/SKILL.md",
+  "sha256": "91a699afcafe9824ffc0c9ee0b5901e1fe9f3d4f4672e6a04435e1c48ea5b890",
+  "description": "Gdzie i jak uruchamiać pełny suite/CI (local vs dedykowany builder), jak odróżnić flake od realnego FAIL i jak dowieść wyniku. Użyj, gdy `npm run test`/`make test` przekracza limit czasu, gdy suite pada tylko pod obciążeniem, gdy wynik ma być dowodem (evidence), albo gdy przenosisz testy na inną maszynę i dostajesz fałszywe czerwienie."
+ },
+ {
+  "name": "threat-modeling",
+  "category": "security",
+  "path": "security/threat-modeling/SKILL.md",
+  "sha256": "3e78a11d87bdaa3c8c5ad743aeb61a315dd8eab3f5bf0b7bcd0874784b1fa67b",
+  "description": "Modelowanie zagrożeń — DFD, trust boundaries, STRIDE per komponent, ranking ryzyka, output do backlogu. Użyj przy projektowaniu/zmianie architektury lub przed audytem bezpieczeństwa."
+ },
+ {
+  "name": "two-source-of-truth-drift-audit",
+  "category": "governance",
+  "path": "governance/two-source-of-truth-drift-audit/SKILL.md",
+  "sha256": "b56b3e98a9fb8f3a763d93d93a979a5da75f2a0c2c72cff1e0826108ba6cab03",
+  "description": "Wykrywaj i domykaj ROZJAZD, gdy to samo pojęcie liczy się z DWÓCH źródeł (graf vs manifest, core vs replica, spec vs kod, config A vs config B)."
+ },
+ {
+  "name": "verification-guard-integrity",
+  "category": "engineering",
+  "path": "engineering/verification-guard-integrity/SKILL.md",
+  "sha256": "40a31bf28189236400d869b7970e18a60c8a32acb36c0d1b83ae4c3d8413f2b5",
+  "description": ">"
+ },
+ {
+  "name": "verification-test-design",
+  "category": "engineering",
+  "path": "engineering/verification-test-design/SKILL.md",
+  "sha256": "861e8640c283f96a298841ba74e60dc002781dda2dd2417c2f3380fb8306b6a7",
+  "description": "Projektowanie testów weryfikujących WŁASNĄ zmianę (skrypty, hamulce, bramki, wrappery) tak, by testy same nie kłamały i realnie łapały bugi. Zawiera cztery zmierzone klasy fałszywych wyników (test dosłowny, test na zmiennym stanie, pgrep łapiący własne polecenie, brak testu negatywnego) oraz wzorzec testu deterministycznego przez env. Użyj ZAWSZE gdy kończysz zmianę w skrypcie/bramce/wrapperze i musisz udowodnić że działa — a także gdy test FAIL-uje i nie wiesz, czy winien jest kod czy test."
+ },
+ {
+  "name": "vulnerability-scanning",
+  "category": "security",
+  "path": "security/vulnerability-scanning/SKILL.md",
+  "sha256": "f1f20361e56cf1f55c25f6dfc8451f7dc540dd239de1f1a3149e1e3f4c442d3b",
+  "description": "Skanowanie podatności (autoryzowane) — wybór skanera, profil skanu, triage wyników, weryfikacja fałszywych pozytywów i raport. Użyj po recon, przed testami manualnymi."
+ }
+]

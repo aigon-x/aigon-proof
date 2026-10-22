@@ -1,0 +1,618 @@
+{
+ "access-posture-tailnet": {
+  "script": "../gates/access-posture-tailnet.sh",
+  "bundled": "access-posture-tailnet.sh"
+ },
+ "firewall-single-writer": {
+  "script": "../gates/firewall-single-writer.sh",
+  "bundled": "firewall-single-writer.sh"
+ },
+ "parallelism-validate": {
+  "script": "../gates/parallelism-validate.sh",
+  "bundled": "parallelism-validate.sh"
+ },
+ "wave-timeout-guard": {
+  "script": "../gates/wave-timeout-guard.sh",
+  "bundled": "wave-timeout-guard.sh"
+ },
+ "silent-failure-detector": {
+  "script": "../gates/silent-failure-detector.sh",
+  "bundled": "silent-failure-detector.sh"
+ },
+ "ledger-coverage": {
+  "script": "../gates/ledger-coverage.sh",
+  "bundled": "ledger-coverage.sh"
+ },
+ "pdf-gate": {
+  "script": "../gates/pdf-gate.sh",
+  "bundled": "pdf-gate.sh"
+ },
+ "backup-datastores-freshness": {
+  "script": "../gates/backup-datastores-freshness.sh",
+  "bundled": "backup-datastores-freshness.sh"
+ },
+ "agent-memory-sync": {
+  "script": "../gates/agent-memory-sync.sh",
+  "bundled": "agent-memory-sync.sh"
+ },
+ "otel-coverage": {
+  "script": "../gates/otel-coverage.sh",
+  "bundled": "otel-coverage.sh"
+ },
+ "skill-graph-freshness": {
+  "script": "../gates/skill-graph-freshness.sh",
+  "bundled": "skill-graph-freshness.sh"
+ },
+ "llama-runner-churn": {
+  "script": "../gates/llama-runner-churn.sh",
+  "bundled": "llama-runner-churn.sh"
+ },
+ "git": {
+  "script": "git/integrity.sh",
+  "bundled": "integrity.sh"
+ },
+ "security": {
+  "script": "security/secrets.sh",
+  "bundled": "secrets.sh"
+ },
+ "agent-trust": {
+  "script": "gates/domains/agent-trust.sh",
+  "bundled": "agent-trust.sh"
+ },
+ "security-pro": {
+  "script": "gates/domains/security-pro.sh",
+  "bundled": "security-pro.sh"
+ },
+ "sast": {
+  "script": "gates/domains/sast.sh",
+  "bundled": "sast.sh"
+ },
+ "deps-cve": {
+  "script": "gates/domains/deps-cve.sh",
+  "bundled": "deps-cve.sh"
+ },
+ "health-truth-guard": {
+  "script": "gates/domains/health-truth-guard.sh",
+  "bundled": "health-truth-guard.sh"
+ },
+ "system-bin-perms-guard": {
+  "script": "gates/domains/system-bin-perms-guard.sh",
+  "bundled": "system-bin-perms-guard.sh"
+ },
+ "shell-static": {
+  "script": "gates/domains/shell-static.sh",
+  "bundled": "shell-static.sh"
+ },
+ "structure": {
+  "script": "structure/readme.sh",
+  "bundled": "readme.sh"
+ },
+ "architecture": {
+  "script": "architecture/architecture.sh",
+  "bundled": "architecture.sh"
+ },
+ "dependencies": {
+  "script": "dependencies/dependencies.sh",
+  "bundled": "dependencies.sh"
+ },
+ "reproducibility": {
+  "script": "reproducibility/reproducibility.sh",
+  "bundled": "reproducibility.sh"
+ },
+ "deployment": {
+  "script": "deployment/deployment.sh",
+  "bundled": "deployment.sh"
+ },
+ "contracts": {
+  "script": "contracts/contracts.sh",
+  "bundled": "contracts.sh"
+ },
+ "aesthetics": {
+  "script": "aesthetics/aesthetics.sh",
+  "bundled": "aesthetics.sh"
+ },
+ "excellence-loop": {
+  "script": "../gates/excellence-loop.sh",
+  "bundled": "excellence-loop.sh"
+ },
+ "semantics": {
+  "script": "architecture/semantics.sh",
+  "bundled": "semantics.sh"
+ },
+ "security-drills": {
+  "script": "security/drills.sh",
+  "bundled": "drills.sh"
+ },
+ "taxonomy": {
+  "script": "architecture/taxonomy.sh",
+  "bundled": "taxonomy.sh"
+ },
+ "i18n": {
+  "script": "i18n/i18n.sh",
+  "bundled": "i18n.sh"
+ },
+ "efficiency": {
+  "script": "efficiency/efficiency.sh",
+  "bundled": "efficiency.sh"
+ },
+ "obs-logging": {
+  "script": "obs-logging-check.sh",
+  "bundled": "obs-logging-check.sh"
+ },
+ "obs-metrics": {
+  "script": "obs-metrics-check.sh",
+  "bundled": "obs-metrics-check.sh"
+ },
+ "obs-alerts": {
+  "script": "obs-alerts-check.sh",
+  "bundled": "obs-alerts-check.sh"
+ },
+ "obs-slo": {
+  "script": "obs-slo-check.sh",
+  "bundled": "obs-slo-check.sh"
+ },
+ "obs-health": {
+  "script": "obs-health-endpoints.sh",
+  "bundled": "obs-health-endpoints.sh"
+ },
+ "obs-deadman": {
+  "script": "obs-deadman-check.sh",
+  "bundled": "obs-deadman-check.sh"
+ },
+ "obs-dashboards": {
+  "script": "obs-dashboards-check.sh",
+  "bundled": "obs-dashboards-check.sh"
+ },
+ "obs-synthetics": {
+  "script": "obs-synthetics-check.sh",
+  "bundled": "obs-synthetics-check.sh"
+ },
+ "security-credential-registry": {
+  "script": "security/sec-credential-registry.sh",
+  "bundled": "sec-credential-registry.sh"
+ },
+ "security-rotation": {
+  "script": "security/sec-rotation-check.sh",
+  "bundled": "sec-rotation-check.sh"
+ },
+ "security-retention": {
+  "script": "security/sec-retention-check.sh",
+  "bundled": "sec-retention-check.sh"
+ },
+ "security-auth": {
+  "script": "security/sec-auth-check.sh",
+  "bundled": "sec-auth-check.sh"
+ },
+ "security-web": {
+  "script": "security/sec-web-check.sh",
+  "bundled": "sec-web-check.sh"
+ },
+ "lifecycle": {
+  "script": "lifecycle/lifecycle.sh",
+  "bundled": "lifecycle.sh"
+ },
+ "config": {
+  "script": "config/config.sh",
+  "bundled": "config.sh"
+ },
+ "tick-wiring": {
+  "script": "../gates/tick-wiring.sh",
+  "bundled": "tick-wiring.sh"
+ },
+ "wired-check": {
+  "script": "../gates/wired-check.sh",
+  "bundled": "wired-check.sh"
+ },
+ "wiring-closure": {
+  "script": "../gates/wiring-closure.sh",
+  "bundled": "wiring-closure.sh"
+ },
+ "capability-consistency": {
+  "script": "../gates/capability-consistency.sh",
+  "bundled": "capability-consistency.sh"
+ },
+ "quality-gate-manifest": {
+  "script": "../gates/quality-gate-manifest.sh",
+  "bundled": "quality-gate-manifest.sh"
+ },
+ "kernel-wiring": {
+  "script": "../gates/kernel-wiring.sh",
+  "bundled": "kernel-wiring.sh"
+ },
+ "kernel-observability": {
+  "script": "../gates/kernel-observability.sh",
+  "bundled": "kernel-observability.sh"
+ },
+ "cerberus-e2e": {
+  "script": "../gates/cerberus-e2e.sh",
+  "bundled": "cerberus-e2e.sh"
+ },
+ "mesh-absorb": {
+  "script": "../gates/mesh-absorb.sh",
+  "bundled": "mesh-absorb.sh"
+ },
+ "hermes-state-db": {
+  "script": "../gates/domains/hermes-state-db.sh",
+  "bundled": "hermes-state-db.sh"
+ },
+ "wiring": {
+  "script": "gates/domains/wiring.sh",
+  "bundled": "wiring.sh"
+ },
+ "resilience": {
+  "script": "gates/domains/resilience.sh",
+  "bundled": "resilience.sh"
+ },
+ "yaml-lint": {
+  "script": "gates/domains/yaml-lint.sh",
+  "bundled": "yaml-lint.sh"
+ },
+ "ci-workflow": {
+  "script": "gates/domains/ci-workflow.sh",
+  "bundled": "ci-workflow.sh"
+ },
+ "human": {
+  "script": "gates/domains/human.sh",
+  "bundled": "human.sh"
+ },
+ "simulation": {
+  "script": "gates/domains/simulation.sh",
+  "bundled": "simulation.sh"
+ },
+ "observability": {
+  "script": "gates/domains/observability.sh",
+  "bundled": "observability.sh"
+ },
+ "md-lint": {
+  "script": "gates/domains/md-lint.sh",
+  "bundled": "md-lint.sh"
+ },
+ "sbom": {
+  "script": "gates/domains/sbom.sh",
+  "bundled": "sbom.sh"
+ },
+ "sbom-check": {
+  "script": "sbom-check.sh",
+  "bundled": "sbom-check.sh"
+ },
+ "container-privileges": {
+  "script": "container-privileges-check.sh",
+  "bundled": "container-privileges-check.sh"
+ },
+ "access-revocation": {
+  "script": "access-revocation-check.sh",
+  "bundled": "access-revocation-check.sh"
+ },
+ "cert-renewal": {
+  "script": "cert-renewal-check.sh",
+  "bundled": "cert-renewal-check.sh"
+ },
+ "network-reachability": {
+  "script": "network-reachability-check.sh",
+  "bundled": "network-reachability-check.sh"
+ },
+ "message-ordering": {
+  "script": "message-ordering-check.sh",
+  "bundled": "message-ordering-check.sh"
+ },
+ "duplicate-idempotency": {
+  "script": "duplicate-idempotency-check.sh",
+  "bundled": "duplicate-idempotency-check.sh"
+ },
+ "retry-bounds": {
+  "script": "retry-bounds-check.sh",
+  "bundled": "retry-bounds-check.sh"
+ },
+ "dlq-process": {
+  "script": "dlq-process-check.sh",
+  "bundled": "dlq-process-check.sh"
+ },
+ "poison-message": {
+  "script": "poison-message-check.sh",
+  "bundled": "poison-message-check.sh"
+ },
+ "backpressure": {
+  "script": "backpressure-check.sh",
+  "bundled": "backpressure-check.sh"
+ },
+ "backlog-drain": {
+  "script": "backlog-drain-check.sh",
+  "bundled": "backlog-drain-check.sh"
+ },
+ "load-profile": {
+  "script": "load-profile-check.sh",
+  "bundled": "load-profile-check.sh"
+ },
+ "peak-capacity": {
+  "script": "peak-capacity-check.sh",
+  "bundled": "peak-capacity-check.sh"
+ },
+ "spike-degradation": {
+  "script": "spike-degradation-check.sh",
+  "bundled": "spike-degradation-check.sh"
+ },
+ "perf-regression": {
+  "script": "perf-regression-check.sh",
+  "bundled": "perf-regression-check.sh"
+ },
+ "autoscaling-stability": {
+  "script": "autoscaling-stability-check.sh",
+  "bundled": "autoscaling-stability-check.sh"
+ },
+ "state-transitions": {
+  "script": "state-transitions-check.sh",
+  "bundled": "state-transitions-check.sh"
+ },
+ "interrupt-resume": {
+  "script": "interrupt-resume-check.sh",
+  "bundled": "interrupt-resume-check.sh"
+ },
+ "cyclic-jobs": {
+  "script": "cyclic-jobs-check.sh",
+  "bundled": "cyclic-jobs-check.sh"
+ },
+ "offline-handling": {
+  "script": "offline-handling-check.sh",
+  "bundled": "offline-handling-check.sh"
+ },
+ "permission-justification": {
+  "script": "permission-justification-check.sh",
+  "bundled": "permission-justification-check.sh"
+ },
+ "file-permissions": {
+  "script": "file-permissions-check.sh",
+  "bundled": "file-permissions-check.sh"
+ },
+ "power-loss-update": {
+  "script": "power-loss-update-check.sh",
+  "bundled": "power-loss-update-check.sh"
+ },
+ "offline-security": {
+  "script": "offline-security-check.sh",
+  "bundled": "offline-security-check.sh"
+ },
+ "defect-threshold": {
+  "script": "defect-threshold-check.sh",
+  "bundled": "defect-threshold-check.sh"
+ },
+ "maintenance-comms": {
+  "script": "maintenance-comms-check.sh",
+  "bundled": "maintenance-comms-check.sh"
+ },
+ "legal-current": {
+  "script": "legal-current-check.sh",
+  "bundled": "legal-current-check.sh"
+ },
+ "cost-budget": {
+  "script": "cost-budget-check.sh",
+  "bundled": "cost-budget-check.sh"
+ },
+ "safety-limits": {
+  "script": "safety-limits-check.sh",
+  "bundled": "safety-limits-check.sh"
+ },
+ "self-profile-integrity": {
+  "script": "self-profile-integrity.sh",
+  "bundled": "self-profile-integrity.sh"
+ },
+ "encyclopedia-consistency": {
+  "script": "encyclopedia-consistency.sh",
+  "bundled": "encyclopedia-consistency.sh"
+ },
+ "env-invariants": {
+  "script": "env-invariants-check.sh",
+  "bundled": "env-invariants-check.sh"
+ },
+ "mesh-ui-parity": {
+  "script": "gates/domains/mesh-ui-parity.sh",
+  "bundled": "mesh-ui-parity.sh"
+ },
+ "map-graph-artifact": {
+  "script": "gates/domains/map-graph-artifact.sh",
+  "bundled": "map-graph-artifact.sh"
+ },
+ "sovereign-confirmation": {
+  "script": "../gates/sovereign-confirmation.sh",
+  "bundled": "sovereign-confirmation.sh"
+ },
+ "llm-lane-truth": {
+  "script": "gates/domains/llm-lane-truth.sh",
+  "bundled": "llm-lane-truth.sh"
+ },
+ "voice-ssot": {
+  "script": "gates/domains/voice-ssot.sh",
+  "bundled": "voice-ssot.sh"
+ },
+ "obs-telemetry": {
+  "script": "obs-telemetry-check.sh",
+  "bundled": "obs-telemetry-check.sh"
+ },
+ "run-chain": {
+  "script": "run-chain-check.sh",
+  "bundled": "run-chain-check.sh"
+ },
+ "skill-distribution": {
+  "script": "../gates/domains/skill-distribution.sh",
+  "bundled": "skill-distribution.sh"
+ },
+ "state-ratchet": {
+  "script": "gates/domains/state-ratchet.sh",
+  "bundled": "state-ratchet.sh"
+ },
+ "agent-identity-parity": {
+  "script": "gates/domains/agent-identity-parity.sh",
+  "bundled": "agent-identity-parity.sh"
+ },
+ "agent-surface-parity": {
+  "script": "gates/domains/agent-surface-parity.sh",
+  "bundled": "agent-surface-parity.sh"
+ },
+ "registry-coherence": {
+  "script": "gates/domains/registry-coherence.sh",
+  "bundled": "registry-coherence.sh"
+ },
+ "leaks-permissions": {
+  "script": "gates/domains/leaks-permissions.sh",
+  "bundled": "leaks-permissions.sh"
+ },
+ "optiq-products": {
+  "script": "gates/domains/opiq-products.sh",
+  "bundled": "opiq-products.sh"
+ },
+ "aio-okolic-products": {
+  "script": "gates/domains/aio-okolic-products.sh",
+  "bundled": "aio-okolic-products.sh"
+ },
+ "agent-egress-discipline": {
+  "script": "gates/domains/agent-egress-discipline.sh",
+  "bundled": "agent-egress-discipline.sh"
+ },
+ "presence-stale": {
+  "script": "../gates/presence-stale.sh",
+  "bundled": "presence-stale.sh"
+ },
+ "access-posture": {
+  "script": "../gates/access-posture-check.sh",
+  "bundled": "access-posture-check.sh"
+ },
+ "monai-channel-api": {
+  "script": "../gates/monai-channel-api.sh",
+  "bundled": "monai-channel-api.sh"
+ },
+ "monai-channel-bet": {
+  "script": "../gates/monai-channel-bet.sh",
+  "bundled": "monai-channel-bet.sh"
+ },
+ "monai-channel-bounty": {
+  "script": "../gates/monai-channel-bounty.sh",
+  "bundled": "monai-channel-bounty.sh"
+ },
+ "monai-channel-hackathons": {
+  "script": "../gates/monai-channel-hackathons.sh",
+  "bundled": "monai-channel-hackathons.sh"
+ },
+ "monai-channel-job": {
+  "script": "../gates/monai-channel-job.sh",
+  "bundled": "monai-channel-job.sh"
+ },
+ "monai-channel-kaggle": {
+  "script": "../gates/monai-channel-kaggle.sh",
+  "bundled": "monai-channel-kaggle.sh"
+ },
+ "monai-channel-trading": {
+  "script": "../gates/monai-channel-trading.sh",
+  "bundled": "monai-channel-trading.sh"
+ },
+ "monai-channel-vendors": {
+  "script": "../gates/monai-channel-vendors.sh",
+  "bundled": "monai-channel-vendors.sh"
+ },
+ "monai-channel-work": {
+  "script": "../gates/monai-channel-work.sh",
+  "bundled": "monai-channel-work.sh"
+ },
+ "monai-kernel": {
+  "script": "../gates/monai-kernel.sh",
+  "bundled": "monai-kernel.sh"
+ },
+ "monai-bounty-funding": {
+  "script": "../gates/monai-bounty-funding.sh",
+  "bundled": "monai-bounty-funding.sh"
+ },
+ "monai-no-stub": {
+  "script": "../gates/monai-no-stub.sh",
+  "bundled": "monai-no-stub.sh"
+ },
+ "monai-ledger-metrics": {
+  "script": "../gates/monai-ledger-metrics.sh",
+  "bundled": "monai-ledger-metrics.sh"
+ },
+ "monai-laws": {
+  "script": "../gates/monai-laws.sh",
+  "bundled": "monai-laws.sh"
+ },
+ "monai-job-bid-gate": {
+  "script": "../gates/monai-job-bid-gate.sh",
+  "bundled": "monai-job-bid-gate.sh"
+ },
+ "akceleratory-laws": {
+  "script": "../gates/akceleratory-laws.sh",
+  "bundled": "akceleratory-laws.sh"
+ },
+ "agent-sniegul-laws": {
+  "script": "../gates/agent-sniegul-laws.sh",
+  "bundled": "agent-sniegul-laws.sh"
+ },
+ "sigil-laws": {
+  "script": "../gates/sigil-laws.sh",
+  "bundled": "sigil-laws.sh"
+ },
+ "drony-laws": {
+  "script": "../gates/drony-laws.sh",
+  "bundled": "drony-laws.sh"
+ },
+ "aio-okolic-laws": {
+  "script": "../gates/aio-okolic-laws.sh",
+  "bundled": "aio-okolic-laws.sh"
+ },
+ "vairify-laws": {
+  "script": "../gates/vairify-laws.sh",
+  "bundled": "vairify-laws.sh"
+ },
+ "build-placement": {
+  "script": "../gates/build-placement.sh",
+  "bundled": "build-placement.sh"
+ },
+ "agent-focus": {
+  "script": "../gates/agent-focus.sh",
+  "bundled": "agent-focus.sh"
+ },
+ "llm-flow": {
+  "script": "../gates/llm-flow.sh",
+  "bundled": "llm-flow.sh"
+ },
+ "expected-down-propagation": {
+  "script": "../gates/expected-down-propagation.sh",
+  "bundled": "expected-down-propagation.sh"
+ },
+ "law-gate-closure": {
+  "script": "../gates/law-gate-closure.sh",
+  "bundled": "law-gate-closure.sh"
+ },
+ "device-input-authorization": {
+  "script": "../gates/device-input-authorization.sh",
+  "bundled": "device-input-authorization.sh"
+ },
+ "frames-truth": {
+  "script": "../gates/frames-truth.sh",
+  "bundled": "frames-truth.sh"
+ },
+ "revenue-gate": {
+  "script": "../gates/revenue-gate.sh",
+  "bundled": "revenue-gate.sh"
+ },
+ "canonical-write-guard": {
+  "script": "../gates/canonical-write-guard.sh",
+  "bundled": "canonical-write-guard.sh"
+ },
+ "skill-determinism": {
+  "script": "../gates/skill-determinism.sh",
+  "bundled": "skill-determinism.sh"
+ },
+ "plan-parallelism": {
+  "script": "../gates/plan-parallelism.sh",
+  "bundled": "plan-parallelism.sh"
+ },
+ "ui-delivery-truth": {
+  "script": "../gates/ui-delivery-truth.sh",
+  "bundled": "ui-delivery-truth.sh"
+ },
+ "canonical-route": {
+  "script": "../gates/canonical-route.sh",
+  "bundled": "canonical-route.sh"
+ },
+ "optiq-mcp-lane": {
+  "script": "../gates/optiq-mcp-lane.sh",
+  "bundled": "optiq-mcp-lane.sh"
+ }
+}

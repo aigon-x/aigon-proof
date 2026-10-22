@@ -1,0 +1,2634 @@
+schema_version: 1
+gates:
+- id: GATE-334
+  module: naming-taxonomy
+  script: ../gates/naming-taxonomy.sh
+  severity: BLOCKING
+  profiles:
+  - PRE_PUSH
+- id: GATE-148
+  module: constitution-contract
+  script: ../gates/constitution-contract.sh
+  severity: BLOCKING
+  profiles:
+  - PRE_PUSH
+- id: GATE-001
+  module: gate-integrity
+  script: ../gates/gate-integrity.sh
+  severity: BLOCKING
+  profiles:
+  - RELEASE
+- id: GATE-002
+  module: source-of-truth
+  script: ../gates/source-of-truth.sh
+  severity: BLOCKING
+  profiles:
+  - PRE_PUSH
+- id: GATE-003
+  module: canonicality
+  script: ../gates/canonicality.sh
+  severity: BLOCKING
+  profiles:
+  - PRE_PUSH
+- id: GATE-004
+  module: configuration
+  script: ../gates/configuration.sh
+  severity: BLOCKING
+  profiles:
+  - PRE_PUSH
+- id: GATE-005
+  module: security
+  script: ../gates/security.sh
+  severity: BLOCKING
+  profiles:
+  - LOCAL_FAST
+- id: GATE-006
+  module: structure
+  script: ../gates/structure.sh
+  severity: BLOCKING
+  profiles:
+  - LOCAL_FAST
+- id: GATE-007
+  module: architecture
+  script: ../gates/architecture.sh
+  severity: BLOCKING
+  profiles:
+  - PRE_PUSH
+- id: GATE-008
+  module: dependencies
+  script: ../gates/dependencies.sh
+  severity: WARNING
+  profiles:
+  - PRE_PUSH
+- id: GATE-009
+  module: reproducibility
+  script: ../gates/reproducibility.sh
+  severity: WARNING
+  profiles:
+  - RELEASE
+- id: GATE-010
+  module: deployment
+  script: ../gates/deployment.sh
+  severity: WARNING
+  profiles:
+  - RELEASE
+- id: GATE-011
+  module: contracts
+  script: ../gates/contracts.sh
+  severity: BLOCKING
+  profiles:
+  - PRE_PUSH
+- id: GATE-012
+  module: migration
+  script: ../gates/migration.sh
+  severity: BLOCKING
+  profiles:
+  - PRE_PUSH
+- id: GATE-013
+  module: recovery
+  script: ../gates/recovery.sh
+  severity: BLOCKING
+  profiles:
+  - RELEASE
+- id: GATE-014
+  module: testing
+  script: ../gates/testing.sh
+  severity: BLOCKING
+  profiles:
+  - PRE_PUSH
+- id: GATE-015
+  module: performance
+  script: ../gates/performance.sh
+  severity: WARNING
+  profiles:
+  - LOCAL_FAST
+- id: GATE-016
+  module: documentation
+  script: ../gates/documentation.sh
+  severity: WARNING
+  profiles:
+  - PRE_PUSH
+- id: GATE-017
+  module: ci
+  script: ../gates/ci.sh
+  severity: BLOCKING
+  profiles:
+  - CI
+- id: GATE-018
+  module: git-hooks
+  script: ../gates/git-hooks.sh
+  severity: BLOCKING
+  profiles:
+  - LOCAL_FAST
+- id: GATE-019
+  module: state
+  script: ../gates/state.sh
+  severity: BLOCKING
+  profiles:
+  - PRE_PUSH
+- id: GATE-021
+  module: system-twin
+  script: ../gates/system-twin.sh
+  severity: BLOCKING
+  profiles:
+  - RELEASE
+- id: GATE-022
+  module: invariant-engine
+  script: ../gates/invariant-engine.sh
+  severity: BLOCKING
+  profiles:
+  - RELEASE
+- id: GATE-023
+  module: action-proof
+  script: ../gates/action-proof.sh
+  severity: BLOCKING
+  profiles:
+  - RELEASE
+- id: GATE-024
+  module: postcondition
+  script: ../gates/postcondition.sh
+  severity: BLOCKING
+  profiles:
+  - RELEASE
+- id: GATE-025
+  module: effective-config
+  script: ../gates/effective-config.sh
+  severity: BLOCKING
+  profiles:
+  - RELEASE
+- id: GATE-026
+  module: behavioral-drift
+  script: ../gates/behavioral-drift.sh
+  severity: BLOCKING
+  profiles:
+  - RELEASE
+- id: GATE-027
+  module: predictive-resource
+  script: ../gates/predictive-resource.sh
+  severity: BLOCKING
+  profiles:
+  - RELEASE
+- id: GATE-028
+  module: predictive-cost
+  script: ../gates/predictive-cost.sh
+  severity: BLOCKING
+  profiles:
+  - RELEASE
+- id: GATE-029
+  module: context-health
+  script: ../gates/context-health.sh
+  severity: BLOCKING
+  profiles:
+  - RELEASE
+- id: GATE-030
+  module: memory-integrity
+  script: ../gates/memory-integrity.sh
+  severity: BLOCKING
+  profiles:
+  - RELEASE
+- id: GATE-031
+  module: dependency-graph
+  script: ../gates/dependency-graph.sh
+  severity: BLOCKING
+  profiles:
+  - RELEASE
+- id: GATE-032
+  module: pre-mortem
+  script: ../gates/pre-mortem.sh
+  severity: BLOCKING
+  profiles:
+  - RELEASE
+- id: GATE-033
+  module: counterfactual
+  script: ../gates/counterfactual.sh
+  severity: BLOCKING
+  profiles:
+  - RELEASE
+- id: GATE-034
+  module: change-risk
+  script: ../gates/change-risk.sh
+  severity: BLOCKING
+  profiles:
+  - RELEASE
+- id: GATE-035
+  module: complexity-governor
+  script: ../gates/complexity-governor.sh
+  severity: BLOCKING
+  profiles:
+  - RELEASE
+- id: GATE-036
+  module: agent-trust
+  script: ../gates/agent-trust.sh
+  severity: BLOCKING
+  profiles:
+  - RELEASE
+- id: GATE-037
+  module: autonomy-level
+  script: ../gates/autonomy-level.sh
+  severity: BLOCKING
+  profiles:
+  - RELEASE
+- id: GATE-038
+  module: wiring
+  script: ../gates/wiring.sh
+  severity: BLOCKING
+  profiles:
+  - LOCAL_FAST
+- id: GATE-039
+  module: resilience
+  script: ../gates/resilience.sh
+  severity: BLOCKING
+  profiles:
+  - LOCAL_FAST
+- id: GATE-040
+  module: lifecycle
+  script: ../gates/lifecycle.sh
+  severity: BLOCKING
+  profiles:
+  - RELEASE
+- id: GATE-041
+  module: human
+  script: ../gates/human.sh
+  severity: BLOCKING
+  profiles:
+  - PRE_PUSH
+- id: GATE-042
+  module: simulation
+  script: ../gates/simulation.sh
+  severity: BLOCKING
+  profiles:
+  - PRE_PUSH
+- id: GATE-043
+  module: observability
+  script: ../gates/observability.sh
+  severity: BLOCKING
+  profiles:
+  - PRE_PUSH
+- id: GATE-044
+  module: security-pro
+  script: ../gates/security-pro.sh
+  severity: BLOCKING
+  profiles:
+  - LOCAL_FAST
+- id: GATE-045
+  module: sast
+  script: ../gates/sast.sh
+  severity: BLOCKING
+  profiles:
+  - CI
+- id: GATE-046
+  module: sbom
+  script: ../gates/sbom.sh
+  severity: BLOCKING
+  profiles:
+  - CI
+- id: GATE-234
+  module: aio-okolic-products
+  script: ../gates/aio-okolic-products.sh
+  severity: BLOCKING
+  profiles:
+  - CI
+- id: GATE-047
+  module: deps-cve
+  script: ../gates/deps-cve.sh
+  severity: BLOCKING
+  profiles:
+  - PRE_PUSH
+- id: GATE-048
+  module: shell-static
+  script: ../gates/shell-static.sh
+  severity: BLOCKING
+  profiles:
+  - LOCAL_FAST
+- id: GATE-049
+  module: yaml-lint
+  script: ../gates/yaml-lint.sh
+  severity: BLOCKING
+  profiles:
+  - LOCAL_FAST
+- id: GATE-050
+  module: md-lint
+  script: ../gates/md-lint.sh
+  severity: BLOCKING
+  profiles:
+  - PRE_PUSH
+- id: GATE-051
+  module: ci-workflow
+  script: ../gates/ci-workflow.sh
+  severity: BLOCKING
+  profiles:
+  - LOCAL_FAST
+- id: GATE-052
+  module: repo-structure
+  script: ../gates/repo-structure.sh
+  severity: WARNING
+  profiles:
+  - CONTINUOUS
+- id: GATE-053
+  module: scatter-contract
+  script: ../gates/scatter-contract.sh
+  severity: WARNING
+  profiles:
+  - CONTINUOUS
+- id: GATE-054
+  module: fd-ulimit
+  script: ../gates/fd-ulimit.sh
+  severity: WARNING
+  profiles:
+  - CONTINUOUS
+- id: GATE-055
+  module: mcp-liveness
+  script: ../gates/mcp-liveness.sh
+  severity: WARNING
+  profiles:
+  - CONTINUOUS
+- id: GATE-056
+  module: prod-root-lint
+  script: ../gates/prod-root-lint.sh
+  severity: WARNING
+  profiles:
+  - CONTINUOUS
+- id: GATE-057
+  module: agent-fabric
+  script: ../gates/agent-fabric.sh
+  severity: WARNING
+  profiles:
+  - CONTINUOUS
+- id: GATE-058
+  module: bash-syntax
+  script: ../gates/bash-syntax.sh
+  severity: WARNING
+  profiles:
+  - CONTINUOUS
+- id: GATE-059
+  module: canonicality-p0
+  script: ../gates/canonicality-p0.sh
+  severity: WARNING
+  profiles:
+  - CONTINUOUS
+- id: GATE-060
+  module: cerberus-e2e
+  script: ../gates/cerberus-e2e.sh
+  severity: WARNING
+  profiles:
+  - CONTINUOUS
+- id: GATE-061
+  module: compose-interpolation
+  script: ../gates/compose-interpolation.sh
+  severity: WARNING
+  profiles:
+  - CONTINUOUS
+- id: GATE-062
+  module: context-budget
+  script: ../gates/context-budget.sh
+  severity: WARNING
+  profiles:
+  - CONTINUOUS
+- id: GATE-063
+  module: env-minchars
+  script: ../gates/env-minchars.sh
+  severity: WARNING
+  profiles:
+  - CONTINUOUS
+- id: GATE-064
+  module: env-pollution
+  script: ../gates/env-pollution.sh
+  severity: WARNING
+  profiles:
+  - CONTINUOUS
+- id: GATE-065
+  module: evidence-commit
+  script: ../gates/evidence-commit.sh
+  severity: WARNING
+  profiles:
+  - CONTINUOUS
+- id: GATE-066
+  module: functional-benchmark
+  script: ../gates/functional-benchmark.sh
+  severity: WARNING
+  profiles:
+  - CONTINUOUS
+- id: GATE-067
+  module: gen-component-registry-audit
+  script: ../gates/gen-component-registry-audit.sh
+  severity: WARNING
+  profiles:
+  - CONTINUOUS
+- id: GATE-068
+  module: gpu-one-model
+  script: ../gates/gpu-one-model.sh
+  severity: WARNING
+  profiles:
+  - CONTINUOUS
+- id: GATE-120
+  module: cpu-tier
+  script: ../gates/cpu-tier.sh
+  severity: WARNING
+  profiles:
+  - CONTINUOUS
+- id: GATE-069
+  module: health-8
+  script: ../gates/health-8.sh
+  severity: WARNING
+  profiles:
+  - CONTINUOUS
+- id: GATE-070
+  module: health-local
+  script: ../gates/health-local.sh
+  severity: WARNING
+  profiles:
+  - CONTINUOUS
+- id: GATE-071
+  module: image-consistency
+  script: ../gates/image-consistency.sh
+  severity: WARNING
+  profiles:
+  - CONTINUOUS
+- id: GATE-072
+  module: image-id-vs-registry
+  script: ../gates/image-id-vs-registry.sh
+  severity: WARNING
+  profiles:
+  - CONTINUOUS
+- id: GATE-073
+  module: manifest-load
+  script: ../gates/manifest-load.sh
+  severity: BLOCKING
+  profiles:
+  - CONTINUOUS
+- id: GATE-074
+  module: mesh-absorb
+  script: ../gates/mesh-absorb.sh
+  severity: WARNING
+  profiles:
+  - CONTINUOUS
+- id: GATE-075
+  module: mesh-mirror
+  script: ../gates/mesh-mirror.sh
+  severity: WARNING
+  profiles:
+  - CONTINUOUS
+- id: GATE-076
+  module: mesh-peers
+  script: ../gates/mesh-peers.sh
+  severity: WARNING
+  profiles:
+  - CONTINUOUS
+- id: GATE-077
+  module: mesh-presence
+  script: ../gates/mesh-presence.sh
+  severity: WARNING
+  profiles:
+  - CONTINUOUS
+- id: GATE-078
+  module: no-hardcoded-ip
+  script: ../gates/no-hardcoded-ip.sh
+  severity: WARNING
+  profiles:
+  - CONTINUOUS
+- id: GATE-079
+  module: no-latest-prod
+  script: ../gates/no-latest-prod.sh
+  severity: WARNING
+  profiles:
+  - CONTINUOUS
+- id: GATE-080
+  module: proof-trail
+  script: ../gates/proof-trail.sh
+  severity: WARNING
+  profiles:
+  - CONTINUOUS
+- id: GATE-081
+  module: secrets-staged
+  script: ../gates/secrets-staged.sh
+  severity: WARNING
+  profiles:
+  - CONTINUOUS
+- id: GATE-082
+  module: sync-agents
+  script: ../gates/sync-agents.sh
+  severity: WARNING
+  profiles:
+  - CONTINUOUS
+- id: GATE-083
+  module: sync-tests
+  script: ../gates/sync-tests.sh
+  severity: WARNING
+  profiles:
+  - CONTINUOUS
+- id: GATE-084
+  module: test_wired_check
+  script: ../gates/test_wired_check.sh
+  severity: WARNING
+  profiles:
+  - CONTINUOUS
+- id: GATE-085
+  module: tick-wiring
+  script: ../gates/tick-wiring.sh
+  severity: WARNING
+  profiles:
+  - CONTINUOUS
+- id: GATE-086
+  module: validate-sot
+  script: ../gates/validate-sot.sh
+  severity: WARNING
+  profiles:
+  - CONTINUOUS
+- id: GATE-087
+  module: wired-check
+  script: ../gates/wired-check.sh
+  severity: WARNING
+  profiles:
+  - CONTINUOUS
+- id: GATE-088
+  module: obs-telemetry-check
+  script: ../gates/obs-telemetry-check.sh
+  severity: BLOCKING
+  profiles:
+  - CI
+- id: GATE-089
+  module: env-invariants-check
+  script: ../gates/env-invariants-check.sh
+  severity: BLOCKING
+  profiles:
+  - CI
+- id: GATE-091
+  module: sbom-check
+  script: ../gates/sbom-check.sh
+  severity: BLOCKING
+  profiles:
+  - CI
+- id: GATE-092
+  module: container-privileges-check
+  script: ../gates/container-privileges-check.sh
+  severity: BLOCKING
+  profiles:
+  - CI
+- id: GATE-093
+  module: access-revocation-check
+  script: ../gates/access-revocation-check.sh
+  severity: BLOCKING
+  profiles:
+  - CI
+- id: GATE-094
+  module: cert-renewal-check
+  script: ../gates/cert-renewal-check.sh
+  severity: BLOCKING
+  profiles:
+  - CI
+- id: GATE-095
+  module: network-reachability-check
+  script: ../gates/network-reachability-check.sh
+  severity: BLOCKING
+  profiles:
+  - CI
+- id: GATE-096
+  module: message-ordering-check
+  script: ../gates/message-ordering-check.sh
+  severity: BLOCKING
+  profiles:
+  - CI
+- id: GATE-097
+  module: duplicate-idempotency-check
+  script: ../gates/duplicate-idempotency-check.sh
+  severity: BLOCKING
+  profiles:
+  - CI
+- id: GATE-098
+  module: retry-bounds-check
+  script: ../gates/retry-bounds-check.sh
+  severity: BLOCKING
+  profiles:
+  - CI
+- id: GATE-099
+  module: dlq-process-check
+  script: ../gates/dlq-process-check.sh
+  severity: BLOCKING
+  profiles:
+  - CI
+- id: GATE-100
+  module: poison-message-check
+  script: ../gates/poison-message-check.sh
+  severity: BLOCKING
+  profiles:
+  - CI
+- id: GATE-101
+  module: backpressure-check
+  script: ../gates/backpressure-check.sh
+  severity: BLOCKING
+  profiles:
+  - CI
+- id: GATE-102
+  module: backlog-drain-check
+  script: ../gates/backlog-drain-check.sh
+  severity: BLOCKING
+  profiles:
+  - CI
+- id: GATE-103
+  module: load-profile-check
+  script: ../gates/load-profile-check.sh
+  severity: BLOCKING
+  profiles:
+  - CI
+- id: GATE-104
+  module: peak-capacity-check
+  script: ../gates/peak-capacity-check.sh
+  severity: BLOCKING
+  profiles:
+  - CI
+- id: GATE-105
+  module: spike-degradation-check
+  script: ../gates/spike-degradation-check.sh
+  severity: BLOCKING
+  profiles:
+  - CI
+- id: GATE-106
+  module: perf-regression-check
+  script: ../gates/perf-regression-check.sh
+  severity: BLOCKING
+  profiles:
+  - CI
+- id: GATE-107
+  module: autoscaling-stability-check
+  script: ../gates/autoscaling-stability-check.sh
+  severity: BLOCKING
+  profiles:
+  - CI
+- id: GATE-108
+  module: state-transitions-check
+  script: ../gates/state-transitions-check.sh
+  severity: BLOCKING
+  profiles:
+  - CI
+- id: GATE-109
+  module: interrupt-resume-check
+  script: ../gates/interrupt-resume-check.sh
+  severity: BLOCKING
+  profiles:
+  - CI
+- id: GATE-110
+  module: cyclic-jobs-check
+  script: ../gates/cyclic-jobs-check.sh
+  severity: BLOCKING
+  profiles:
+  - CI
+- id: GATE-111
+  module: offline-handling-check
+  script: ../gates/offline-handling-check.sh
+  severity: BLOCKING
+  profiles:
+  - CI
+- id: GATE-112
+  module: permission-justification-check
+  script: ../gates/permission-justification-check.sh
+  severity: BLOCKING
+  profiles:
+  - CI
+- id: GATE-113
+  module: power-loss-update-check
+  script: ../gates/power-loss-update-check.sh
+  severity: BLOCKING
+  profiles:
+  - CI
+- id: GATE-114
+  module: offline-security-check
+  script: ../gates/offline-security-check.sh
+  severity: BLOCKING
+  profiles:
+  - CI
+- id: GATE-115
+  module: defect-threshold-check
+  script: ../gates/defect-threshold-check.sh
+  severity: BLOCKING
+  profiles:
+  - CI
+- id: GATE-116
+  module: maintenance-comms-check
+  script: ../gates/maintenance-comms-check.sh
+  severity: BLOCKING
+  profiles:
+  - CI
+- id: GATE-117
+  module: legal-current-check
+  script: ../gates/legal-current-check.sh
+  severity: BLOCKING
+  profiles:
+  - CI
+- id: GATE-118
+  module: cost-budget-check
+  script: ../gates/cost-budget-check.sh
+  severity: BLOCKING
+  profiles:
+  - CI
+- id: GATE-119
+  module: safety-limits-check
+  script: ../gates/safety-limits-check.sh
+  severity: BLOCKING
+  profiles:
+  - CI
+- id: GATE-121
+  module: agent-surface-parity
+  script: ../gates/agent-surface-parity.sh
+  severity: BLOCKING
+  profiles:
+  - FAST
+- id: GATE-122
+  module: state-ratchet
+  script: ../gates/state-ratchet.sh
+  severity: WARNING
+  profiles:
+  - STANDARD
+- id: GATE-123
+  module: agent-identity-parity
+  script: ../gates/agent-identity-parity.sh
+  severity: BLOCKING
+  profiles:
+  - FAST
+- id: GATE-124
+  module: ollama-tier-parity
+  script: ../gates/ollama-tier-parity.sh
+  severity: BLOCKING
+  profiles:
+  - FAST
+- id: GATE-125
+  module: version-identity
+  script: ../gates/version-identity.sh
+  severity: BLOCKING
+  profiles:
+  - RELEASE
+- id: GATE-126
+  module: kernel-health
+  script: ../gates/kernel-health.sh
+  severity: BLOCKING
+  profiles:
+  - STANDARD
+- id: GATE-134
+  module: registry-coherence
+  script: ../gates/registry-coherence.sh
+  severity: BLOCKING
+  profiles:
+  - STANDARD
+- id: GATE-128
+  module: atlas-freshness
+  script: ../gates/atlas-freshness.sh
+  severity: WARNING
+  profiles:
+  - STANDARD
+- id: GATE-129
+  module: runtime-build
+  script: ../gates/runtime-build.sh
+  severity: WARNING
+  profiles:
+  - CONTINUOUS
+- id: GATE-130
+  module: world-model-coverage
+  script: ../gates/world-model-coverage.sh
+  severity: WARNING
+  profiles:
+  - CONTINUOUS
+- id: GATE-131
+  module: promtool-rules-test
+  script: ../gates/promtool-rules-test.sh
+  severity: WARNING
+  profiles:
+  - CONTINUOUS
+- id: GATE-132
+  module: file-permissions-check
+  script: ../gates/file-permissions-check.sh
+  severity: BLOCKING
+  profiles:
+  - PRE_PUSH
+- id: GATE-133
+  module: leaks-permissions
+  script: ../gates/leaks-permissions.sh
+  severity: BLOCKING
+  profiles:
+  - PRE_PUSH
+- id: STERILE-001
+  module: sterility
+  script: ../gates/sterility.sh
+  severity: BLOCKING
+  profiles:
+  - PRE_PUSH
+- id: GATE-135
+  module: otlp-client-ca-check
+  script: ../gates/otlp-client-ca-check.sh
+  severity: BLOCKING
+  profiles:
+  - FAST
+- id: GATE-136
+  module: constitution-fitness
+  script: ../gates/constitution-fitness.sh
+  severity: BLOCKING
+  profiles:
+  - STANDARD
+- id: GATE-137
+  module: cost-runaway
+  script: ../gates/cost-runaway.sh
+  severity: WARNING
+  profiles:
+  - STANDARD
+- id: GATE-138
+  module: sovereignty-fitness
+  script: ../gates/sovereignty-fitness.sh
+  severity: WARNING
+  profiles:
+  - STANDARD
+- id: GATE-139
+  module: persona-in-prompt
+  script: ../gates/persona-in-prompt.sh
+  severity: BLOCKING
+  profiles:
+  - RELEASE
+- id: GATE-140
+  module: agent-egress-discipline
+  script: ../gates/agent-egress-discipline.sh
+  severity: BLOCKING
+  profiles:
+  - PRE_COMMIT
+- id: GATE-141
+  module: android-rodzina
+  script: ../gates/android-rodzina.sh
+  severity: BLOCKING
+  profiles:
+  - PRE_PUSH
+- id: GATE-142
+  module: access-posture-check
+  script: ../gates/access-posture-check.sh
+  severity: BLOCKING
+  profiles:
+  - PRE_PUSH
+- id: GATE-143
+  module: kronos-maintenance
+  script: ../gates/kronos-maintenance.sh
+  severity: BLOCKING
+  profiles:
+  - CONTINUOUS
+- id: GATE-144
+  module: product-capabilities
+  script: ../gates/product-capabilities.sh
+  severity: BLOCKING
+  profiles:
+  - CONTINUOUS
+- id: GATE-147
+  module: telegram-product
+  script: ../gates/telegram-product.sh
+  severity: BLOCKING
+  profiles:
+  - RELEASE
+- id: GATE-146
+  module: runtime-lock-discipline
+  script: ../gates/runtime-lock-discipline.sh
+  severity: BLOCKING
+  profiles:
+  - CONTINUOUS
+- id: GATE-149
+  module: scripts-wired-check
+  script: ../gates/scripts-wired-check.sh
+  severity: BLOCKING
+  profiles:
+  - PRE_COMMIT
+- id: GATE-150
+  module: gate-reachability
+  script: ../gates/gate-reachability.sh
+  severity: BLOCKING
+  profiles:
+  - PRE_COMMIT
+- id: GATE-151
+  module: ledger-coverage
+  script: ../gates/ledger-coverage.sh
+  severity: BLOCKING
+  profiles:
+  - PRE_COMMIT
+- id: GATE-152
+  module: dns-first-check
+  script: ../gates/dns-first-check.sh
+  severity: BLOCKING
+  profiles:
+  - PRE_COMMIT
+- id: GATE-153
+  module: wiring-closure
+  script: ../gates/wiring-closure.sh
+  severity: BLOCKING
+  profiles:
+  - PRE_COMMIT
+- id: GATE-154
+  module: quality-gate-manifest
+  script: ../gates/quality-gate-manifest.sh
+  severity: BLOCKING
+  profiles:
+  - PRE_COMMIT
+- id: GATE-155
+  module: kernel-wiring
+  script: ../gates/kernel-wiring.sh
+  severity: BLOCKING
+  profiles:
+  - PRE_COMMIT
+- id: GATE-156
+  module: kernel-observability
+  script: ../gates/kernel-observability.sh
+  severity: BLOCKING
+  profiles:
+  - PRE_COMMIT
+- id: GATE-157
+  module: repo-completeness
+  script: ../gates/repo-completeness.sh
+  severity: BLOCKING
+  profiles:
+  - PRE_COMMIT
+- id: GATE-158
+  module: cjk-output-clean
+  script: ../gates/cjk-output-clean.sh
+  severity: BLOCKING
+  profiles:
+  - PRE_COMMIT
+- id: GATE-159
+  module: llm-timeout-consistency
+  script: ../gates/llm-timeout-consistency.sh
+  severity: BLOCKING
+  profiles:
+  - PRE_COMMIT
+- id: GATE-160
+  module: self-profile-integrity
+  script: ../gates/self-profile-integrity.sh
+  severity: BLOCKING
+  profiles:
+  - PRE_COMMIT
+- id: GATE-161
+  module: binary-glibc-fit
+  script: ../gates/binary-glibc-fit.sh
+  severity: BLOCKING
+  profiles:
+  - PRE_PUSH
+- id: GATE-162
+  module: scripts-tests
+  script: ../gates/scripts-tests.sh
+  severity: BLOCKING
+  profiles:
+  - PRE_PUSH
+- id: GATE-163
+  module: run-chain
+  script: ../gates/run-chain.sh
+  severity: BLOCKING
+  profiles:
+  - PRE_PUSH
+- id: GATE-164
+  module: placement
+  script: ../gates/placement.sh
+  severity: BLOCKING
+  profiles:
+  - PRE_PUSH
+- id: GATE-165
+  module: no-dangling-reference
+  script: ../gates/no-dangling-reference.sh
+  severity: BLOCKING
+  profiles:
+  - PRE_PUSH
+- id: GATE-166
+  module: law-56a-secret-channel
+  script: ../gates/law-56a-secret-channel.sh
+  severity: BLOCKING
+  profiles:
+  - PRE_PUSH
+- id: GATE-167
+  module: efficiency
+  script: ../gates/efficiency.sh
+  severity: BLOCKING
+  profiles:
+  - PRE_PUSH
+- id: GATE-168
+  module: semantics
+  script: ../gates/semantics.sh
+  severity: BLOCKING
+  profiles:
+  - PRE_PUSH
+- id: GATE-169
+  module: taxonomy
+  script: ../gates/taxonomy.sh
+  severity: BLOCKING
+  profiles:
+  - PRE_PUSH
+- id: GATE-170
+  module: obs-secret-drift
+  script: ../gates/obs-secret-drift.sh
+  severity: BLOCKING
+  profiles:
+  - CONTINUOUS
+- id: GATE-171
+  module: excellence-loop
+  script: ../gates/excellence-loop.sh
+  severity: BLOCKING
+  profiles:
+  - CONTINUOUS
+- id: GATE-172
+  module: capability-consistency
+  script: ../gates/capability-consistency.sh
+  severity: BLOCKING
+  profiles:
+  - CONTINUOUS
+- id: GATE-173
+  module: gpu-resident
+  script: ../gates/gpu-resident.sh
+  severity: BLOCKING
+  profiles:
+  - CONTINUOUS
+- id: GATE-174
+  module: skill-distribution
+  script: ../gates/skill-distribution.sh
+  severity: BLOCKING
+  profiles:
+  - CONTINUOUS
+- id: GATE-175
+  module: obs-deadman-check
+  script: ../gates/obs-deadman-check.sh
+  severity: BLOCKING
+  profiles:
+  - CONTINUOUS
+- id: GATE-176
+  module: ha-failover
+  script: ../gates/ha-failover.sh
+  severity: BLOCKING
+  profiles:
+  - CONTINUOUS
+- id: GATE-177
+  module: health-truth-guard
+  script: ../gates/health-truth-guard.sh
+  severity: BLOCKING
+  profiles:
+  - CONTINUOUS
+- id: GATE-178
+  module: agent-memory-sync
+  script: ../gates/agent-memory-sync.sh
+  severity: BLOCKING
+  profiles:
+  - CONTINUOUS
+- id: GATE-179
+  module: pdf-gate
+  script: ../gates/pdf-gate.sh
+  severity: BLOCKING
+  profiles:
+  - CONTINUOUS
+- id: GATE-180
+  module: aesthetics
+  script: ../gates/aesthetics.sh
+  severity: BLOCKING
+  profiles:
+  - CONTINUOUS
+- id: GATE-181
+  module: i18n
+  script: ../gates/i18n.sh
+  severity: BLOCKING
+  profiles:
+  - CONTINUOUS
+- id: GATE-182
+  module: encyclopedia-consistency
+  script: ../gates/encyclopedia-consistency.sh
+  severity: BLOCKING
+  profiles:
+  - CONTINUOUS
+- id: GATE-183
+  module: lesson-audit
+  script: ../gates/lesson-audit.sh
+  severity: BLOCKING
+  profiles:
+  - CONTINUOUS
+- id: GATE-184
+  module: liveness-production
+  script: ../gates/liveness-production.sh
+  severity: BLOCKING
+  profiles:
+  - CONTINUOUS
+- id: GATE-185
+  module: security-auth
+  script: ../gates/security-auth.sh
+  severity: BLOCKING
+  profiles:
+  - CONTINUOUS
+- id: GATE-186
+  module: security-credential-registry
+  script: ../gates/security-credential-registry.sh
+  severity: BLOCKING
+  profiles:
+  - CONTINUOUS
+- id: GATE-187
+  module: security-drills
+  script: ../gates/security-drills.sh
+  severity: BLOCKING
+  profiles:
+  - CONTINUOUS
+- id: GATE-188
+  module: security-retention
+  script: ../gates/security-retention.sh
+  severity: BLOCKING
+  profiles:
+  - CONTINUOUS
+- id: GATE-189
+  module: security-rotation
+  script: ../gates/security-rotation.sh
+  severity: BLOCKING
+  profiles:
+  - CONTINUOUS
+- id: GATE-190
+  module: security-web
+  script: ../gates/security-web.sh
+  severity: BLOCKING
+  profiles:
+  - CONTINUOUS
+- id: GATE-191
+  module: backup-datastores-freshness
+  script: ../gates/backup-datastores-freshness.sh
+  severity: BLOCKING
+  profiles:
+  - CONTINUOUS
+- id: GATE-192
+  module: optiq-products
+  script: ../gates/optiq-products.sh
+  severity: BLOCKING
+  profiles:
+  - CONTINUOUS
+- id: GATE-193
+  module: gate-docs-pdf
+  script: ../gates/gate-docs-pdf.sh
+  severity: BLOCKING
+  profiles:
+  - CONTINUOUS
+- id: GATE-194
+  module: skills-ingest-now
+  script: ../gates/skills-ingest-now.sh
+  severity: BLOCKING
+  profiles:
+  - CONTINUOUS
+- id: GATE-195
+  module: presence-stale
+  script: ../gates/presence-stale.sh
+  severity: BLOCKING
+  profiles:
+  - CONTINUOUS
+- id: GATE-196
+  module: obs-alerts
+  script: ../gates/obs-alerts.sh
+  severity: BLOCKING
+  profiles:
+  - CONTINUOUS
+- id: GATE-197
+  module: obs-dashboards
+  script: ../gates/obs-dashboards.sh
+  severity: BLOCKING
+  profiles:
+  - CONTINUOUS
+- id: GATE-198
+  module: obs-health
+  script: ../gates/obs-health.sh
+  severity: BLOCKING
+  profiles:
+  - CONTINUOUS
+- id: GATE-199
+  module: obs-logging
+  script: ../gates/obs-logging.sh
+  severity: BLOCKING
+  profiles:
+  - CONTINUOUS
+- id: GATE-200
+  module: obs-metrics
+  script: ../gates/obs-metrics.sh
+  severity: BLOCKING
+  profiles:
+  - CONTINUOUS
+- id: GATE-201
+  module: obs-slo
+  script: ../gates/obs-slo.sh
+  severity: BLOCKING
+  profiles:
+  - CONTINUOUS
+- id: GATE-202
+  module: obs-synthetics
+  script: ../gates/obs-synthetics.sh
+  severity: BLOCKING
+  profiles:
+  - CONTINUOUS
+- id: GATE-204
+  module: monai-channel-api
+  script: ../gates/monai-channel-api.sh
+  severity: BLOCKING
+  profiles:
+  - CONTINUOUS
+- id: GATE-205
+  module: monai-channel-bet
+  script: ../gates/monai-channel-bet.sh
+  severity: BLOCKING
+  profiles:
+  - CONTINUOUS
+- id: GATE-206
+  module: monai-channel-bounty
+  script: ../gates/monai-channel-bounty.sh
+  severity: BLOCKING
+  profiles:
+  - CONTINUOUS
+- id: GATE-207
+  module: monai-channel-hackathons
+  script: ../gates/monai-channel-hackathons.sh
+  severity: BLOCKING
+  profiles:
+  - CONTINUOUS
+- id: GATE-208
+  module: monai-channel-job
+  script: ../gates/monai-channel-job.sh
+  severity: BLOCKING
+  profiles:
+  - CONTINUOUS
+- id: GATE-209
+  module: monai-channel-kaggle
+  script: ../gates/monai-channel-kaggle.sh
+  severity: BLOCKING
+  profiles:
+  - CONTINUOUS
+- id: GATE-210
+  module: monai-channel-trading
+  script: ../gates/monai-channel-trading.sh
+  severity: BLOCKING
+  profiles:
+  - CONTINUOUS
+- id: GATE-211
+  module: monai-channel-vendors
+  script: ../gates/monai-channel-vendors.sh
+  severity: BLOCKING
+  profiles:
+  - CONTINUOUS
+- id: GATE-212
+  module: monai-channel-work
+  script: ../gates/monai-channel-work.sh
+  severity: BLOCKING
+  profiles:
+  - CONTINUOUS
+- id: GATE-213
+  module: monai-kernel
+  script: ../gates/monai-kernel.sh
+  severity: BLOCKING
+  profiles:
+  - CONTINUOUS
+- id: GATE-214
+  module: monai-bounty-funding
+  script: ../gates/monai-bounty-funding.sh
+  severity: BLOCKING
+  profiles:
+  - CONTINUOUS
+- id: GATE-215
+  module: monai-no-stub
+  script: ../gates/monai-no-stub.sh
+  severity: BLOCKING
+  profiles:
+  - CONTINUOUS
+- id: GATE-216
+  module: monai-ledger-metrics
+  script: ../gates/monai-ledger-metrics.sh
+  severity: BLOCKING
+  profiles:
+  - CONTINUOUS
+- id: GATE-217
+  module: monai-laws
+  script: ../gates/monai-laws.sh
+  severity: BLOCKING
+  profiles:
+  - CONTINUOUS
+- id: GATE-218
+  module: akceleratory-laws
+  script: ../gates/akceleratory-laws.sh
+  severity: BLOCKING
+  profiles:
+  - CONTINUOUS
+- id: GATE-219
+  module: agent-sniegul-laws
+  script: ../gates/agent-sniegul-laws.sh
+  severity: BLOCKING
+  profiles:
+  - CONTINUOUS
+- id: GATE-220
+  module: sigil-laws
+  script: ../gates/sigil-laws.sh
+  severity: BLOCKING
+  profiles:
+  - CONTINUOUS
+- id: GATE-221
+  module: drony-laws
+  script: ../gates/drony-laws.sh
+  severity: BLOCKING
+  profiles:
+  - CONTINUOUS
+- id: GATE-222
+  module: vairify-laws
+  script: ../gates/vairify-laws.sh
+  severity: BLOCKING
+  profiles:
+  - CONTINUOUS
+- id: GATE-223
+  module: leonardo-hpc-path
+  script: ../gates/leonardo-hpc-path.sh
+  severity: BLOCKING
+  profiles:
+  - CONTINUOUS
+- id: GATE-224
+  module: monai-job-bid-gate
+  script: ../gates/monai-job-bid-gate.sh
+  severity: BLOCKING
+  profiles:
+  - CONTINUOUS
+- id: GATE-225
+  module: memory-canonization
+  script: ../gates/memory-canonization.sh
+  severity: BLOCKING
+  profiles:
+  - CONTINUOUS
+- id: GATE-226
+  module: nexus-graph
+  script: ../gates/nexus-graph.sh
+  severity: WARNING
+  profiles:
+  - CONTINUOUS
+- id: GATE-227
+  module: szpieg-sovereign-watch
+  script: ../gates/szpieg-sovereign-watch.sh
+  severity: BLOCKING
+  profiles:
+  - RELEASE
+- id: GATE-228
+  module: aio-okolic-laws
+  script: ../gates/aio-okolic-laws.sh
+  severity: BLOCKING
+  profiles:
+  - CONTINUOUS
+- id: GATE-230
+  module: truth-consistency
+  script: ../gates/truth-consistency.sh
+  severity: BLOCKING
+  profiles:
+  - PRE_PUSH
+- id: GATE-229
+  module: runtime-health-graph
+  script: ../gates/runtime-health-graph.sh
+  severity: BLOCKING
+  profiles:
+  - PRE_PUSH
+- id: GATE-231
+  module: law-gate-closure
+  script: ../gates/law-gate-closure.sh
+  severity: BLOCKING
+  profiles:
+  - PRE_COMMIT
+- id: GATE-232
+  module: device-input-authorization
+  script: ../gates/device-input-authorization.sh
+  severity: BLOCKING
+  profiles:
+  - PRE_COMMIT
+- id: GATE-233
+  module: frames-truth
+  script: ../gates/frames-truth.sh
+  severity: BLOCKING
+  profiles:
+  - CONTINUOUS
+- id: GATE-235
+  module: secrets-distribution-coverage
+  script: ../gates/secrets-distribution-coverage.sh
+  severity: BLOCKING
+  profiles:
+  - PRE_PUSH
+- id: GATE-236
+  module: hypervisor-principal
+  script: ../gates/hypervisor-principal.sh
+  severity: BLOCKING
+  profiles:
+  - PRE_PUSH
+- id: GATE-237
+  module: sigil-ha-topology
+  script: ../gates/sigil-ha-topology.sh
+  severity: BLOCKING
+  profiles:
+  - CYCLIC
+- id: GATE-238
+  module: skill-reference-integrity
+  script: ../gates/skill-reference-integrity.sh
+  severity: BLOCKING
+  profiles:
+  - CI
+- id: GATE-239
+  module: capability-key-parity
+  script: ../gates/capability-key-parity.sh
+  severity: BLOCKING
+  profiles:
+  - CI
+- id: GATE-240
+  module: storage-mesh
+  script: ../gates/storage-mesh.sh
+  severity: BLOCKING
+  profiles:
+  - CI
+- id: GATE-241
+  module: storage-tier-health
+  script: ../gates/storage-tier-health.sh
+  severity: BLOCKING
+  profiles:
+  - CI
+- id: GATE-242
+  module: gate-parametrization
+  script: ../gates/gate-parametrization.sh
+  severity: BLOCKING
+  profiles:
+  - CI
+- id: GATE-244
+  module: panel-graph-coverage
+  script: ../gates/panel-graph-coverage.sh
+  severity: BLOCKING
+  profiles:
+  - CI
+- id: GATE-245
+  module: hardware-health
+  script: ../gates/hardware-health.sh
+  severity: BLOCKING
+  profiles:
+  - CI
+- id: GATE-246
+  module: law-fitness-coverage
+  script: ../gates/law-fitness-coverage.sh
+  severity: BLOCKING
+  profiles:
+  - CI
+- id: GATE-247
+  module: corpus-integrity
+  script: ../gates/corpus-integrity.sh
+  severity: BLOCKING
+  profiles:
+  - CI
+- id: GATE-248
+  module: gate-selftest-coverage
+  script: ../gates/gate-selftest-coverage.sh
+  severity: BLOCKING
+  profiles:
+  - CI
+- id: GATE-249
+  module: ci-builder-runtime
+  script: ../gates/ci-builder-runtime.sh
+  severity: WARNING
+  profiles:
+  - CI
+- id: GATE-250
+  module: agent-session-leaks
+  script: ../gates/agent-session-leaks.sh
+  severity: WARNING
+  profiles:
+  - CI
+- id: GATE-251
+  module: finance-margin
+  script: ../gates/finance-margin.sh
+  severity: WARNING
+  profiles:
+  - CI
+- id: GATE-252
+  module: support-defect-loop
+  script: ../gates/support-defect-loop.sh
+  severity: WARNING
+  profiles:
+  - CI
+- id: GATE-253
+  module: security-matrix-freshness
+  script: ../gates/security-matrix-freshness.sh
+  severity: WARNING
+  profiles:
+  - CI
+- id: GATE-254
+  module: capability-key-identity
+  script: ../gates/capability-key-identity.sh
+  severity: WARNING
+  profiles:
+  - CI
+- id: GATE-255
+  module: container-env-drift
+  script: ../gates/container-env-drift.sh
+  severity: WARNING
+  profiles:
+  - CI
+- id: GATE-256
+  module: sovereign-confirmation
+  script: ../gates/sovereign-confirmation.sh
+  severity: BLOCKING
+  profiles:
+  - CI
+- id: GATE-257
+  module: llm-lane-truth
+  script: ../gates/llm-lane-truth.sh
+  severity: BLOCKING
+  profiles:
+  - PRE_PUSH
+- id: GATE-260
+  module: firewall-single-writer
+  script: ../gates/firewall-single-writer.sh
+  severity: WARNING
+  profiles:
+  - CI
+- id: GATE-261
+  module: canonical-config-integrity
+  script: ../gates/canonical-config-integrity.sh
+  severity: WARNING
+  profiles:
+  - PRE_COMMIT
+- id: GATE-262
+  module: config-consistency
+  script: ../gates/config-consistency.sh
+  severity: WARNING
+  profiles:
+  - PRE_COMMIT
+- id: GATE-263
+  module: cron-lock-check
+  script: ../gates/cron-lock-check.sh
+  severity: WARNING
+  profiles:
+  - PRE_COMMIT
+- id: GATE-264
+  module: exporter-contracts
+  script: ../gates/exporter-contracts.sh
+  severity: WARNING
+  profiles:
+  - PRE_COMMIT
+- id: GATE-265
+  module: law-action-budget
+  script: ../gates/law-action-budget.sh
+  severity: WARNING
+  profiles:
+  - PRE_COMMIT
+- id: GATE-266
+  module: law-alert-actionability
+  script: ../gates/law-alert-actionability.sh
+  severity: WARNING
+  profiles:
+  - PRE_COMMIT
+- id: GATE-267
+  module: law-capacity-envelope
+  script: ../gates/law-capacity-envelope.sh
+  severity: WARNING
+  profiles:
+  - PRE_COMMIT
+- id: GATE-268
+  module: law-context-integrity
+  script: ../gates/law-context-integrity.sh
+  severity: WARNING
+  profiles:
+  - PRE_COMMIT
+- id: GATE-269
+  module: law-decision-provenance
+  script: ../gates/law-decision-provenance.sh
+  severity: WARNING
+  profiles:
+  - PRE_COMMIT
+- id: GATE-270
+  module: law-effect-once
+  script: ../gates/law-effect-once.sh
+  severity: WARNING
+  profiles:
+  - PRE_COMMIT
+- id: GATE-271
+  module: law-escalation
+  script: ../gates/law-escalation.sh
+  severity: WARNING
+  profiles:
+  - PRE_COMMIT
+- id: GATE-272
+  module: law-estop
+  script: ../gates/law-estop.sh
+  severity: WARNING
+  profiles:
+  - PRE_COMMIT
+- id: GATE-273
+  module: law-evidence-confidence
+  script: ../gates/law-evidence-confidence.sh
+  severity: WARNING
+  profiles:
+  - PRE_COMMIT
+- id: GATE-274
+  module: law-fairness
+  script: ../gates/law-fairness.sh
+  severity: WARNING
+  profiles:
+  - PRE_COMMIT
+- id: GATE-275
+  module: law-green-lies
+  script: ../gates/law-green-lies.sh
+  severity: WARNING
+  profiles:
+  - PRE_COMMIT
+- id: GATE-276
+  module: law-loop-bound
+  script: ../gates/law-loop-bound.sh
+  severity: WARNING
+  profiles:
+  - PRE_COMMIT
+- id: GATE-277
+  module: law-memory-freshness
+  script: ../gates/law-memory-freshness.sh
+  severity: WARNING
+  profiles:
+  - PRE_COMMIT
+- id: GATE-278
+  module: law-memory-isolation
+  script: ../gates/law-memory-isolation.sh
+  severity: WARNING
+  profiles:
+  - PRE_COMMIT
+- id: GATE-279
+  module: law-memory-provenance
+  script: ../gates/law-memory-provenance.sh
+  severity: WARNING
+  profiles:
+  - PRE_COMMIT
+- id: GATE-280
+  module: law-metric-independence
+  script: ../gates/law-metric-independence.sh
+  severity: WARNING
+  profiles:
+  - PRE_COMMIT
+- id: GATE-281
+  module: law-obs-truth
+  script: ../gates/law-obs-truth.sh
+  severity: WARNING
+  profiles:
+  - PRE_COMMIT
+- id: GATE-282
+  module: law-operator-hold
+  script: ../gates/law-operator-hold.sh
+  severity: WARNING
+  profiles:
+  - PRE_COMMIT
+- id: GATE-283
+  module: law-precedence-matrix
+  script: ../gates/law-precedence-matrix.sh
+  severity: WARNING
+  profiles:
+  - PRE_COMMIT
+- id: GATE-284
+  module: law-repair-blast
+  script: ../gates/law-repair-blast.sh
+  severity: WARNING
+  profiles:
+  - PRE_COMMIT
+- id: GATE-285
+  module: law-repair-loop
+  script: ../gates/law-repair-loop.sh
+  severity: WARNING
+  profiles:
+  - PRE_COMMIT
+- id: GATE-286
+  module: law-repair-verified
+  script: ../gates/law-repair-verified.sh
+  severity: WARNING
+  profiles:
+  - PRE_COMMIT
+- id: GATE-287
+  module: law-retry-discipline
+  script: ../gates/law-retry-discipline.sh
+  severity: WARNING
+  profiles:
+  - PRE_COMMIT
+- id: GATE-288
+  module: law-root-cause
+  script: ../gates/law-root-cause.sh
+  severity: WARNING
+  profiles:
+  - PRE_COMMIT
+- id: GATE-289
+  module: law-saturation
+  script: ../gates/law-saturation.sh
+  severity: WARNING
+  profiles:
+  - PRE_COMMIT
+- id: GATE-290
+  module: law-singleton-writer
+  script: ../gates/law-singleton-writer.sh
+  severity: WARNING
+  profiles:
+  - PRE_COMMIT
+- id: GATE-291
+  module: law-slo
+  script: ../gates/law-slo.sh
+  severity: WARNING
+  profiles:
+  - PRE_COMMIT
+- id: GATE-292
+  module: law-status-contract
+  script: ../gates/law-status-contract.sh
+  severity: WARNING
+  profiles:
+  - PRE_COMMIT
+- id: GATE-293
+  module: law-time-integrity
+  script: ../gates/law-time-integrity.sh
+  severity: WARNING
+  profiles:
+  - PRE_COMMIT
+- id: GATE-294
+  module: law-tool-output-distrust
+  script: ../gates/law-tool-output-distrust.sh
+  severity: WARNING
+  profiles:
+  - PRE_COMMIT
+- id: GATE-295
+  module: leonardo-campaign
+  script: ../gates/leonardo-campaign.sh
+  severity: WARNING
+  profiles:
+  - PRE_COMMIT
+- id: GATE-296
+  module: lex-aegis-gates
+  script: ../gates/lex-aegis-gates.sh
+  severity: WARNING
+  profiles:
+  - PRE_COMMIT
+- id: GATE-297
+  module: limits-ssot
+  script: ../gates/limits-ssot.sh
+  severity: WARNING
+  profiles:
+  - PRE_COMMIT
+- id: GATE-298
+  module: memory-first
+  script: ../gates/memory-first.sh
+  severity: WARNING
+  profiles:
+  - PRE_COMMIT
+- id: GATE-299
+  module: mesh-duty
+  script: ../gates/mesh-duty.sh
+  severity: WARNING
+  profiles:
+  - PRE_COMMIT
+- id: GATE-300
+  module: nas-mount-truth
+  script: ../gates/nas-mount-truth.sh
+  severity: WARNING
+  profiles:
+  - PRE_COMMIT
+- id: GATE-301
+  module: negative-suite
+  script: ../gates/negative-suite.sh
+  severity: WARNING
+  profiles:
+  - PRE_COMMIT
+- id: GATE-302
+  module: project-visual-verification
+  script: ../gates/project-visual-verification.sh
+  severity: WARNING
+  profiles:
+  - PRE_COMMIT
+- id: GATE-303
+  module: reconcile-gate-wiring
+  script: ../gates/reconcile-gate-wiring.sh
+  severity: WARNING
+  profiles:
+  - PRE_COMMIT
+- id: GATE-304
+  module: skills-distribute-now
+  script: ../gates/skills-distribute-now.sh
+  severity: WARNING
+  profiles:
+  - PRE_COMMIT
+- id: GATE-305
+  module: test_alert_actionability_negative
+  script: ../gates/test_alert_actionability_negative.sh
+  severity: WARNING
+  profiles:
+  - PRE_COMMIT
+- id: GATE-306
+  module: test_decision_provenance_negative
+  script: ../gates/test_decision_provenance_negative.sh
+  severity: WARNING
+  profiles:
+  - PRE_COMMIT
+- id: GATE-307
+  module: test_effect_once_negative
+  script: ../gates/test_effect_once_negative.sh
+  severity: WARNING
+  profiles:
+  - PRE_COMMIT
+- id: GATE-308
+  module: test_green_lies_negative
+  script: ../gates/test_green_lies_negative.sh
+  severity: WARNING
+  profiles:
+  - PRE_COMMIT
+- id: GATE-309
+  module: test_m4_fitness_access_negative
+  script: ../gates/test_m4_fitness_access_negative.sh
+  severity: WARNING
+  profiles:
+  - PRE_COMMIT
+- id: GATE-310
+  module: test_m4_fitness_completion_negative
+  script: ../gates/test_m4_fitness_completion_negative.sh
+  severity: WARNING
+  profiles:
+  - PRE_COMMIT
+- id: GATE-311
+  module: test_m4_fitness_declared_negative
+  script: ../gates/test_m4_fitness_declared_negative.sh
+  severity: WARNING
+  profiles:
+  - PRE_COMMIT
+- id: GATE-312
+  module: test_m4_fitness_drift_negative
+  script: ../gates/test_m4_fitness_drift_negative.sh
+  severity: WARNING
+  profiles:
+  - PRE_COMMIT
+- id: GATE-313
+  module: test_m4_fitness_extra_negative
+  script: ../gates/test_m4_fitness_extra_negative.sh
+  severity: WARNING
+  profiles:
+  - PRE_COMMIT
+- id: GATE-314
+  module: test_m4_fitness_file_negative
+  script: ../gates/test_m4_fitness_file_negative.sh
+  severity: WARNING
+  profiles:
+  - PRE_COMMIT
+- id: GATE-315
+  module: test_m4_fitness_http_negative
+  script: ../gates/test_m4_fitness_http_negative.sh
+  severity: WARNING
+  profiles:
+  - PRE_COMMIT
+- id: GATE-316
+  module: test_m4_fitness_integrity_negative
+  script: ../gates/test_m4_fitness_integrity_negative.sh
+  severity: WARNING
+  profiles:
+  - PRE_COMMIT
+- id: GATE-317
+  module: test_m4_fitness_lock_negative
+  script: ../gates/test_m4_fitness_lock_negative.sh
+  severity: WARNING
+  profiles:
+  - PRE_COMMIT
+- id: GATE-318
+  module: test_m4_fitness_memory_negative
+  script: ../gates/test_m4_fitness_memory_negative.sh
+  severity: WARNING
+  profiles:
+  - PRE_COMMIT
+- id: GATE-319
+  module: test_m4_fitness_safety_secret_negative
+  script: ../gates/test_m4_fitness_safety_secret_negative.sh
+  severity: WARNING
+  profiles:
+  - PRE_COMMIT
+- id: GATE-320
+  module: test_obs_truth_negative
+  script: ../gates/test_obs_truth_negative.sh
+  severity: WARNING
+  profiles:
+  - PRE_COMMIT
+- id: GATE-321
+  module: test_precedence_matrix_negative
+  script: ../gates/test_precedence_matrix_negative.sh
+  severity: WARNING
+  profiles:
+  - PRE_COMMIT
+- id: GATE-322
+  module: test_project_visual_verification_negative
+  script: ../gates/test_project_visual_verification_negative.sh
+  severity: WARNING
+  profiles:
+  - PRE_COMMIT
+- id: GATE-323
+  module: test_retry_discipline_negative
+  script: ../gates/test_retry_discipline_negative.sh
+  severity: WARNING
+  profiles:
+  - PRE_COMMIT
+- id: GATE-324
+  module: test_singleton_writer_negative
+  script: ../gates/test_singleton_writer_negative.sh
+  severity: WARNING
+  profiles:
+  - PRE_COMMIT
+- id: GATE-325
+  module: test_slo_negative
+  script: ../gates/test_slo_negative.sh
+  severity: WARNING
+  profiles:
+  - PRE_COMMIT
+- id: GATE-326
+  module: test_sovereignty_negative
+  script: ../gates/test_sovereignty_negative.sh
+  severity: WARNING
+  profiles:
+  - PRE_COMMIT
+- id: GATE-327
+  module: test_status_contract_negative
+  script: ../gates/test_status_contract_negative.sh
+  severity: WARNING
+  profiles:
+  - PRE_COMMIT
+- id: GATE-328
+  module: test_time_integrity_negative
+  script: ../gates/test_time_integrity_negative.sh
+  severity: WARNING
+  profiles:
+  - PRE_COMMIT
+- id: GATE-329
+  module: tooling-discipline
+  script: ../gates/tooling-discipline.sh
+  severity: WARNING
+  profiles:
+  - PRE_COMMIT
+- id: GATE-330
+  module: verify-egress-lockdown
+  script: ../gates/verify-egress-lockdown.sh
+  severity: WARNING
+  profiles:
+  - PRE_COMMIT
+- id: GATE-331
+  module: verify-otlp-aito
+  script: ../gates/verify-otlp-aito.sh
+  severity: WARNING
+  profiles:
+  - PRE_COMMIT
+- id: GATE-332
+  module: verify-otlp-lang-classification
+  script: ../gates/verify-otlp-lang-classification.sh
+  severity: WARNING
+  profiles:
+  - PRE_COMMIT
+- id: GATE-333
+  module: wiring-doctor
+  script: ../gates/wiring-doctor.sh
+  severity: WARNING
+  profiles:
+  - PRE_COMMIT
+- id: access-posture-tailnet
+  module: access-posture-tailnet
+  script: ../gates/access-posture-tailnet.sh
+  severity: WARNING
+  profiles:
+  - L1
+  - L2
+- id: parallelism-validate
+  module: parallelism-validate
+  script: ../gates/parallelism-validate.sh
+  severity: WARNING
+  profiles:
+    fast: WARNING
+    full: BLOCKING
+    release: BLOCKING
+- id: wave-timeout-guard
+  module: wave-timeout-guard
+  script: ../gates/wave-timeout-guard.sh
+  severity: WARNING
+  profiles:
+    fast: WARNING
+    full: BLOCKING
+    release: BLOCKING
+- id: silent-failure-detector
+  module: silent-failure-detector
+  script: ../gates/silent-failure-detector.sh
+  severity: WARNING
+  profiles:
+    fast: WARNING
+    full: BLOCKING
+    release: BLOCKING
+- id: otel-coverage
+  module: otel-coverage
+  script: ../gates/otel-coverage.sh
+  severity: WARNING
+  profiles:
+    fast: WARNING
+    full: BLOCKING
+    security: WARNING
+    release: BLOCKING
+    genesis: BLOCKING
+- id: skill-graph-freshness
+  module: skill-graph-freshness
+  script: ../gates/skill-graph-freshness.sh
+  severity: WARNING
+  profiles:
+    fast: WARNING
+    full: BLOCKING
+    security: WARNING
+    release: BLOCKING
+    genesis: BLOCKING
+- id: llama-runner-churn
+  module: llama-runner-churn
+  script: ../gates/llama-runner-churn.sh
+  severity: WARNING
+  profiles:
+    fast: WARNING
+    full: BLOCKING
+    security: WARNING
+    release: BLOCKING
+    genesis: BLOCKING
+- id: system-bin-perms-guard
+  module: system-bin-perms-guard
+  script: ../gates/system-bin-perms-guard.sh
+  severity: WARNING
+  profiles:
+    full: BLOCKING
+    release: BLOCKING
+    genesis: BLOCKING
+- id: config
+  module: config
+  script: ../gates/config.sh
+  severity: WARNING
+  profiles:
+    full: BLOCKING
+    release: BLOCKING
+    genesis: BLOCKING
+- id: hermes-state-db
+  module: hermes-state-db
+  script: ../gates/hermes-state-db.sh
+  severity: WARNING
+  profiles:
+    fast: BLOCKING
+    full: BLOCKING
+    release: BLOCKING
+    genesis: BLOCKING
+- id: cert-renewal
+  module: cert-renewal
+  script: ../gates/cert-renewal.sh
+  severity: WARNING
+  profiles:
+    full: BLOCKING
+    security: BLOCKING
+    release: BLOCKING
+    genesis: BLOCKING
+- id: load-profile
+  module: load-profile
+  script: ../gates/load-profile.sh
+  severity: WARNING
+  profiles:
+    full: BLOCKING
+    release: BLOCKING
+    genesis: BLOCKING
+- id: peak-capacity
+  module: peak-capacity
+  script: ../gates/peak-capacity.sh
+  severity: WARNING
+  profiles:
+    full: BLOCKING
+    release: BLOCKING
+    genesis: BLOCKING
+- id: perf-regression
+  module: perf-regression
+  script: ../gates/perf-regression.sh
+  severity: WARNING
+  profiles:
+    full: BLOCKING
+    release: BLOCKING
+    genesis: BLOCKING
+- id: mesh-ui-parity
+  module: mesh-ui-parity
+  script: ../gates/mesh-ui-parity.sh
+  severity: WARNING
+  profiles:
+    fast: WARNING
+    full: BLOCKING
+    release: BLOCKING
+    genesis: BLOCKING
+    all: BLOCKING
+- id: map-graph-artifact
+  module: map-graph-artifact
+  script: ../gates/map-graph-artifact.sh
+  severity: WARNING
+  profiles:
+    fast: WARNING
+    full: BLOCKING
+    release: BLOCKING
+    genesis: BLOCKING
+    all: BLOCKING
+- id: voice-ssot
+  module: voice-ssot
+  script: ../gates/voice-ssot.sh
+  severity: WARNING
+  profiles:
+    fast: WARNING
+    full: BLOCKING
+    release: BLOCKING
+    genesis: BLOCKING
+    all: WARNING
+- id: build-placement
+  module: build-placement
+  script: ../gates/build-placement.sh
+  severity: BLOCKING
+  profiles:
+    fast: WARNING
+    full: BLOCKING
+- id: agent-focus
+  module: agent-focus
+  script: ../gates/agent-focus.sh
+  severity: BLOCKING
+  profiles:
+    fast: WARNING
+    full: BLOCKING
+- id: llm-flow
+  module: llm-flow
+  script: ../gates/llm-flow.sh
+  severity: BLOCKING
+  profiles:
+    fast: WARNING
+    full: BLOCKING
+- id: expected-down-propagation
+  module: expected-down-propagation
+  script: ../gates/expected-down-propagation.sh
+  severity: BLOCKING
+  profiles:
+    fast: WARNING
+    full: BLOCKING
+- id: revenue-gate
+  module: revenue-gate
+  script: ../gates/revenue-gate.sh
+  severity: WARNING
+  profiles:
+    fast: WARNING
+    full: WARNING
+    release: WARNING
+- id: canonical-write-guard
+  module: canonical-write-guard
+  script: ../gates/canonical-write-guard.sh
+  severity: WARNING
+  profiles:
+    fast: WARNING
+    full: BLOCKING
+    release: BLOCKING
+- id: skill-determinism
+  module: skill-determinism
+  script: ../gates/skill-determinism.sh
+  severity: WARNING
+  profiles:
+    fast: WARNING
+    full: WARNING
+    release: BLOCKING
+- id: plan-parallelism
+  module: plan-parallelism
+  script: ../gates/plan-parallelism.sh
+  severity: WARNING
+  profiles:
+    fast: WARNING
+    full: WARNING
+    release: WARNING
+- id: ui-delivery-truth
+  module: ui-delivery-truth
+  script: ../gates/ui-delivery-truth.sh
+  severity: WARNING
+  profiles:
+    fast: WARNING
+    full: BLOCKING
+    release: BLOCKING
+- id: canonical-route
+  module: canonical-route
+  script: ../gates/canonical-route.sh
+  severity: BLOCKING
+  profiles:
+  - L0
+  - L1
+  - L2
+- id: optiq-mcp-lane
+  module: optiq-mcp-lane
+  script: ../gates/optiq-mcp-lane.sh
+  severity: WARNING
+  profiles:
+    full: WARNING
+    release: BLOCKING
+profiles:
+  fast:
+  - git
+  - security
+  - security-pro
+  - shell-static
+  - structure
+  - aesthetics
+  - tick-wiring
+  - wired-check
+  - wiring-closure
+  - wiring
+  - resilience
+  - yaml-lint
+  - ci-workflow
+  - state-ratchet
+  - hermes-state-db
+  - agent-identity-parity
+  - agent-surface-parity
+  - file-permissions
+  - leaks-permissions
+  - skill-distribution
+  - agent-egress-discipline
+  full:
+  - git
+  - security
+  - security-pro
+  - sast
+  - deps-cve
+  - shell-static
+  - health-truth-guard
+  - system-bin-perms-guard
+  - structure
+  - architecture
+  - dependencies
+  - reproducibility
+  - deployment
+  - contracts
+  - aesthetics
+  - semantics
+  - security-drills
+  - taxonomy
+  - i18n
+  - efficiency
+  - obs-logging
+  - obs-metrics
+  - obs-alerts
+  - obs-slo
+  - obs-health
+  - obs-deadman
+  - obs-dashboards
+  - obs-synthetics
+  - build-placement
+  - agent-focus
+  - llm-flow
+  - expected-down-propagation
+  - security-credential-registry
+  - security-rotation
+  - security-retention
+  - security-auth
+  - security-web
+  - lifecycle
+  - config
+  - tick-wiring
+  - wired-check
+  - wiring-closure
+  - cerberus-e2e
+  - mesh-absorb
+  - wiring
+  - resilience
+  - human
+  - simulation
+  - observability
+  - yaml-lint
+  - md-lint
+  - ci-workflow
+  - sbom
+  - sbom-check
+  - container-privileges
+  - access-revocation
+  - access-posture
+  - cert-renewal
+  - network-reachability
+  - message-ordering
+  - duplicate-idempotency
+  - retry-bounds
+  - dlq-process
+  - poison-message
+  - backpressure
+  - backlog-drain
+  - load-profile
+  - peak-capacity
+  - spike-degradation
+  - perf-regression
+  - autoscaling-stability
+  - state-transitions
+  - interrupt-resume
+  - cyclic-jobs
+  - offline-handling
+  - permission-justification
+  - power-loss-update
+  - offline-security
+  - defect-threshold
+  - maintenance-comms
+  - legal-current
+  - cost-budget
+  - safety-limits
+  - state-ratchet
+  - hermes-state-db
+  - agent-identity-parity
+  - agent-surface-parity
+  - file-permissions
+  - leaks-permissions
+  - run-chain
+  - skill-distribution
+  - opiq-products
+  - agent-egress-discipline
+  - optiq-mcp-lane
+  security:
+  - git
+  - security
+  - security-pro
+  - sast
+  - deps-cve
+  - shell-static
+  - security-drills
+  - security-credential-registry
+  - security-rotation
+  - security-retention
+  - security-auth
+  - security-web
+  - sbom
+  - sbom-check
+  - container-privileges
+  - access-revocation
+  - access-posture
+  - cert-renewal
+  - permission-justification
+  - file-permissions
+  - offline-security
+  - leaks-permissions
+  architecture:
+  - architecture
+  - contracts
+  - semantics
+  - taxonomy
+  - efficiency
+  - tick-wiring
+  - wired-check
+  reproducibility:
+  - reproducibility
+  - dependencies
+  release:
+  - git
+  - security
+  - security-pro
+  - sast
+  - deps-cve
+  - shell-static
+  - health-truth-guard
+  - system-bin-perms-guard
+  - structure
+  - architecture
+  - dependencies
+  - reproducibility
+  - deployment
+  - contracts
+  - aesthetics
+  - semantics
+  - security-drills
+  - taxonomy
+  - i18n
+  - efficiency
+  - obs-logging
+  - obs-metrics
+  - obs-alerts
+  - obs-slo
+  - obs-health
+  - obs-deadman
+  - obs-dashboards
+  - obs-synthetics
+  - security-credential-registry
+  - security-rotation
+  - security-retention
+  - security-auth
+  - security-web
+  - lifecycle
+  - config
+  - tick-wiring
+  - wired-check
+  - wiring-closure
+  - cerberus-e2e
+  - mesh-absorb
+  - wiring
+  - resilience
+  - human
+  - simulation
+  - observability
+  - yaml-lint
+  - md-lint
+  - ci-workflow
+  - sbom
+  - sbom-check
+  - container-privileges
+  - access-revocation
+  - access-posture
+  - cert-renewal
+  - network-reachability
+  - message-ordering
+  - duplicate-idempotency
+  - retry-bounds
+  - dlq-process
+  - poison-message
+  - backpressure
+  - backlog-drain
+  - load-profile
+  - peak-capacity
+  - spike-degradation
+  - perf-regression
+  - autoscaling-stability
+  - state-transitions
+  - interrupt-resume
+  - cyclic-jobs
+  - offline-handling
+  - permission-justification
+  - power-loss-update
+  - offline-security
+  - defect-threshold
+  - maintenance-comms
+  - legal-current
+  - cost-budget
+  - safety-limits
+  - state-ratchet
+  - hermes-state-db
+  - agent-identity-parity
+  - agent-surface-parity
+  - file-permissions
+  - leaks-permissions
+  - run-chain
+  - skill-distribution
+  - opiq-products
+  - agent-egress-discipline
+  - optiq-mcp-lane
+  genesis:
+  - git
+  - security
+  - security-pro
+  - sast
+  - deps-cve
+  - shell-static
+  - health-truth-guard
+  - system-bin-perms-guard
+  - structure
+  - architecture
+  - dependencies
+  - reproducibility
+  - deployment
+  - contracts
+  - aesthetics
+  - semantics
+  - security-drills
+  - taxonomy
+  - i18n
+  - efficiency
+  - obs-logging
+  - obs-metrics
+  - obs-alerts
+  - obs-slo
+  - obs-health
+  - obs-deadman
+  - obs-dashboards
+  - obs-synthetics
+  - security-credential-registry
+  - security-rotation
+  - security-retention
+  - security-auth
+  - security-web
+  - lifecycle
+  - config
+  - tick-wiring
+  - wired-check
+  - wiring-closure
+  - cerberus-e2e
+  - mesh-absorb
+  - wiring
+  - resilience
+  - human
+  - simulation
+  - observability
+  - yaml-lint
+  - md-lint
+  - ci-workflow
+  - sbom
+  - sbom-check
+  - container-privileges
+  - access-revocation
+  - access-posture
+  - cert-renewal
+  - network-reachability
+  - message-ordering
+  - duplicate-idempotency
+  - retry-bounds
+  - dlq-process
+  - poison-message
+  - backpressure
+  - backlog-drain
+  - load-profile
+  - peak-capacity
+  - spike-degradation
+  - perf-regression
+  - autoscaling-stability
+  - state-transitions
+  - interrupt-resume
+  - cyclic-jobs
+  - offline-handling
+  - permission-justification
+  - power-loss-update
+  - offline-security
+  - defect-threshold
+  - maintenance-comms
+  - legal-current
+  - cost-budget
+  - safety-limits
+  - state-ratchet
+  - hermes-state-db
+  - agent-identity-parity
+  - agent-surface-parity
+  - file-permissions
+  - leaks-permissions
+  - run-chain
+  - skill-distribution
+  - opiq-products
+  - agent-egress-discipline
+  all:
+  - git
+  - security
+  - security-pro
+  - sast
+  - deps-cve
+  - shell-static
+  - health-truth-guard
+  - system-bin-perms-guard
+  - structure
+  - architecture
+  - dependencies
+  - reproducibility
+  - deployment
+  - contracts
+  - aesthetics
+  - semantics
+  - security-drills
+  - taxonomy
+  - i18n
+  - efficiency
+  - obs-logging
+  - obs-metrics
+  - obs-alerts
+  - obs-slo
+  - obs-health
+  - obs-deadman
+  - obs-dashboards
+  - obs-synthetics
+  - security-credential-registry
+  - security-rotation
+  - security-retention
+  - security-auth
+  - security-web
+  - lifecycle
+  - config
+  - tick-wiring
+  - wired-check
+  - wiring-closure
+  - cerberus-e2e
+  - mesh-absorb
+  - wiring
+  - resilience
+  - human
+  - simulation
+  - observability
+  - yaml-lint
+  - md-lint
+  - ci-workflow
+  - sbom
+  - sbom-check
+  - container-privileges
+  - access-revocation
+  - access-posture
+  - cert-renewal
+  - network-reachability
+  - message-ordering
+  - duplicate-idempotency
+  - retry-bounds
+  - dlq-process
+  - poison-message
+  - backpressure
+  - backlog-drain
+  - load-profile
+  - peak-capacity
+  - spike-degradation
+  - perf-regression
+  - autoscaling-stability
+  - state-transitions
+  - interrupt-resume
+  - cyclic-jobs
+  - offline-handling
+  - permission-justification
+  - power-loss-update
+  - offline-security
+  - defect-threshold
+  - maintenance-comms
+  - legal-current
+  - cost-budget
+  - safety-limits
+  - state-ratchet
+  - hermes-state-db
+  - agent-identity-parity
+  - agent-surface-parity
+  - file-permissions
+  - leaks-permissions
+  - run-chain
+  - skill-distribution
+  - opiq-products
+  - agent-egress-discipline
+  monai:
+  - monai-channel-api
+  - monai-channel-bet
+  - monai-channel-bounty
+  - monai-channel-hackathons
+  - monai-channel-job
+  - monai-channel-kaggle
+  - monai-channel-trading
+  - monai-channel-vendors
+  - monai-channel-work
+  - monai-kernel
+  - monai-bounty-funding
+  - monai-no-stub
+  - monai-ledger-metrics
+  - monai-laws

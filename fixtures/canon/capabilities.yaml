@@ -1,0 +1,685 @@
+version: 1
+entries:
+- name: mcp:google-play
+  backend: mcp
+  enabled: true
+  description: 'Google Play Publisher dla wszystkich rodzin SZAMANI AI: rejestr, SHA APK, walidacja AAB, odczyt subskrypcji i torow, autoryzowane wyslanie internal. KIEDY: wydania Android i zarzadzanie Play. Lokalnie sprawdzone; rejestracja Google i OAuth niepotwierdzone. Bez publikacji production.'
+- name: nano
+  backend: kernel
+  enabled: true
+  description: 'Ultra-lekki procesor zadań (200+ workerów, skala do rdzeni) — KIEDY: masowe/drobne taski o wysokiej przepustowości
+    (scatter/typowo mesh)'
+- name: cognitive
+  backend: kernel
+  enabled: true
+  description: 'Autonomiczna pętla cognitive query→infer→store (Ollama) — KIEDY: runtime sam ma wnioskować nad zebranymi danymi'
+- name: curie
+  backend: kernel
+  enabled: true
+  description: 'Silnik master-promptu: load/cache/hot-reload z pliku (AIGONV2_MASTERPROMPT_PATH) — KIEDY: zarządzanie/aktualizacja
+    promptu systemowego/master'
+- name: planck
+  backend: kernel
+  enabled: true
+  description: 'Silnik planowania: generuje ExecutionGraph z celów (STRIPS/HTN/GOAP) — KIEDY: rozłożyć cel na plan/DAG zadań,
+    sekwencjonowanie'
+- name: freud
+  backend: kernel
+  enabled: true
+  description: 'Pamięć LTS — sesje usera z TTL (key-value, ewiction) — KIEDY: pamięć krótkotrwała/sesje kontekstu (knowledge:memory)'
+- name: galileo
+  backend: kernel
+  enabled: true
+  description: 'Silnik review kodu (linia po linii; reguły: code smells, hardcoded secrets, unsafe, TODO, XSS) — KIEDY: code:review
+    (CC-001)'
+- name: yairoslaw
+  backend: kernel
+  enabled: true
+  description: 'Election lidera meshu (bully, priorytety tierów) — KIEDY: wybór master/leader, decyzje HA w mesh'
+- name: hawking
+  backend: kernel
+  enabled: true
+  description: 'Graf wiedzy: atomic facts (subject-predicate-object, confidence) + retrieval — KIEDY: knowledge:search, wyszukiwanie
+    semantyczne (Qdrant)'
+- name: turing
+  backend: kernel
+  enabled: true
+  description: 'Weryfikacja formalna: model checking, property/spec validation (3 typy spójności) — KIEDY: dowód poprawności,
+    inwarianty formalne'
+- name: knowledge
+  backend: kernel
+  enabled: true
+  description: 'Kernel wiedzy + TruthVerifier: walidacja faktów względem źródeł (testimony/confirmation) — KIEDY: weryfikacja
+    prawdziwości twierdzeń, knowledge:verify'
+- name: nash
+  backend: kernel
+  enabled: true
+  description: 'Teoria gier + negocjacje strategiczne (payoff optimization, bargaining engine) — KIEDY: decyzje wielostronne,
+    optymalizacja gry o sumę niezerową'
+- name: chains
+  backend: kernel
+  enabled: true
+  description: 'ChainExecutor: deterministyczne runbooki krok po kroku, akcje ReadOnly/StateChange/External, deny-default
+    — KIEDY: procedury operacyjne, playbooki, sekwencje akcji ze zgodą governance'
+- name: compliance
+  backend: kernel
+  enabled: true
+  description: 'K-023 Compliance: kontrole SOC2 zasilane ŻYWYM evidence z runtime (attestacje produktowe GDPR/EU-AI-Act via
+    S3 compliance-gates) — KIEDY: audyt zgodności'
+- name: confidence
+  backend: kernel
+  enabled: true
+  description: 'K-025 Confidence: kalibracja zadeklarowana vs rzeczywista dokładność modelu/komponentu — KIEDY: ocena wiarygodności,
+    miscalibration detection'
+- name: fusion
+  backend: kernel
+  enabled: true
+  description: 'K-027 SensorFusion: fuzja sygnałów sensorów/nodów [0,1] z wagą → śr. ważona + agreement — KIEDY: konsensus
+    multi-sensor, wykrywanie niezgodności sensorów'
+- name: invariants
+  backend: kernel
+  enabled: true
+  description: 'K-026 InvariantGuard: 12 niezmienników systemowych (KIKON); łamanie invariantu → health maleje — KIEDY: integralność
+    systemu (SELF-REPORT IS NOT PROOF)'
+- name: probe
+  backend: kernel
+  enabled: true
+  description: 'K-024 Probe: wykrywanie fake-green / capability-theater (last_activity_tick vs declared_ticks) — KIEDY: weryfikacja
+    czy komponent NAPRAWDĘ działa, nie tylko deklaruje'
+- name: pulse
+  backend: kernel
+  enabled: true
+  description: 'K-029 Pulse — runtime heartbeat/liveness (seq, cadence, drift, stale/dead) — KIEDY: żywotność/liveness runtime,
+    health snapshot'
+- name: darwin
+  backend: kernel
+  enabled: true
+  description: 'Algorytmy ewolucyjne/genetyczne (populacja, selekcja, crossover, mutacja, fitness) — KIEDY: optymalizacja
+    złożonych parametrów, ewolucja strategii'
+- name: yudai
+  backend: kernel
+  enabled: true
+  description: 'Security kernel: skan wzorców podatności + pen-test (porty, SQLi, XSS) — KIEDY: security:audit, scanning targetów'
+- name: krono
+  backend: kernel
+  enabled: true
+  description: 'Krono scheduler/timeline zadań czasowych — KIEDY: zadania cykliczne/planowane w runtime, background_jobs'
+- name: resilience
+  backend: kernel
+  enabled: true
+  description: 'Certyfikacja i circuit breakers — KIEDY: odporność na awarie, wyłączniki, retry/backoff, HA continuity'
+- name: truth
+  backend: kernel
+  enabled: true
+  description: 'Weryfikacja prawdy/twierdzeń — KIEDY: epistemiczna walidacja, wykrywanie fałszu/greenwashingu w raportach'
+- name: hermes
+  backend: kernel
+  enabled: true
+  description: 'Hermes correlation auditor — KIEDY: korelacja zdarzeń/logów, wykrywanie wzorców/odpowiedzialności'
+- name: self_modify
+  backend: kernel
+  enabled: true
+  description: 'K-018 JIT + hot-patching — KIEDY: dynamiczna modyfikacja kernela/łaty na gorąco (zgodnie z governance)'
+- name: world_model
+  backend: kernel
+  enabled: true
+  description: 'K-020 causal reasoning — KIEDY: model przyczynowo-skutkowy, symulacja ''co-gdyby'', wnioskowanie o świecie'
+- name: constitution
+  backend: kernel
+  enabled: true
+  description: 'K-021 voting + amendment — KIEDY: decyzje zbiorowe, głosowania, zmiany kanonu/konstytucji'
+- name: config
+  backend: kernel
+  enabled: true
+  description: 'K-022 Config kernel — SSOT config management + health poll (S-029..S-032) — KIEDY: centralna konfiguracja
+    systemu'
+- name: writer
+  backend: kernel
+  enabled: true
+  description: 'WRITER FARM — instrukcje DSL (write/append/patch/instruct), klonowalny per core — KIEDY: zapis/modyfikacja
+    plików via DSL'
+- name: offsec
+  backend: kernel
+  enabled: true
+  description: 'K-030 OffSec — recon/vuln_scan/threat_analysis read-only; exploit/payload/persistence/lateral External/deny-default
+    (wymaga zgody operatora) — KIEDY: TYLKO autoryzowane audyty bezpieczeństwa ofensywnego'
+- name: hardening
+  backend: kernel
+  enabled: true
+  description: 'K-031 Hardening — detekcja SQLi/XSS/cmd-injection, scoring zdarzeń (AuthFailure/PortProbe/SuspiciousPayload),
+    hardening checklist A1..D3 — KIEDY: obrona, twardnienie systemu'
+- name: prompt_builder
+  backend: kernel
+  enabled: true
+  description: 'K-032 Prompt Builder — klasyfikacja ACISA (Trivial/Coding/Reasoning/Mixed) + routing (Local/Cloud/Adaptive)
+    + dekompozycja na subtaski mesh scatter — KIEDY: budowa promptu, routing modelu, rozbicie zadania na podzadania'
+- name: re
+  backend: ops
+  enabled: true
+  description: 'AIGONX RE-INTEL — Reverse Engineering Intelligence: triage/rozpoznanie artefaktów (AIGONX-RE-01), analiza
+    formatu ELF/PE/Mach-O/RAW (AIGONX-RE-02), disassembly+CFG+call graph (AIGONX-RE-03), dekompilacja+IR (AIGONX-RE-04), data
+    flow+slicing+xref (AIGONX-RE-05), dynamic analysis+debug w sandboxie (AIGONX-RE-06), binary diff/patch diff (AIGONX-RE-07),
+    hypothesis+evidence+cross-validation (AIGONX-RE-08), RE report (AIGONX-RE-09) — KIEDY: analiza nieznanych binariów, zrozumienie
+    programu, porównanie wersji, weryfikacja artefaktów, autoryzowane badania'
+- name: S-001
+  backend: ai
+  enabled: true
+  description: Chief Runtime Architect — Design and oversee the entire Runtime architecture
+- name: S-002
+  backend: ai
+  enabled: true
+  description: Principal Operating Systems — Design operating system foundations
+- name: S-003
+  backend: ai
+  enabled: true
+  description: Kernel Architect — Design kernel architecture, cloning, lifecycle
+- name: S-004
+  backend: ai
+  enabled: true
+  description: Scheduler Expert — Design scheduling, DAG building, load balancing
+- name: S-005
+  backend: ai
+  enabled: true
+  description: Compiler Engineer — Design KIR, KVM, KABI, optimizer passes
+- name: S-006
+  backend: ai
+  enabled: true
+  description: Mesh Architect — Design mesh networking, MAIPS, federation
+- name: S-007
+  backend: ai
+  enabled: true
+  description: Distributed Systems Expert — Design consensus, coordination, partition tolerance
+- name: S-008
+  backend: ai
+  enabled: true
+  description: Consensus Engineer — Design consensus algorithms for the Runtime
+- name: S-009
+  backend: ai
+  enabled: true
+  description: Storage Architect — Design AIGON FS, content addressing, Reed Solomon
+- name: S-010
+  backend: ai
+  enabled: true
+  description: Vector Database Expert — Design semantic retrieval, FAISS integration
+- name: S-011
+  backend: ai
+  enabled: true
+  description: Observability Architect — Design observability, metrics, SLO tracking
+- name: S-012
+  backend: ai
+  enabled: true
+  description: SRE Expert — Design reliability, self-healing, chaos engineering
+- name: S-013
+  backend: ai
+  enabled: true
+  description: Cognitive Systems Architect — Design cognitive architecture, ISA, Experience engine
+- name: S-014
+  backend: ai
+  enabled: true
+  description: Reasoning Expert — Design reasoning engine, inference rules
+- name: S-015
+  backend: ai
+  enabled: true
+  description: Knowledge Engineer — Design knowledge graph, verification, synthesis
+- name: S-016
+  backend: ai
+  enabled: true
+  description: Memory Architect — Design memory types, caching, forgetting
+- name: S-017
+  backend: ai
+  enabled: true
+  description: Zero Trust Architect — Design zero trust architecture
+- name: S-018
+  backend: ai
+  enabled: true
+  description: Cryptography Expert — Design encryption, signing, key management
+- name: S-019
+  backend: ai
+  enabled: true
+  description: Runtime Security Engineer — Design runtime security, threat detection
+- name: S-020
+  backend: ai
+  enabled: true
+  description: AI Safety Expert — Design AI safety, alignment, jailbreak prevention
+- name: S-021
+  backend: ai
+  enabled: true
+  description: UX Architect — Design user experience, CLI, dashboard
+- name: S-022
+  backend: ai
+  enabled: true
+  description: API Designer — Design API, contracts, versioning
+- name: S-023
+  backend: ai
+  enabled: true
+  description: Testing Architect — Design testing strategy, property tests, chaos
+- name: S-024
+  backend: ai
+  enabled: true
+  description: Benchmark Engineer — Design benchmarks, regression detection
+- name: S-025
+  backend: ai
+  enabled: true
+  description: Architecture Auditor — Audit architecture compliance with Canon
+- name: S-026
+  backend: ai
+  enabled: true
+  description: Hackathon Strategist — Design and orchestrate hackathon events
+- name: S-027
+  backend: ai
+  enabled: true
+  description: Devpost Operations Specialist — Operate the Devpost MCP bridge
+- name: S-028
+  backend: ai
+  enabled: true
+  description: Log Manager — Manage system logs, rotation, retention, disk space
+- name: S-029
+  backend: ai
+  enabled: true
+  description: 'Config Manager — SSOT config management: list/get/set/validate/rollback across mesh (deps S-012)'
+- name: S-030
+  backend: ai
+  enabled: true
+  description: Config Value Change — safe value mutation with backup + validation + propagation (deps S-029)
+- name: S-031
+  backend: ai
+  enabled: true
+  description: Config Health Check — per-config existence/parse/drift health + availability (deps S-029)
+- name: S-032
+  backend: ai
+  enabled: true
+  description: Config Discovery — enumerate configs, keys, providers, descriptions across nodes
+- name: code:review
+  backend: code
+  enabled: true
+  description: CC-001 code review via Galileo kernel (7 built-in rules)
+- name: knowledge:search
+  backend: knowledge
+  enabled: true
+  description: Semantic search via Qdrant/Hawking (handle_knowledge_search)
+- name: mesh:status
+  backend: mesh
+  enabled: true
+  description: Mesh HA status / topology (mesh_ha_status)
+- name: storage:vector
+  backend: storage
+  enabled: true
+  description: Vector store via Qdrant (knowledge_engine)
+- name: compute:gpu
+  backend: compute
+  enabled: true
+  description: GPU sensor / health probe
+- name: security:audit
+  backend: security
+  enabled: true
+  description: Security status via Yudai/Guardian
+- name: media:video
+  backend: media
+  enabled: true
+  description: Local video generation via ComfyUI/LTX-Video
+- name: geo:maps
+  backend: geo
+  enabled: true
+  description: Geocoding via OpenStreetMap Nominatim
+- name: communication:email
+  backend: communication
+  enabled: true
+  description: Email send via local SMTP relay
+- name: business:report
+  backend: business
+  enabled: true
+  description: Cost/billing report
+- name: ai:reasoning
+  backend: ai
+  enabled: true
+  description: Reasoning engine — query reasoning workspace (S-013/S-014 backend)
+- name: ai:learning
+  backend: ai
+  enabled: true
+  description: Learning optimizer — capability tuning (S-* backend)
+- name: ai:metalearning
+  backend: ai
+  enabled: true
+  description: Meta-learning strategies (S-* backend)
+- name: ai:memory_extended
+  backend: ai
+  enabled: true
+  description: Extended memory stats (S-* backend)
+- name: knowledge:discovery
+  backend: knowledge
+  enabled: true
+  description: Knowledge discovery — semantic search over knowledge base (S-015 backend)
+- name: knowledge:memory
+  backend: knowledge
+  enabled: true
+  description: Knowledge records — memory index (S-016 backend)
+- name: storage:tenant_db
+  backend: storage
+  enabled: true
+  description: Tenant DB status — PostgreSQL health (S-002/S-009 backend)
+- name: compute:federated
+  backend: compute
+  enabled: true
+  description: Federation status — mesh compute (S-007 backend)
+- name: compute:background_jobs
+  backend: compute
+  enabled: true
+  description: Background jobs — krono scheduler (S-004 backend)
+- name: ops:ha_continuity
+  backend: ops
+  enabled: true
+  description: HA continuity — ops resilience (S-012 backend)
+- name: ops:ha_multiregion
+  backend: ops
+  enabled: true
+  description: HA multiregion — mesh topology (S-* backend)
+- name: ops:deployment
+  backend: ops
+  enabled: true
+  description: Deployment status (S-003 backend)
+- name: ops:disk-status
+  backend: ops
+  enabled: true
+  description: Disk status — filesystem usage for / (df -P; os_disk_status)
+- name: ops:cleanup
+  backend: ops
+  enabled: true
+  description: Disk cleanup — run /opt/PROD/scripts/disk-cleanup.sh (os_cleanup)
+- name: ops:log-manager
+  backend: ops
+  enabled: true
+  description: 'Log manager — docker log-driver config of aito containers (os_log_manager; per-container logs: /api/v1/logs)'
+- name: ops:services
+  backend: ops
+  enabled: true
+  description: Service list — running docker containers (os_services_list)
+- name: ops:process
+  backend: ops
+  enabled: true
+  description: Process list — top procesy wg CPU (ps -eo pid,ppid,user,%cpu,%mem,comm --sort=-%cpu | head -20; os_process_list)
+- name: ops:backup-status
+  backend: ops
+  enabled: true
+  description: 'Backup status — read-only przegląd katalogów/plików backupów AIGON: ścieżka, rozmiar (du -sh), mtime (os_backup_status;
+    find /opt/PROD -maxdepth 3 *backup*/*snapshot*)'
+- name: ops:platform-power
+  backend: ops
+  enabled: true
+  description: 'Dynamiczne zarządzanie ciepłem hosta. Skrypt /opt/PROD/scripts/platform-power.sh: gdy GPU>=90 albo tlimit<0
+    albo CPU>=98 — wentylatory lenovo_wmi_other na fanN_max i zejście profilu o stopień (performance→balanced→power-saver).
+    Chłód (CPU<=88 i GPU<=80) oddaje desired i EC (fan target 0). Span OTLP platform.power + metryki platform.* → Tempo :43220
+    i kolektor :44318/:9464. POST action=status|enforce|set|runtime-tick. max-power odmówione. Kontener runtime bez /sys nie
+    udaje zapisu (applied_now=false); egzekucja fanów jest root na hoście.'
+- name: run:benchmarks
+  backend: run
+  enabled: true
+  description: Benchmark run (S-023/S-024 backend)
+- name: media:audio
+  backend: media
+  enabled: true
+  description: Audio transcription — whisper-asr int8 CPU
+- name: media:spotify
+  backend: media
+  enabled: true
+  description: 'Spotify Connect TRANSPORT control (kanon 2026-09-28) — sterowanie odtwarzaniem na urządzeniu użytkownika przez
+    oficjalne Web API: play/pause/next/previous/volume/shuffle/repeat/transfer/devices/now_playing/search/queue. Zero odtwarzania
+    na serwerze (dźwięk gra na telefonie/desktopie użytkownika); wymaga Premium + scope user-modify-playback-state. Sekrety
+    z Vault (secret/aigon-x/media/spotify) → ENV; brak konfiguracji = 503, brak urządzenia = 409, błąd API = 502 z surowym
+    statusem — nigdy fałszywe ''gra'''
+- name: media:image
+  backend: media
+  enabled: true
+  description: Image generation (S-* backend)
+- name: media:animation
+  backend: media
+  enabled: true
+  description: Animation generation (S-* backend)
+- name: geo:places
+  backend: geo
+  enabled: true
+  description: Geo places (S-* backend)
+- name: marketing:content
+  backend: marketing
+  enabled: true
+  description: Marketing content generation (S-026 backend)
+- name: product:copy
+  backend: product
+  enabled: true
+  description: Product copy generation (S-* backend)
+- name: product:ux
+  backend: product
+  enabled: true
+  description: Product UX review (S-021 backend)
+- name: product:haccp
+  backend: product
+  enabled: true
+  description: 'Bezpieczeństwo żywności HACCP/GHP/GMP/PRP — deterministyczny silnik (haccp-engine-v1): analiza zagrożeń B/C/F
+    z oceną ryzyka P×D, drzewo decyzyjne CCP Q1-Q4, limity krytyczne, plan monitoringu, działania korygujące, matryca 14 alergenów
+    (1169/2011 zał. II), pakiet dokumentacji (księga + 23 procedury GHP/GMP + 12 formularzy), FIFO/FEFO, identyfikowalność.
+    Zero LLM — wynik odtwarzalny, bo dokumentacja idzie do kontroli urzędowej'
+- name: product:bhp
+  backend: product
+  enabled: true
+  description: 'BHP — deterministyczny silnik oceny ryzyka zawodowego (bhp-engine-v1, art. 226 KP): czynniki zagrożeń per
+    stanowisko (11 typów: kuchnia/biuro/magazyn/budowa/warsztat/elektryk/hydraulik/transport/salon/handel/produkcja), ryzyko
+    P×D z etykietą (pomijalne/małe/średnie/duże), środki profilaktyczne, wymagane szkolenia, komplet dokumentacji PIP (ocena
+    ryzyka, szkolenia, orzeczenia lekarskie, karty badań, rejestr wypadków, instrukcje, ewidencja ŚOI), badania lekarskie.
+    Zero LLM — wynik odtwarzalny, bo dokument idzie do kontroli PIP'
+- name: product:pzl-rejestr
+  backend: product
+  enabled: true
+  description: 'Rejestr PZŁ (rejestr.szamani.ai) — scheduler/hunter danych PZŁ: API PZŁ (api.systemkl2.pzlow.pl), DB PostgreSQL
+    (pzl na master), sesje/stan w Redis cluster, poller opcjonalny, port 33200, HA primary=prod secondary=contabo'
+- name: config:management
+  backend: config
+  enabled: true
+  description: Config management — SSOT validate/generate/diff/apply/propagate/audit + health poll (S-029..S-032)
+- name: mcp:context7
+  backend: mcp
+  enabled: true
+  description: context7 MCP — analiza kontekstu, context_search/diff, sesje (imported 2026-08-29)
+- name: mcp:task-manager
+  backend: native
+  enabled: true
+  description: task-manager — NATYWNY handler (aigon-scheduler, Postgres tm_*; decyzja Suwerena 2026-08-29) — projekty/taski/milestony/statusy/eksport
+    CSV/JSON. Kontrakt bez zmian vs serwer MCP; serwer node zostaje jako fallback (zero kasowania)
+- name: mcp:exa-search
+  backend: mcp
+  enabled: true
+  description: exa-search MCP — web search, company research, crawling, LinkedIn, deep research (imported 2026-08-29)
+- name: mcp:switch-commands
+  backend: native
+  enabled: true
+  description: switch-commands — NATYWNY handler (aigon-scheduler, switch_tools.rs; decyzja Suwerena 2026-08-29) — tryby agenta
+    (AIGON/Qwen/DeepSeek), status z health_snapshot, agenci z config/agent-models.yaml (SSOT), narzędzia z capability registry,
+    Quality Gates z realnych liczników enforcement. ZERO exec, ZERO zapisu do ~/.qwen; switch_to_* to read-only raport trybu
+    + ścieżka zmiany SSOT. Zamiennik serwera Node execującego martwe skrypty (brain :14007/:4008)
+- name: mcp:git-mcp
+  backend: native
+  enabled: true
+  description: git-mcp — NATYWNY handler (aigon-scheduler, libgit2; decyzja Suwerena 2026-08-29) — status/diff/log/show/branch/create_branch/checkout/add/commit/init
+    na whitelist AIGON_GIT_REPO_ROOT || /opt/PROD. git_reset WYŁĄCZONY. Zamiennik serwera Python mcp-server-git (MCP_PART2)
+- name: mcp:crawl4ai
+  backend: mcp
+  enabled: true
+  description: 'crawl4ai MCP — web scraping AI (uvx crawl4ai-mcp): crawl URL, LLM-extract ze stron, surowe HTML — KIEDY: pozyskanie
+    treści web do knowledge:search, scraping dokumentacji/stron'
+- name: mcp:n8n
+  backend: mcp
+  enabled: true
+  description: 'aigon-mcp-n8n — most MCP do n8n (workflows/automatyzacje) — KIEDY: orkiestracja automatyzacji, triggery zewnętrzne.
+    UWAGA: wymaga uruchomionego n8n (port 14030, serwer DISCOVERED)'
+- name: mcp:maddy-mail
+  backend: mcp
+  enabled: true
+  description: 'maddy-mail MCP — CZYTANIE skrzynek Maddy (IMAP-over-PG) BEZ SSH: mail_folders, mail_list, mail_search, mail_read,
+    mail_thread. READ-ONLY (zero wysyłki). Serwer stdio przez mcp_stdio_shim. Łączy się wprost z Postgresem 100.99.59.100:25437
+    + /data/messages. KIEDY: "sprawdź pocztę", "co przyszło na skrzynkę", "znajdź maila od X" — zamiast ssh/docker exec/psql/base64'
+- name: mcp:camera-vision
+  backend: mcp
+  enabled: true
+  description: 'camera-vision MCP — ZRZUTY z kamer IP (RTSP ffmpeg / ISAPI curl → JPEG) + ROZPOZNAWANIE obrazu: camera_snapshot, camera_list, camera_status, image_recognize (backend wizji PLUGGABLE, runtime-first), vision_backends. Sekret kamery WYŁĄCZNIE z Vaulta secret/aigon-x/iot/cameras (NIGDY hardcode). Serwer stdio przez mcp_stdio_shim. KIEDY: "zrób zdjęcie z kamery", "co widać na kamerze", podgląd/zrzut z NVR Dahua. STAN 2026-10-13: snapshot z 192.168.0.200 działa; ROZPOZNAWANIE ZABLOKOWANE — runtime nie ma modelu wizji (image_url odrzucany na każdej linii; flatten_content dropuje obraz), image_recognize zwraca status=BLOCKED z dowodem, NIE zmyśla. Odblokowanie: AIGON_VISION_OLLAMA_MODEL lub AIGON_VISION_BASE_URL+AIGON_VISION_MODEL.'
+- name: ops:zombie-detector
+  backend: ops
+  enabled: false
+  description: 'LEGACY-DERIVED 2026-09-08 — zombie-detector [ops]: wykrywanie martwych procesów/binarek (koncept legacy 06-2026;
+    dziś robione ręcznie w harvestcie). Koncepcyjna — brak providera/dispatcha'
+- name: security:secret-detection
+  backend: security
+  enabled: false
+  description: 'LEGACY-DERIVED 2026-09-08 — secret-detection [security]: skaner sekretów plaintext (legacy A-04: 7 instancji
+    znalezionych w harvestcie 09-08). Koncepcyjna — brak providera/dispatcha'
+- name: product:accessibility-champion
+  backend: product
+  enabled: false
+  description: 'LEGACY-DERIVED 2026-09-08 — accessibility-champion (a11y, domena docelowa UX, sąsiad product:ux): audyt WCAG
+    frontendów. Koncepcyjna — brak providera/dispatcha'
+- name: knowledge:doc-gen
+  backend: knowledge
+  enabled: false
+  description: 'LEGACY-DERIVED 2026-09-08 — doc-gen [knowledge]: generowanie dokumentacji (kanon: dokumentacja = kryterium
+    #1 audytów). Koncepcyjna — brak providera/dispatcha'
+- name: code:code-quality
+  backend: code
+  enabled: false
+  description: 'LEGACY-DERIVED 2026-09-08 — code-quality (domena docelowa Testing, sąsiad code:review): analiza jakości kodu/regresji.
+    Koncepcyjna — brak providera/dispatcha'
+- name: ops:backup-freshness
+  backend: ops
+  enabled: false
+  description: 'LEGACY-DERIVED 2026-09-08 — backup-freshness [ops]: weryfikacja świeżości/kompletności backupów (Qdrant/Postgres/Vault;
+    ref. FIX-BACKUP-QDRANT-2026-09-08). Koncepcyjna — brak providera/dispatcha'
+- name: ledger
+  backend: kernel
+  enabled: true
+  description: Kernel execution for ledger
+- name: IoTManagement
+  backend: iot
+  enabled: true
+  description: Manage IoT devices (IP cameras) over ONVIF, RTSP and Tuya through the aigon-iot adapter
+- name: android_emulator
+  backend: compute
+  enabled: true
+  description: Build and run the Pluskwa Android app in a headless emulator
+- name: Authentication
+  backend: providers
+  enabled: true
+  description: Authentication — domena security (kanon; provider w provider.rs)
+- name: Cryptography
+  backend: providers
+  enabled: true
+  description: Cryptography — domena security (kanon; provider w provider.rs)
+- name: DevpostIntegration
+  backend: providers
+  enabled: true
+  description: DevpostIntegration — domena community (kanon; provider w provider.rs)
+- name: FastVolatileMemory
+  backend: providers
+  enabled: true
+  description: FastVolatileMemory — domena memory (kanon; provider w provider.rs)
+- name: HackathonManagement
+  backend: providers
+  enabled: true
+  description: HackathonManagement — domena community (kanon; provider w provider.rs)
+- name: InferenceEngine
+  backend: providers
+  enabled: true
+  description: InferenceEngine — domena inference (kanon; provider w provider.rs)
+- name: MeshTransport
+  backend: providers
+  enabled: true
+  description: MeshTransport — domena federation (kanon; provider w provider.rs)
+- name: SemanticRetrieval
+  backend: providers
+  enabled: true
+  description: SemanticRetrieval — domena retrieval (kanon; provider w provider.rs)
+- name: StructuredPersistentStorage
+  backend: providers
+  enabled: true
+  description: StructuredPersistentStorage — domena storage (kanon; provider w provider.rs)
+- name: hpc.leonardo
+  backend: compute
+  enabled: true
+  description: 'Obliczenia ON-DEMAND na superkomputerze CINECA Leonardo (GPU A100). Uruchamia joby SLURM przez most hpcbridge
+    (products/akceleratory/leonardo/hpcbridge). Alokacja EHPC-AIF-2026FL01-760: 50000 GPU-h do 2026-11-24, konto jsniegoc ZYJE (2026-10-12).
+    Cert SSH odnawiany autonomicznie (scripts/cineca-cert-refresh.sh, cron 17 * * * *, bez TOTP). KIEDY: trening/finetuning LLM,
+    benchmarki skalowania, ewaluacje na GPU ktorych nie ma lokalnie.'
+- name: mailbox
+  backend: communication
+  enabled: true
+  description: 'Odczyt PEŁNEJ treści maili Suwerena z Maddy (header+body) + triaż „warto odpisać" (scam/biznes/akademia/automat)
+    — KIEDY: sprawdź/pilnuj poczty, ocena leadu biznesowego (mailbox-read.py, mailbox-watch.py)'
+- name: voice-stt
+  backend: media
+  enabled: true
+  description: 'Speech-to-text (whisper.cpp lokalnie) — głos wchodzący → tekst dla agenta; domyka pętlę „mów zamiast pisać"
+    (stt-engine-install.sh) — KIEDY: głosowy przyjaciel, dyktowanie na mobile'
+- name: project-verify
+  backend: ops
+  enabled: true
+  description: 'Weryfikacja projektów PRZEGLĄDARKĄ + VISUAL (screenshot), nie curl/API (LAW-VERIFY-1) — KIEDY: sprawdzenie
+    czy produkt/domena naprawdę działa (bramka project-visual-verification.sh)'
+- name: repo-coherence
+  backend: mesh
+  enabled: true
+  description: 'Spójność repo po nodach: /opt/PROD na KAŻDYM nodzie, porównywane (drift-check) + syncowane (LAW-104) — KIEDY:
+    rozjazd repo/konfiguracji między nodami mesha (drift-checker.sh)'
+- name: reports
+  backend: business
+  enabled: true
+  description: 'Generowanie raportów (konstytucja, mailbox, mesh, digesty) z SSOT products/agent-sniegul/config/reports.yaml — KIEDY: raport okresowy/summary,
+    „co się działo", podsumowanie dla Suwerena'
+- name: voice-tts
+  backend: media
+  enabled: true
+  description: 'Text-to-speech (ElevenLabs Korneliusz) — głos wychodzący: kolejka voice-inbox → nadajnik (aigon-voice-add.sh
+    + aigon-voice-inbox.sh) — KIEDY: mówić do Suwerena, alert głosowy'
+- name: akceleratory
+  backend: kernel
+  enabled: true
+  description: 'Akceleratory cognitive orchestrator (kernel)'
+- name: curator
+  backend: kernel
+  enabled: true
+  description: 'Curator cognitive loop — co 1h sprawdza zajętosc systemu i szuka niedokonczonej roboty w ledgerze (kernel)'
+- name: learning
+  backend: kernel
+  enabled: true
+  description: 'K-019 AutoML + evolution (kernel)'
+- name: leonardo
+  backend: kernel
+  enabled: true
+  description: 'Leonardo/CINECA cognitive supervisor — sacct/squeue/saldo liczbowo + heurystycznie (kernel)'
+- name: monai
+  backend: kernel
+  enabled: true
+  description: 'MONAI cognitive orchestrator — 9 podprojektow zarabiania, health-probe + degradacja + alert (kernel)'
+- name: reasoning
+  backend: kernel
+  enabled: true
+  description: 'K-017 FOL + theorem proving (kernel)'
+- name: ops:capability_issuer
+  backend: ops
+  enabled: true
+  description: 'PLAN WYDAWANIA DOSTĘPU (Access Controller): zamiana capability z rejestru na KRÓTKOTRWAŁY token Vaulta, z TTL i audytem. Skrypt hostowy /opt/PROD/scripts/dostep-issuer.py czyta capability z config/canonical/capabilities.yaml (nie przyjmuje uprawnien z reki), ODMawia gdy capability nie istnieje albo nie ma TTL (zasada P4 projektu: brak TTL = defekt), nie przekracza TTL z rejestru, i zapisuje KAZDE wydanie oraz KAZDA odmowe w /var/log/aigon/dostep-audit.jsonl w schemacie z docs/prd/secure-access-controller/AUDYT.md (event_id, identity, capability, risk_level, ttl_seconds, expires_at, grant_id, prev_event_id). KIEDY: trzeba dac komus/maszynie dostep na czas (maskzyna zewnetrzna, sesja administracyjna) bez tworzenia trwalego sekretu. ZMIERZONE 2026-10-14: wydanie dla machine:guest (capability vault.external.namespace, TTL 1800 s) -> grant_id cap-b6ec4d4e + audyt evt-1984963b; zadanie TTL ponad limit rejestru -> ODMOWA z wpisem audytowym. Projekt: docs/prd/secure-access-controller/.'
+- name: ops:tailnet_access
+  backend: ops
+  enabled: true
+  description: 'DOSTEP MASZYN Z ZEWNATRZ DO TAILNETU I DO VAULTA + KLAUCZE AUTORYZACYJNE PRZEZ API (bez panelu). Tailnet jakub.sniegocki@gmail.com stoi na Tailscale; maszyna spoza mesha wchodzi do tailnetu kluczem autoryzacyjnym i uzywa Vaulta po http://vault.aigon.consul:58200 (kanoniczny klaster w datacenter). Klucze autoryzacyjne tworzy, listuje i odwoluje skrypt hostowy /opt/PROD/scripts/tailnet-klucz.py przez administracyjne API Tailscale (POST /api/v2/tailnet/-/keys), czytajac poswiadczenie kanonicznie: env TAILSCALE_API_KEY -> /opt/PROD/config/secrets/tailscale.env -> Vault secret/aigon-x/network/tailscale pole api_key. Dolaczanie maszyny: /opt/PROD/scripts/dolacz-maszyne-zewnetrzna.sh --tailscale <klucz> (albo --tunel przez cloudflared). Konto dla maszyny zewnetrznej: polityka guest (tylko tenants/guest/* i odczyt secret/guest/*), token w /opt/PROD/infra/vault/guest.token. KIEDY: nowa maszyna spoza mesha ma dostac Vaulta, trzeba wydac/odwolac klucz autoryzacyjny, sprawdzic inwentarz tailnetu, albo wpiac brakujace poswiadczenie API. ZMIERZONE 2026-10-14: panelu Tailscale NIE da sie automatyzowac (OAuth + MFA) — dlatego klucz API wchodzi raz kanoniczna droga; tokeny serwisowe Cloudflare Access na tym koncie NIE dzialaja (swiezy token + polityka service_token + service_auth_401_redirect=false => 302), wiec maszyny ida tailnetem, nie CF. Bez poswiadczenia skrypt ODMawia (exit 2) i mowi, gdzie klucz wpiac. Skill: tailnet-dostep-i-klucze.'
+- name: ops:external_devices
+  backend: ops
+  enabled: true
+  description: 'ZARZADZANIE URZADZENIAMI ZEWNETRZNYMI — konsola PlayStation (odkrycie po TCP 9295 z potwierdzeniem producenta MAC, status klienta i osiagalnosci, rejestracja KLUCZEM bez PSN, strumien na wirtualny ekran, zrzuty ekranu jako dowod tego, co widzi gracz) oraz iPhone (model/iOS/UDID, stan zaufania, logi urzadzenia, kopia zapasowa WYLACZNIE na dysk — /tmp to tmpfs w RAM). KAMERY IP (RTSP): odkrycie po portach 554/8554/8000/8080, odczyt konfiguracji rejestratora z Vaulta (secret/aigon-x/iot/cameras: host, user, rtsp_port, 4 kanaly z nazwami), zrzut klatki przez ffmpeg WYLACZNIE na dysk (dowod wzrokowy). DRUKARKI: odkrycie w LAN (631 IPP / 515 LPD / 9100 RAW) + mDNS _ipp._tcp, kolejki CUPS i domyslny cel, status, wydruk zadania, ustawienie domyslnej kolejki. Skrypt hostowy: /opt/PROD/scripts/external-devices.sh. KIEDY: weryfikacja UI na konsoli, obsluga telefonu, audyt urzadzen w LAN/USB. ZMIERZONE 2026-10-14: wbudowany lookup PSN w chiaki-ng i strona psn.flipscreen.games zwracaja pustke (JSON.parse w QML i w konsoli przegladarki), wiec Account-ID da sie wziac tylko z sesji zalogowanej, a droga bez PSN to --registkey; chiaki 2.2.0 z apt nie sparuje sie automatyzacja (pole PSN Online-ID nieprzyjmujace tekstu).'
+- name: forge.studio.control
+  backend: product
+  enabled: true
+  description: 'FORGE OMEGA 2.0.0 — JEDNA capability studia gier: ocena jednego kanonicznego snapshotu studia (pelny baseline PRD, dowody, niezaleznosc recenzji, poprzednie bramki, UAT, krytyczne znaleziska, podpisy wymagane dla kandydata). Wynik: PASS, FAIL, INSUFFICIENT_EVIDENCE albo WAIVED + lista luk i rekomendacja. Rdzen: dependency-free crate Rust w /opt/PROD/forge-omega/capability/rust (manifest: capability/manifest.yaml; 33 testy natywne przechodza — zmierzone 2026-10-14: cargo test --offline --locked => 33 passed, 0 failed); crate jest wylaczony z workspace /opt/PROD/Cargo.toml (workspace.exclude), zeby budowal sie samodzielnie. KIEDY: przed promocja kandydata na wydanie gry — bramka gotowosci studia, NIE budowanie gry i NIE publikacja. ZMIERZONE 2026-10-14 (status UNPROVEN): 1) wejscie publiczne przyjmuje referencje snapshotu, a nie liste dowodow od modelu — Autorytet ma pochodzic z istniejacych zaufanych uslug hosta, nie z FixtureAuthority w tests/; 2) 16 kontraktow adapterow w /opt/PROD/forge-omega/adapters/contracts to UNBOUND (wymagania do powiazania z realnymi narzedziami hosta), wiec capability NIE ma jeszcze pelnego lancucha wykonawczego; 3) ewale behawioralne 64 kompetencji (256 przypadkow) sa NOT_RUN — zgodnie z MASTERPROMPT_WDROZENIE.md nie promuje sie kompetencji do PROVEN bez przebiegu na zakwalifikowanych modelach i niezaleznej rubryki; 4) wpis deklaruje capability w manifeście (SSOT tego, CO istnieje), a obiekt w skompilowanej fabryce runtime (register_canonical) NIE jest jeszcze podpiety — to nastepny krok, nie fakt. Skille studia: /opt/PROD/skills/shared (64), material referencyjny: /opt/PROD/forge-omega, provenance: skills/shared/FORGE-OMEGA-2.0.0-PROVENANCE.md.'
+- name: mcp:rea
+  backend: mcp
+  enabled: true
+  description: 'REA (Reverse Engineer Anything) — inzynieria odwrotna: analiza zachowania
+    aplikacji i binariow (statyczna analiza JS/Electron bez silnika natywnego; Hopper/Ghidra/IDA
+    opcjonalnie), listowanie procedur/stringow/segmentow, dekompilacja, adnotacje funkcji,
+    sesje Frida/Rizin/GDB, zrzuty ekranu i scenariusze przegladarki. 207 narzedzi za JEDNYM
+    proxy-narzedziem mcp_rea_call. KIEDY: analiza wlasnego/autoryzowanego binarium lub aplikacji,
+    rekonstrukcja zachowania, porownanie wersji. NIE: analiza cudzych systemow bez pisemnej zgody.'
