@@ -6,3 +6,12 @@ useDefault = true
 [allowlist]
 description = "Deliberate OBS-02 redaction canary; never a real credential"
 regexes = ['''sk-canary-obs02-[0-9a-f]+''']
+
+# The LAW-53/56 negative test must feed credential-shaped strings to the
+# detector, otherwise it cannot prove detection. The value is a literal
+# placeholder, never a credential, and the file exists to prove the gate fails
+# on such input.
+[[rules.allowlists]]
+description = "Negative-test fixture for the forbidden-channel secret detector"
+paths = ['''gates/test_m4_fitness_safety_secret_negative\.sh''']
+regexes = ['''BogusCredential881''']
